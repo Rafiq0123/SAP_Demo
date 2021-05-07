@@ -1,0 +1,8 @@
+{
+  "INVENTORY": {
+    "target": {
+      "object": "INVENTORY",
+      "schema": "POCUSR"
+    }
+  }
+}

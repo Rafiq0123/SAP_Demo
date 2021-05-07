@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_INVENTORY" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_INVENTORY"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="INVENTORY">
+    <resourceUri>INVENTORY</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="LOCATION_ID"/>
+      <viewAttribute id="COMPONENT"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="TOT_ONHAND_QTY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="INVENTORY"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="LOCATION_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOCATION"/>
+      <keyMapping columnObjectName="Projection_1" columnName="LOCATION_ID"/>
+    </attribute>
+    <attribute id="COMPONENT" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPONENT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="COMPONENT"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DESCRIPTION"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="TOT_ONHAND_QTY" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TOT_ONHAND_QTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="TOT_ONHAND_QTY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="105" y="199"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
