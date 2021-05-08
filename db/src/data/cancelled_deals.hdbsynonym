@@ -1,0 +1,8 @@
+{
+  "CANCELLED_DEALS": {
+    "target": {
+      "object": "CANCELLED_DEALS",
+      "schema": "POCUSR"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_CANCELLED_DEALS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_CANCELLED_DEALS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="CANCELLED_DEALS">
+    <resourceUri>CANCELLED_DEALS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="Region"/>
+      <viewAttribute id="Geo"/>
+      <viewAttribute id="Cancellation_Config_Change"/>
+      <viewAttribute id="OP-ID"/>
+      <viewAttribute id="CANCELLATION_DATE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CANCELLED_DEALS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Cancellation_Config_Change" source="Cancellation/Config Change"/>
+    </input>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="Region" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Region"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Region"/>
+    </attribute>
+    <attribute id="Geo" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Geo"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Geo"/>
+    </attribute>
+    <attribute id="Cancellation_Config_Change" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Cancellation_Config_Change"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Cancellation_Config_Change"/>
+    </attribute>
+    <attribute id="OP-ID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OP-ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="OP-ID"/>
+    </attribute>
+    <attribute id="CANCELLATION_DATE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CANCELLATION_DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CANCELLATION_DATE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures>
+    <measure id="COUNTER" order="6" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="BIGINT" length="">
+      <descriptions defaultDescription="COUNTER"/>
+      <exceptionAggregation>
+        <attribute attributeName="OP-ID"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="186"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
