@@ -50,7 +50,7 @@
   <calculatedAttributes/>
   <baseMeasures/>
   <calculatedMeasures>
-    <measure id="COUNTER" order="6" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="BIGINT" length="">
+    <measure id="COUNTER_OPP" order="6" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="BIGINT" length="">
       <descriptions defaultDescription="COUNTER"/>
       <exceptionAggregation>
         <attribute attributeName="OP-ID"/>
