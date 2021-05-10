@@ -1,0 +1,92 @@
+{
+  "LOCATION_PRODUCT": {
+    "target": {
+      "object": "LOCATION_PRODUCT",
+      "schema": "POCUSR"
+    }
+  },
+  "FUSIONSO_OPPORTUNITY": {
+    "target": {
+      "object": "FUSIONSO_OPPORTUNITY",
+      "schema": "POCUSR"
+    }
+  },
+  "FUSION_SHIPMENTS": {
+    "target": {
+      "object": "FUSION_SHIPMENTS",
+      "schema": "POCUSR"
+    }
+  },
+  "HIST_SALES_ORDER_S4": {
+    "target": {
+      "object": "HIST_SALES_ORDER_S4",
+      "schema": "POCUSR"
+    }
+  },
+  "LOCATION": {
+    "target": {
+      "object": "LOCATION",
+      "schema": "POCUSR"
+    }
+  },
+  "LOCATION_SOURCE": {
+    "target": {
+      "object": "LOCATION_SOURCE",
+      "schema": "POCUSR"
+    }
+  },
+  "MAINSTREAM_LISTING": {
+    "target": {
+      "object": "MAINSTREAM_LISTING",
+      "schema": "POCUSR"
+    }
+  },
+  "OPEN_SALES_ORDER_FUSION": {
+    "target": {
+      "object": "OPEN_SALES_ORDER_FUSION",
+      "schema": "POCUSR"
+    }
+  },
+  "OPEN_SALES_ORDER_S4": {
+    "target": {
+      "object": "OPEN_SALES_ORDER_S4",
+      "schema": "POCUSR"
+    }
+  },
+  "PLANNING_HIERARCHY": {
+    "target": {
+      "object": "PLANNING_HIERARCHY",
+      "schema": "POCUSR"
+    }
+  },
+  "PO_DELIVERY": {
+    "target": {
+      "object": "PO_DELIVERY",
+      "schema": "POCUSR"
+    }
+  },
+  "PRODUCTION_HEADER": {
+    "target": {
+      "object": "PRODUCTION_HEADER",
+      "schema": "POCUSR"
+    }
+  },
+  "PRODUCTION_ITEM": {
+    "target": {
+      "object": "PRODUCTION_ITEM",
+      "schema": "POCUSR"
+    }
+  },
+  "QUOTE_OPP": {
+    "target": {
+      "object": "QUOTE_OPP",
+      "schema": "POCUSR"
+    }
+  },
+  "SHIPMENTS_S4": {
+    "target": {
+      "object": "SHIPMENTS_S4",
+      "schema": "POCUSR"
+    }
+  }
+}
