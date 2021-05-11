@@ -3,18 +3,111 @@
 <descriptions defaultDescription="CV_HIST_SALES_ORDER_S4"/>
 <localVariables/>
 <variableMappings/>
-<dataSources/>
+<dataSources>
+  <DataSource id="HIST_SALES_ORDER_S4">
+    <resourceUri>HIST_SALES_ORDER_S4</resourceUri>
+  </DataSource>
+</dataSources>
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
-    <viewAttributes/>
+    <viewAttributes>
+      <viewAttribute id="SALES_DOCUMENT"/>
+      <viewAttribute id="ITEM"/>
+      <viewAttribute id="HIGHER_LEVEL_ITEM"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="SINGLE_CHARACTER_FLAG"/>
+      <viewAttribute id="SALES_ORG"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="IBP_CUSTOMER_ID"/>
+      <viewAttribute id="SALES_DOCUMENT_TYPE"/>
+      <viewAttribute id="ITEM_CATEGORY"/>
+      <viewAttribute id="CUSTOMER"/>
+      <viewAttribute id="SUBNETWORK"/>
+      <viewAttribute id="QUOTE_NO"/>
+      <viewAttribute id="SALESFORCE_OPP_ID"/>
+      <viewAttribute id="QUANTITY"/>
+      <viewAttribute id="INV_DATE"/>
+    </viewAttributes>
     <calculatedViewAttributes/>
+    <input node="HIST_SALES_ORDER_S4"/>
   </calculationView>
 </calculationViews>
 
-<logicalModel>
-  <attributes/>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="SALES_DOCUMENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales Document"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SALES_DOCUMENT"/>
+    </attribute>
+    <attribute id="ITEM" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Item"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ITEM"/>
+    </attribute>
+    <attribute id="HIGHER_LEVEL_ITEM" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Higher-Level Item"/>
+      <keyMapping columnObjectName="Projection_1" columnName="HIGHER_LEVEL_ITEM"/>
+    </attribute>
+    <attribute id="MATERIAL" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Material"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MATERIAL"/>
+    </attribute>
+    <attribute id="PLANT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Plant"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PLANT"/>
+    </attribute>
+    <attribute id="SINGLE_CHARACTER_FLAG" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Single-Character Flag"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SINGLE_CHARACTER_FLAG"/>
+    </attribute>
+    <attribute id="SALES_ORG" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales Organization"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SALES_ORG"/>
+    </attribute>
+    <attribute id="DIVISION" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Division"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DIVISION"/>
+    </attribute>
+    <attribute id="IBP_CUSTOMER_ID" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IBP Customer ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="IBP_CUSTOMER_ID"/>
+    </attribute>
+    <attribute id="SALES_DOCUMENT_TYPE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales Document Type"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SALES_DOCUMENT_TYPE"/>
+    </attribute>
+    <attribute id="ITEM_CATEGORY" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Item Category"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ITEM_CATEGORY"/>
+    </attribute>
+    <attribute id="CUSTOMER" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CUSTOMER"/>
+    </attribute>
+    <attribute id="SUBNETWORK" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Subnetwork"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SUBNETWORK"/>
+    </attribute>
+    <attribute id="QUOTE_NO" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Quote No"/>
+      <keyMapping columnObjectName="Projection_1" columnName="QUOTE_NO"/>
+    </attribute>
+    <attribute id="SALESFORCE_OPP_ID" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Salesforce Opportunity ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SALESFORCE_OPP_ID"/>
+    </attribute>
+    <attribute id="INV_DATE" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INV Date"/>
+      <keyMapping columnObjectName="Projection_1" columnName="INV_DATE"/>
+    </attribute>
+  </attributes>
   <calculatedAttributes/>
-  <baseMeasures/>
+  <baseMeasures>
+    <measure id="QUANTITY" order="16" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Quantity"/>
+      <measureMapping columnObjectName="Projection_1" columnName="QUANTITY"/>
+    </measure>
+  </baseMeasures>
   <calculatedMeasures/>
   <restrictedMeasures/>
   <localDimensions/>

@@ -24,22 +24,22 @@
 <logicalModel id="Projection_1">
   <attributes>
     <attribute id="LOCATION_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="LOCATION"/>
+      <descriptions defaultDescription="Location"/>
       <keyMapping columnObjectName="Projection_1" columnName="LOCATION_ID"/>
     </attribute>
     <attribute id="COMPONENT" order="2" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="COMPONENT"/>
+      <descriptions defaultDescription="Component"/>
       <keyMapping columnObjectName="Projection_1" columnName="COMPONENT"/>
     </attribute>
     <attribute id="DESCRIPTION" order="3" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DESCRIPTION"/>
+      <descriptions defaultDescription="Description"/>
       <keyMapping columnObjectName="Projection_1" columnName="DESCRIPTION"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures>
     <measure id="TOT_ONHAND_QTY" order="4" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="TOT_ONHAND_QTY"/>
+      <descriptions defaultDescription="Total on Hand Quantity"/>
       <measureMapping columnObjectName="Projection_1" columnName="TOT_ONHAND_QTY"/>
     </measure>
   </baseMeasures>

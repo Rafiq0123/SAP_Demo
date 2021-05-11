@@ -43,7 +43,7 @@
       <keyMapping columnObjectName="Projection_1" columnName="OP-ID"/>
     </attribute>
     <attribute id="CANCELLATION_DATE" order="5" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CANCELLATION_DATE"/>
+      <descriptions defaultDescription="Cancellation date"/>
       <keyMapping columnObjectName="Projection_1" columnName="CANCELLATION_DATE"/>
     </attribute>
   </attributes>
