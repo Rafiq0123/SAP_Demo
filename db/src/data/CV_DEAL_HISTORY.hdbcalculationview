@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_DEAL_HISTORY" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="HPE_CV_DEAL_HISTORY"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="DEAL_HISTORY">
+    <resourceUri>DEAL_HISTORY</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="OPPORTUNITY_ID"/>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="PLANNED_PLANT"/>
+      <viewAttribute id="SKU_DESCRIPTION"/>
+      <viewAttribute id="CONFIDENCE_LEVEL"/>
+      <viewAttribute id="MPQTY"/>
+      <viewAttribute id="MP_DATE"/>
+      <viewAttribute id="SHIP_DATE"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="COUNTRY_NAME"/>
+      <viewAttribute id="DATECREATED"/>
+      <viewAttribute id="DATEINTODP"/>
+      <viewAttribute id="DATE_TAKEN"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DEAL_HISTORY"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="OPPORTUNITY_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Opportunity ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="OPPORTUNITY_ID"/>
+    </attribute>
+    <attribute id="SKU" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SKU"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SKU"/>
+    </attribute>
+    <attribute id="PLANNED_PLANT" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Planned Plant"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PLANNED_PLANT"/>
+    </attribute>
+    <attribute id="SKU_DESCRIPTION" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SKU Description"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SKU_DESCRIPTION"/>
+    </attribute>
+    <attribute id="CONFIDENCE_LEVEL" order="5" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Confidence Level"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CONFIDENCE_LEVEL"/>
+    </attribute>
+    <attribute id="MP_DATE" order="7" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MP Date"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MP_DATE"/>
+    </attribute>
+    <attribute id="SHIP_DATE" order="8" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Ship Date"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SHIP_DATE"/>
+    </attribute>
+    <attribute id="REGION" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Region"/>
+      <keyMapping columnObjectName="Projection_1" columnName="REGION"/>
+    </attribute>
+    <attribute id="COUNTRY_NAME" order="10" semanticType="geoLocation.normalizedName" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Country Name"/>
+      <keyMapping columnObjectName="Projection_1" columnName="COUNTRY_NAME"/>
+    </attribute>
+    <attribute id="DATECREATED" order="11" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Date Created"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DATECREATED"/>
+    </attribute>
+    <attribute id="DATEINTODP" order="12" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Date in to DP"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DATEINTODP"/>
+    </attribute>
+    <attribute id="DATE_TAKEN" order="13" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Date Taken"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DATE_TAKEN"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="MPQTY" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MP Quantity"/>
+      <measureMapping columnObjectName="Projection_1" columnName="MPQTY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="211"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
