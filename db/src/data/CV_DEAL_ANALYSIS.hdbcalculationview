@@ -1,0 +1,1589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_DEAL_ANALYSIS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_DEAL_ANALYSIS.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="QUOTE_OPP">
+    <resourceUri>QUOTE_OPP</resourceUri>
+  </DataSource>
+  <DataSource id="CV_OPEN_SALES_ORDER_COMBINED">
+    <resourceUri>CV_OPEN_SALES_ORDER_COMBINED</resourceUri>
+  </DataSource>
+  <DataSource id="DEAL_HISTORY">
+    <resourceUri>DEAL_HISTORY</resourceUri>
+  </DataSource>
+  <DataSource id="CANCELLED_DEALS">
+    <resourceUri>CANCELLED_DEALS</resourceUri>
+  </DataSource>
+  <DataSource id="MAINSTREAM_LISTING">
+    <resourceUri>MAINSTREAM_LISTING</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="SLS_QTN_ID"/>
+      <viewAttribute id="SLS_QTN_VRSN_SQN_NR"/>
+      <viewAttribute id="UQID"/>
+      <viewAttribute id="ORIG_ASSET"/>
+      <viewAttribute id="COMPLETION_TS"/>
+      <viewAttribute id="DELIVERY_TERMS"/>
+      <viewAttribute id="PRICE_LIST_TYPE"/>
+      <viewAttribute id="LAST_PRICED_DT"/>
+      <viewAttribute id="PRICE_GEO"/>
+      <viewAttribute id="PA_NR"/>
+      <viewAttribute id="PA_CAC"/>
+      <viewAttribute id="MODIFIED_TS"/>
+      <viewAttribute id="AIRPACKED_TOTALWEIGHT"/>
+      <viewAttribute id="PA_EXPIRY_TS"/>
+      <viewAttribute id="ASSET_QUOTE_NR"/>
+      <viewAttribute id="DELETE_IND"/>
+      <viewAttribute id="CREATED_TS"/>
+      <viewAttribute id="LAST_MODIFIED_TS"/>
+      <viewAttribute id="RSLR_EXCLV_FL"/>
+      <viewAttribute id="W_L_STAT_CD"/>
+      <viewAttribute id="EST_TOT_K_AM"/>
+      <viewAttribute id="QUOTE_DISTRIB_DT"/>
+      <viewAttribute id="BUS_MODEL_CD"/>
+      <viewAttribute id="MC_CHARGE"/>
+      <viewAttribute id="PAYMENT_DAYS"/>
+      <viewAttribute id="CASH_DISC_PCT"/>
+      <viewAttribute id="BDM_EXP_NOTIFY_FL"/>
+      <viewAttribute id="PAY_AMOUNT"/>
+      <viewAttribute id="ORDER_BGN_DT"/>
+      <viewAttribute id="ORDER_END_DT"/>
+      <viewAttribute id="QUOTE_DIST_DT_GMT"/>
+      <viewAttribute id="COMPLEX_DEAL_FL"/>
+      <viewAttribute id="AGENT_DEAL_FL"/>
+      <viewAttribute id="DIRECT_FL"/>
+      <viewAttribute id="TERM_COND_ID"/>
+      <viewAttribute id="QUOTE_PRIMARY_RSLR_TYPE"/>
+      <viewAttribute id="OPPORTUNITY_ORIG_SYSTEM"/>
+      <viewAttribute id="REQUEST_ID"/>
+      <viewAttribute id="ASSET_QUOTE_VRSN"/>
+      <viewAttribute id="PAYMENT_TERM"/>
+      <viewAttribute id="DEAL_NR"/>
+      <viewAttribute id="REQUEST_F_QUOTE_RCVD_TS"/>
+      <viewAttribute id="ASSET_INSTANCE"/>
+      <viewAttribute id="SFDC_STATUS"/>
+      <viewAttribute id="SALES_ORG"/>
+      <viewAttribute id="ORG_ID"/>
+      <viewAttribute id="ORIG_REF_ASSET"/>
+      <viewAttribute id="ORIG_REF_QUOTE_ID"/>
+      <viewAttribute id="DELIVERY_SERVICES"/>
+      <viewAttribute id="DELIVERY_SPEED"/>
+      <viewAttribute id="ROUND_DIGIT"/>
+      <viewAttribute id="TITLE_PASSES_AT"/>
+      <viewAttribute id="SIGNIFICANT_DIGITS"/>
+      <viewAttribute id="PRICE_TERM_CD"/>
+      <viewAttribute id="ASSET_QUOTE_NR_AND_VRSN"/>
+      <viewAttribute id="NO_SRVC_RSN_CD"/>
+      <viewAttribute id="APPL_CODE_VERTICAL"/>
+      <viewAttribute id="COMMENCE_DATE_TIME"/>
+      <viewAttribute id="PDF_ORIGIN_ASSET"/>
+      <viewAttribute id="SRT_PADDING_VALUE"/>
+      <viewAttribute id="PRICE_ID_TYPE"/>
+      <viewAttribute id="PDF_IN_CASSANDRA"/>
+      <viewAttribute id="SPLIT_DEAL_FL"/>
+      <viewAttribute id="SPLIT_QUOTE_DEAL_NOTIFY_FL"/>
+      <viewAttribute id="BMI_CREATE_VERSION_FL"/>
+      <viewAttribute id="DSTRBTR_ACTONBHLFOF_RSLLR_FL"/>
+      <viewAttribute id="GO_TO_MRKT_RT"/>
+      <viewAttribute id="CMPLT_SRC"/>
+      <viewAttribute id="SNGL_DSTRBTR_FL"/>
+      <viewAttribute id="BUS_UNIT_CD"/>
+      <viewAttribute id="LEAD_BUS_GRP"/>
+      <viewAttribute id="VSOE_APPROVER_ID"/>
+      <viewAttribute id="ORIG_REF_QUOTE_VRSN"/>
+      <viewAttribute id="NO_SRVC_FL"/>
+      <viewAttribute id="LOW_SRVC_FL"/>
+      <viewAttribute id="TENANT_CD"/>
+      <viewAttribute id="ABSOLUTLY_NO_SUPPORT_FL"/>
+      <viewAttribute id="DEAL_FINANCED_FL"/>
+      <viewAttribute id="HPE_SELL_TO_HPE_FL"/>
+      <viewAttribute id="CNFG_VAL_REQ_FL"/>
+      <viewAttribute id="HUB_FL"/>
+      <viewAttribute id="MIXED_ORDER_FL"/>
+      <viewAttribute id="SPLIT_REQ_FL"/>
+      <viewAttribute id="SPLIT_QUOTE_FL"/>
+      <viewAttribute id="ARUBA_QUOTE_FL"/>
+      <viewAttribute id="PO_NR"/>
+      <viewAttribute id="PO_STTS_CD"/>
+      <viewAttribute id="PCOMM_SUPP_FL"/>
+      <viewAttribute id="CUSTOM_CONFIG_FL"/>
+      <viewAttribute id="QUOTE_SOURCE_ENV"/>
+      <viewAttribute id="DEAL_SOURCE_TYPE"/>
+      <viewAttribute id="DEAL_CREATED_APP"/>
+      <viewAttribute id="EST_TOT_K" aggregationType="sum"/>
+      <viewAttribute id="SALES_ORDER"/>
+      <viewAttribute id="OpportunityID"/>
+      <viewAttribute id="ITEM"/>
+      <viewAttribute id="HIGHER_LEVEL_ITEM"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="REQ_DATE"/>
+      <viewAttribute id="GI_DATE"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="ORDER_QTY" aggregationType="sum"/>
+      <viewAttribute id="CUSTOMER"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="HPQUOTE"/>
+      <viewAttribute id="SO_DATA_SOURCE"/>
+      <viewAttribute id="OPPORTUNITY_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="QUOTE_OPP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SLS_QTN_ID" source="SLS_QTN_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SLS_QTN_VRSN_SQN_NR" source="SLS_QTN_VRSN_SQN_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UQID" source="UQID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_ASSET" source="ORIG_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION_TS" source="COMPLETION_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_TERMS" source="DELIVERY_TERMS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_LIST_TYPE" source="PRICE_LIST_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_PRICED_DT" source="LAST_PRICED_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_GEO" source="PRICE_GEO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_NR" source="PA_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_CAC" source="PA_CAC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIED_TS" source="MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AIRPACKED_TOTALWEIGHT" source="AIRPACKED_TOTALWEIGHT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_EXPIRY_TS" source="PA_EXPIRY_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_NR" source="ASSET_QUOTE_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELETE_IND" source="DELETE_IND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TS" source="CREATED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_MODIFIED_TS" source="LAST_MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RSLR_EXCLV_FL" source="RSLR_EXCLV_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="W_L_STAT_CD" source="W_L_STAT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K_AM" source="EST_TOT_K_AM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DISTRIB_DT" source="QUOTE_DISTRIB_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUS_MODEL_CD" source="BUS_MODEL_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MC_CHARGE" source="MC_CHARGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAYMENT_DAYS" source="PAYMENT_DAYS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CASH_DISC_PCT" source="CASH_DISC_PCT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BDM_EXP_NOTIFY_FL" source="BDM_EXP_NOTIFY_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAY_AMOUNT" source="PAY_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_BGN_DT" source="ORDER_BGN_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_END_DT" source="ORDER_END_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DIST_DT_GMT" source="QUOTE_DIST_DT_GMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLEX_DEAL_FL" source="COMPLEX_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AGENT_DEAL_FL" source="AGENT_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECT_FL" source="DIRECT_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TERM_COND_ID" source="TERM_COND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_PRIMARY_RSLR_TYPE" source="QUOTE_PRIMARY_RSLR_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ORIG_SYSTEM" source="OPPORTUNITY_ORIG_SYSTEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQUEST_ID" source="REQUEST_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_VRSN" source="ASSET_QUOTE_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAYMENT_TERM" source="PAYMENT_TERM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_NR" source="DEAL_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQUEST_F_QUOTE_RCVD_TS" source="REQUEST_F_QUOTE_RCVD_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_INSTANCE" source="ASSET_INSTANCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SFDC_STATUS" source="SFDC_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORG" source="SALES_ORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_ID" source="ORG_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_ASSET" source="ORIG_REF_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_QUOTE_ID" source="ORIG_REF_QUOTE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_SERVICES" source="DELIVERY_SERVICES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_SPEED" source="DELIVERY_SPEED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROUND_DIGIT" source="ROUND_DIGIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE_PASSES_AT" source="TITLE_PASSES_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SIGNIFICANT_DIGITS" source="SIGNIFICANT_DIGITS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_TERM_CD" source="PRICE_TERM_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_NR_AND_VRSN" source="ASSET_QUOTE_NR_AND_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NO_SRVC_RSN_CD" source="NO_SRVC_RSN_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="APPL_CODE_VERTICAL" source="APPL_CODE_VERTICAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMMENCE_DATE_TIME" source="COMMENCE_DATE_TIME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PDF_ORIGIN_ASSET" source="PDF_ORIGIN_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SRT_PADDING_VALUE" source="SRT_PADDING_VALUE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_ID_TYPE" source="PRICE_ID_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PDF_IN_CASSANDRA" source="PDF_IN_CASSANDRA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_DEAL_FL" source="SPLIT_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_QUOTE_DEAL_NOTIFY_FL" source="SPLIT_QUOTE_DEAL_NOTIFY_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BMI_CREATE_VERSION_FL" source="BMI_CREATE_VERSION_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DSTRBTR_ACTONBHLFOF_RSLLR_FL" source="DSTRBTR_ACTONBHLFOF_RSLLR_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GO_TO_MRKT_RT" source="GO_TO_MRKT_RT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CMPLT_SRC" source="CMPLT_SRC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SNGL_DSTRBTR_FL" source="SNGL_DSTRBTR_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUS_UNIT_CD" source="BUS_UNIT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LEAD_BUS_GRP" source="LEAD_BUS_GRP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VSOE_APPROVER_ID" source="VSOE_APPROVER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_QUOTE_VRSN" source="ORIG_REF_QUOTE_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NO_SRVC_FL" source="NO_SRVC_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOW_SRVC_FL" source="LOW_SRVC_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TENANT_CD" source="TENANT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABSOLUTLY_NO_SUPPORT_FL" source="ABSOLUTLY_NO_SUPPORT_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_FINANCED_FL" source="DEAL_FINANCED_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPE_SELL_TO_HPE_FL" source="HPE_SELL_TO_HPE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNFG_VAL_REQ_FL" source="CNFG_VAL_REQ_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HUB_FL" source="HUB_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MIXED_ORDER_FL" source="MIXED_ORDER_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_REQ_FL" source="SPLIT_REQ_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_QUOTE_FL" source="SPLIT_QUOTE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ARUBA_QUOTE_FL" source="ARUBA_QUOTE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_NR" source="PO_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_STTS_CD" source="PO_STTS_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PCOMM_SUPP_FL" source="PCOMM_SUPP_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOM_CONFIG_FL" source="CUSTOM_CONFIG_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_SOURCE_ENV" source="QUOTE_SOURCE_ENV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_SOURCE_TYPE" source="DEAL_SOURCE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_CREATED_APP" source="DEAL_CREATED_APP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K" source="EST_TOT_K"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
+    </input>
+    <input node="CV_OPEN_SALES_ORDER_COMBINED">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="OpportunityID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HIGHER_LEVEL_ITEM" source="HIGHER_LEVEL_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DATE" source="REQ_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GI_DATE" source="GI_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER" source="CUSTOMER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="HPQUOTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_DATA_SOURCE" source="SO_DATA_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_QUOTE_ID" source="HPQUOTE"/>
+    </input>
+    <joinAttribute name="ORIG_REF_QUOTE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="SLS_QTN_ID"/>
+      <viewAttribute id="SLS_QTN_VRSN_SQN_NR"/>
+      <viewAttribute id="UQID"/>
+      <viewAttribute id="ORIG_ASSET"/>
+      <viewAttribute id="COMPLETION_TS"/>
+      <viewAttribute id="DELIVERY_TERMS"/>
+      <viewAttribute id="PRICE_LIST_TYPE"/>
+      <viewAttribute id="LAST_PRICED_DT"/>
+      <viewAttribute id="PRICE_GEO"/>
+      <viewAttribute id="PA_NR"/>
+      <viewAttribute id="PA_CAC"/>
+      <viewAttribute id="MODIFIED_TS"/>
+      <viewAttribute id="AIRPACKED_TOTALWEIGHT"/>
+      <viewAttribute id="PA_EXPIRY_TS"/>
+      <viewAttribute id="ASSET_QUOTE_NR"/>
+      <viewAttribute id="DELETE_IND"/>
+      <viewAttribute id="CREATED_TS"/>
+      <viewAttribute id="LAST_MODIFIED_TS"/>
+      <viewAttribute id="RSLR_EXCLV_FL"/>
+      <viewAttribute id="W_L_STAT_CD"/>
+      <viewAttribute id="EST_TOT_K_AM"/>
+      <viewAttribute id="QUOTE_DISTRIB_DT"/>
+      <viewAttribute id="BUS_MODEL_CD"/>
+      <viewAttribute id="MC_CHARGE"/>
+      <viewAttribute id="PAYMENT_DAYS"/>
+      <viewAttribute id="CASH_DISC_PCT"/>
+      <viewAttribute id="BDM_EXP_NOTIFY_FL"/>
+      <viewAttribute id="PAY_AMOUNT"/>
+      <viewAttribute id="ORDER_BGN_DT"/>
+      <viewAttribute id="ORDER_END_DT"/>
+      <viewAttribute id="QUOTE_DIST_DT_GMT"/>
+      <viewAttribute id="COMPLEX_DEAL_FL"/>
+      <viewAttribute id="AGENT_DEAL_FL"/>
+      <viewAttribute id="DIRECT_FL"/>
+      <viewAttribute id="TERM_COND_ID"/>
+      <viewAttribute id="QUOTE_PRIMARY_RSLR_TYPE"/>
+      <viewAttribute id="OPPORTUNITY_ORIG_SYSTEM"/>
+      <viewAttribute id="REQUEST_ID"/>
+      <viewAttribute id="ASSET_QUOTE_VRSN"/>
+      <viewAttribute id="PAYMENT_TERM"/>
+      <viewAttribute id="DEAL_NR"/>
+      <viewAttribute id="REQUEST_F_QUOTE_RCVD_TS"/>
+      <viewAttribute id="ASSET_INSTANCE"/>
+      <viewAttribute id="SFDC_STATUS"/>
+      <viewAttribute id="SALES_ORG"/>
+      <viewAttribute id="ORG_ID"/>
+      <viewAttribute id="ORIG_REF_ASSET"/>
+      <viewAttribute id="ORIG_REF_QUOTE_ID"/>
+      <viewAttribute id="DELIVERY_SERVICES"/>
+      <viewAttribute id="DELIVERY_SPEED"/>
+      <viewAttribute id="ROUND_DIGIT"/>
+      <viewAttribute id="TITLE_PASSES_AT"/>
+      <viewAttribute id="SIGNIFICANT_DIGITS"/>
+      <viewAttribute id="PRICE_TERM_CD"/>
+      <viewAttribute id="ASSET_QUOTE_NR_AND_VRSN"/>
+      <viewAttribute id="NO_SRVC_RSN_CD"/>
+      <viewAttribute id="APPL_CODE_VERTICAL"/>
+      <viewAttribute id="COMMENCE_DATE_TIME"/>
+      <viewAttribute id="PDF_ORIGIN_ASSET"/>
+      <viewAttribute id="SRT_PADDING_VALUE"/>
+      <viewAttribute id="PRICE_ID_TYPE"/>
+      <viewAttribute id="PDF_IN_CASSANDRA"/>
+      <viewAttribute id="SPLIT_DEAL_FL"/>
+      <viewAttribute id="SPLIT_QUOTE_DEAL_NOTIFY_FL"/>
+      <viewAttribute id="BMI_CREATE_VERSION_FL"/>
+      <viewAttribute id="DSTRBTR_ACTONBHLFOF_RSLLR_FL"/>
+      <viewAttribute id="GO_TO_MRKT_RT"/>
+      <viewAttribute id="CMPLT_SRC"/>
+      <viewAttribute id="SNGL_DSTRBTR_FL"/>
+      <viewAttribute id="BUS_UNIT_CD"/>
+      <viewAttribute id="LEAD_BUS_GRP"/>
+      <viewAttribute id="VSOE_APPROVER_ID"/>
+      <viewAttribute id="ORIG_REF_QUOTE_VRSN"/>
+      <viewAttribute id="NO_SRVC_FL"/>
+      <viewAttribute id="LOW_SRVC_FL"/>
+      <viewAttribute id="TENANT_CD"/>
+      <viewAttribute id="ABSOLUTLY_NO_SUPPORT_FL"/>
+      <viewAttribute id="DEAL_FINANCED_FL"/>
+      <viewAttribute id="HPE_SELL_TO_HPE_FL"/>
+      <viewAttribute id="CNFG_VAL_REQ_FL"/>
+      <viewAttribute id="HUB_FL"/>
+      <viewAttribute id="MIXED_ORDER_FL"/>
+      <viewAttribute id="SPLIT_REQ_FL"/>
+      <viewAttribute id="SPLIT_QUOTE_FL"/>
+      <viewAttribute id="ARUBA_QUOTE_FL"/>
+      <viewAttribute id="PO_NR"/>
+      <viewAttribute id="PO_STTS_CD"/>
+      <viewAttribute id="PCOMM_SUPP_FL"/>
+      <viewAttribute id="CUSTOM_CONFIG_FL"/>
+      <viewAttribute id="QUOTE_SOURCE_ENV"/>
+      <viewAttribute id="DEAL_SOURCE_TYPE"/>
+      <viewAttribute id="DEAL_CREATED_APP"/>
+      <viewAttribute id="EST_TOT_K" aggregationType="sum"/>
+      <viewAttribute id="SALES_ORDER"/>
+      <viewAttribute id="OpportunityID"/>
+      <viewAttribute id="ITEM"/>
+      <viewAttribute id="HIGHER_LEVEL_ITEM"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="REQ_DATE"/>
+      <viewAttribute id="GI_DATE"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="ORDER_QTY" aggregationType="sum"/>
+      <viewAttribute id="CUSTOMER"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="HPQUOTE"/>
+      <viewAttribute id="OPPORTUNITY_ID"/>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="PLANNED_PLANT"/>
+      <viewAttribute id="SKU_DESCRIPTION"/>
+      <viewAttribute id="CONFIDENCE_LEVEL" aggregationType="sum"/>
+      <viewAttribute id="MPQTY" aggregationType="sum"/>
+      <viewAttribute id="MP_DATE"/>
+      <viewAttribute id="SHIP_DATE"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="COUNTRY_NAME"/>
+      <viewAttribute id="DATECREATED"/>
+      <viewAttribute id="DATEINTODP"/>
+      <viewAttribute id="DATE_TAKEN"/>
+      <viewAttribute id="SO_DATA_SOURCE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DEAL_HISTORY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_PLANT" source="PLANNED_PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU_DESCRIPTION" source="SKU_DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENCE_LEVEL" source="CONFIDENCE_LEVEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MPQTY" source="MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MP_DATE" source="MP_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_DATE" source="SHIP_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_NAME" source="COUNTRY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATECREATED" source="DATECREATED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATEINTODP" source="DATEINTODP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_TAKEN" source="DATE_TAKEN"/>
+    </input>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SLS_QTN_ID" source="SLS_QTN_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SLS_QTN_VRSN_SQN_NR" source="SLS_QTN_VRSN_SQN_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UQID" source="UQID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_ASSET" source="ORIG_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION_TS" source="COMPLETION_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_TERMS" source="DELIVERY_TERMS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_LIST_TYPE" source="PRICE_LIST_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_PRICED_DT" source="LAST_PRICED_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_GEO" source="PRICE_GEO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_NR" source="PA_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_CAC" source="PA_CAC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIED_TS" source="MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AIRPACKED_TOTALWEIGHT" source="AIRPACKED_TOTALWEIGHT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_EXPIRY_TS" source="PA_EXPIRY_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_NR" source="ASSET_QUOTE_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELETE_IND" source="DELETE_IND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TS" source="CREATED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_MODIFIED_TS" source="LAST_MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RSLR_EXCLV_FL" source="RSLR_EXCLV_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="W_L_STAT_CD" source="W_L_STAT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K_AM" source="EST_TOT_K_AM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DISTRIB_DT" source="QUOTE_DISTRIB_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUS_MODEL_CD" source="BUS_MODEL_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MC_CHARGE" source="MC_CHARGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAYMENT_DAYS" source="PAYMENT_DAYS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CASH_DISC_PCT" source="CASH_DISC_PCT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BDM_EXP_NOTIFY_FL" source="BDM_EXP_NOTIFY_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAY_AMOUNT" source="PAY_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_BGN_DT" source="ORDER_BGN_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_END_DT" source="ORDER_END_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DIST_DT_GMT" source="QUOTE_DIST_DT_GMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLEX_DEAL_FL" source="COMPLEX_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AGENT_DEAL_FL" source="AGENT_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECT_FL" source="DIRECT_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TERM_COND_ID" source="TERM_COND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_PRIMARY_RSLR_TYPE" source="QUOTE_PRIMARY_RSLR_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ORIG_SYSTEM" source="OPPORTUNITY_ORIG_SYSTEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQUEST_ID" source="REQUEST_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_VRSN" source="ASSET_QUOTE_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAYMENT_TERM" source="PAYMENT_TERM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_NR" source="DEAL_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQUEST_F_QUOTE_RCVD_TS" source="REQUEST_F_QUOTE_RCVD_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_INSTANCE" source="ASSET_INSTANCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SFDC_STATUS" source="SFDC_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORG" source="SALES_ORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_ID" source="ORG_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_ASSET" source="ORIG_REF_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_QUOTE_ID" source="ORIG_REF_QUOTE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_SERVICES" source="DELIVERY_SERVICES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_SPEED" source="DELIVERY_SPEED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROUND_DIGIT" source="ROUND_DIGIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE_PASSES_AT" source="TITLE_PASSES_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SIGNIFICANT_DIGITS" source="SIGNIFICANT_DIGITS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_TERM_CD" source="PRICE_TERM_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_NR_AND_VRSN" source="ASSET_QUOTE_NR_AND_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NO_SRVC_RSN_CD" source="NO_SRVC_RSN_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="APPL_CODE_VERTICAL" source="APPL_CODE_VERTICAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMMENCE_DATE_TIME" source="COMMENCE_DATE_TIME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PDF_ORIGIN_ASSET" source="PDF_ORIGIN_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SRT_PADDING_VALUE" source="SRT_PADDING_VALUE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_ID_TYPE" source="PRICE_ID_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PDF_IN_CASSANDRA" source="PDF_IN_CASSANDRA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_DEAL_FL" source="SPLIT_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_QUOTE_DEAL_NOTIFY_FL" source="SPLIT_QUOTE_DEAL_NOTIFY_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BMI_CREATE_VERSION_FL" source="BMI_CREATE_VERSION_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DSTRBTR_ACTONBHLFOF_RSLLR_FL" source="DSTRBTR_ACTONBHLFOF_RSLLR_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GO_TO_MRKT_RT" source="GO_TO_MRKT_RT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CMPLT_SRC" source="CMPLT_SRC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SNGL_DSTRBTR_FL" source="SNGL_DSTRBTR_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUS_UNIT_CD" source="BUS_UNIT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LEAD_BUS_GRP" source="LEAD_BUS_GRP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VSOE_APPROVER_ID" source="VSOE_APPROVER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_QUOTE_VRSN" source="ORIG_REF_QUOTE_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NO_SRVC_FL" source="NO_SRVC_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOW_SRVC_FL" source="LOW_SRVC_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TENANT_CD" source="TENANT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABSOLUTLY_NO_SUPPORT_FL" source="ABSOLUTLY_NO_SUPPORT_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_FINANCED_FL" source="DEAL_FINANCED_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPE_SELL_TO_HPE_FL" source="HPE_SELL_TO_HPE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNFG_VAL_REQ_FL" source="CNFG_VAL_REQ_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HUB_FL" source="HUB_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MIXED_ORDER_FL" source="MIXED_ORDER_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_REQ_FL" source="SPLIT_REQ_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_QUOTE_FL" source="SPLIT_QUOTE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ARUBA_QUOTE_FL" source="ARUBA_QUOTE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_NR" source="PO_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_STTS_CD" source="PO_STTS_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PCOMM_SUPP_FL" source="PCOMM_SUPP_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOM_CONFIG_FL" source="CUSTOM_CONFIG_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_SOURCE_ENV" source="QUOTE_SOURCE_ENV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_SOURCE_TYPE" source="DEAL_SOURCE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_CREATED_APP" source="DEAL_CREATED_APP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K" source="EST_TOT_K"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="OpportunityID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HIGHER_LEVEL_ITEM" source="HIGHER_LEVEL_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DATE" source="REQ_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GI_DATE" source="GI_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER" source="CUSTOMER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="HPQUOTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_DATA_SOURCE" source="SO_DATA_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
+    </input>
+    <joinAttribute name="OPPORTUNITY_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="SLS_QTN_ID"/>
+      <viewAttribute id="SLS_QTN_VRSN_SQN_NR"/>
+      <viewAttribute id="UQID"/>
+      <viewAttribute id="ORIG_ASSET"/>
+      <viewAttribute id="COMPLETION_TS"/>
+      <viewAttribute id="DELIVERY_TERMS"/>
+      <viewAttribute id="PRICE_LIST_TYPE"/>
+      <viewAttribute id="LAST_PRICED_DT"/>
+      <viewAttribute id="PRICE_GEO"/>
+      <viewAttribute id="PA_NR"/>
+      <viewAttribute id="PA_CAC"/>
+      <viewAttribute id="MODIFIED_TS"/>
+      <viewAttribute id="AIRPACKED_TOTALWEIGHT"/>
+      <viewAttribute id="PA_EXPIRY_TS"/>
+      <viewAttribute id="ASSET_QUOTE_NR"/>
+      <viewAttribute id="DELETE_IND"/>
+      <viewAttribute id="CREATED_TS"/>
+      <viewAttribute id="LAST_MODIFIED_TS"/>
+      <viewAttribute id="RSLR_EXCLV_FL"/>
+      <viewAttribute id="W_L_STAT_CD"/>
+      <viewAttribute id="EST_TOT_K_AM"/>
+      <viewAttribute id="QUOTE_DISTRIB_DT"/>
+      <viewAttribute id="BUS_MODEL_CD"/>
+      <viewAttribute id="MC_CHARGE"/>
+      <viewAttribute id="PAYMENT_DAYS"/>
+      <viewAttribute id="CASH_DISC_PCT"/>
+      <viewAttribute id="BDM_EXP_NOTIFY_FL"/>
+      <viewAttribute id="PAY_AMOUNT"/>
+      <viewAttribute id="ORDER_BGN_DT"/>
+      <viewAttribute id="ORDER_END_DT"/>
+      <viewAttribute id="QUOTE_DIST_DT_GMT"/>
+      <viewAttribute id="COMPLEX_DEAL_FL"/>
+      <viewAttribute id="AGENT_DEAL_FL"/>
+      <viewAttribute id="DIRECT_FL"/>
+      <viewAttribute id="TERM_COND_ID"/>
+      <viewAttribute id="QUOTE_PRIMARY_RSLR_TYPE"/>
+      <viewAttribute id="OPPORTUNITY_ORIG_SYSTEM"/>
+      <viewAttribute id="REQUEST_ID"/>
+      <viewAttribute id="ASSET_QUOTE_VRSN"/>
+      <viewAttribute id="PAYMENT_TERM"/>
+      <viewAttribute id="DEAL_NR"/>
+      <viewAttribute id="REQUEST_F_QUOTE_RCVD_TS"/>
+      <viewAttribute id="ASSET_INSTANCE"/>
+      <viewAttribute id="SFDC_STATUS"/>
+      <viewAttribute id="SALES_ORG"/>
+      <viewAttribute id="ORG_ID"/>
+      <viewAttribute id="ORIG_REF_ASSET"/>
+      <viewAttribute id="ORIG_REF_QUOTE_ID"/>
+      <viewAttribute id="DELIVERY_SERVICES"/>
+      <viewAttribute id="DELIVERY_SPEED"/>
+      <viewAttribute id="ROUND_DIGIT"/>
+      <viewAttribute id="TITLE_PASSES_AT"/>
+      <viewAttribute id="SIGNIFICANT_DIGITS"/>
+      <viewAttribute id="PRICE_TERM_CD"/>
+      <viewAttribute id="ASSET_QUOTE_NR_AND_VRSN"/>
+      <viewAttribute id="NO_SRVC_RSN_CD"/>
+      <viewAttribute id="APPL_CODE_VERTICAL"/>
+      <viewAttribute id="COMMENCE_DATE_TIME"/>
+      <viewAttribute id="PDF_ORIGIN_ASSET"/>
+      <viewAttribute id="SRT_PADDING_VALUE"/>
+      <viewAttribute id="PRICE_ID_TYPE"/>
+      <viewAttribute id="PDF_IN_CASSANDRA"/>
+      <viewAttribute id="SPLIT_DEAL_FL"/>
+      <viewAttribute id="SPLIT_QUOTE_DEAL_NOTIFY_FL"/>
+      <viewAttribute id="BMI_CREATE_VERSION_FL"/>
+      <viewAttribute id="DSTRBTR_ACTONBHLFOF_RSLLR_FL"/>
+      <viewAttribute id="GO_TO_MRKT_RT"/>
+      <viewAttribute id="CMPLT_SRC"/>
+      <viewAttribute id="SNGL_DSTRBTR_FL"/>
+      <viewAttribute id="BUS_UNIT_CD"/>
+      <viewAttribute id="LEAD_BUS_GRP"/>
+      <viewAttribute id="VSOE_APPROVER_ID"/>
+      <viewAttribute id="ORIG_REF_QUOTE_VRSN"/>
+      <viewAttribute id="NO_SRVC_FL"/>
+      <viewAttribute id="LOW_SRVC_FL"/>
+      <viewAttribute id="TENANT_CD"/>
+      <viewAttribute id="ABSOLUTLY_NO_SUPPORT_FL"/>
+      <viewAttribute id="DEAL_FINANCED_FL"/>
+      <viewAttribute id="HPE_SELL_TO_HPE_FL"/>
+      <viewAttribute id="CNFG_VAL_REQ_FL"/>
+      <viewAttribute id="HUB_FL"/>
+      <viewAttribute id="MIXED_ORDER_FL"/>
+      <viewAttribute id="SPLIT_REQ_FL"/>
+      <viewAttribute id="SPLIT_QUOTE_FL"/>
+      <viewAttribute id="ARUBA_QUOTE_FL"/>
+      <viewAttribute id="PO_NR"/>
+      <viewAttribute id="PO_STTS_CD"/>
+      <viewAttribute id="PCOMM_SUPP_FL"/>
+      <viewAttribute id="CUSTOM_CONFIG_FL"/>
+      <viewAttribute id="QUOTE_SOURCE_ENV"/>
+      <viewAttribute id="DEAL_SOURCE_TYPE"/>
+      <viewAttribute id="DEAL_CREATED_APP"/>
+      <viewAttribute id="EST_TOT_K" aggregationType="sum"/>
+      <viewAttribute id="SALES_ORDER"/>
+      <viewAttribute id="OpportunityID"/>
+      <viewAttribute id="ITEM"/>
+      <viewAttribute id="HIGHER_LEVEL_ITEM"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="REQ_DATE"/>
+      <viewAttribute id="GI_DATE"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="ORDER_QTY" aggregationType="sum"/>
+      <viewAttribute id="CUSTOMER"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="HPQUOTE"/>
+      <viewAttribute id="OPPORTUNITY_ID"/>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="PLANNED_PLANT"/>
+      <viewAttribute id="SKU_DESCRIPTION"/>
+      <viewAttribute id="CONFIDENCE_LEVEL" aggregationType="sum"/>
+      <viewAttribute id="MPQTY" aggregationType="sum"/>
+      <viewAttribute id="MP_DATE"/>
+      <viewAttribute id="SHIP_DATE"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="COUNTRY_NAME"/>
+      <viewAttribute id="DATECREATED"/>
+      <viewAttribute id="DATEINTODP"/>
+      <viewAttribute id="DATE_TAKEN"/>
+      <viewAttribute id="Region"/>
+      <viewAttribute id="Geo"/>
+      <viewAttribute id="Cancellation_Config_Change"/>
+      <viewAttribute id="OP-ID"/>
+      <viewAttribute id="CANCELLATION_DATE"/>
+      <viewAttribute id="SO_DATA_SOURCE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SLS_QTN_ID" source="SLS_QTN_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SLS_QTN_VRSN_SQN_NR" source="SLS_QTN_VRSN_SQN_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UQID" source="UQID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_ASSET" source="ORIG_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION_TS" source="COMPLETION_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_TERMS" source="DELIVERY_TERMS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_LIST_TYPE" source="PRICE_LIST_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_PRICED_DT" source="LAST_PRICED_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_GEO" source="PRICE_GEO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_NR" source="PA_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_CAC" source="PA_CAC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIED_TS" source="MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AIRPACKED_TOTALWEIGHT" source="AIRPACKED_TOTALWEIGHT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_EXPIRY_TS" source="PA_EXPIRY_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_NR" source="ASSET_QUOTE_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELETE_IND" source="DELETE_IND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TS" source="CREATED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_MODIFIED_TS" source="LAST_MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RSLR_EXCLV_FL" source="RSLR_EXCLV_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="W_L_STAT_CD" source="W_L_STAT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K_AM" source="EST_TOT_K_AM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DISTRIB_DT" source="QUOTE_DISTRIB_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUS_MODEL_CD" source="BUS_MODEL_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MC_CHARGE" source="MC_CHARGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAYMENT_DAYS" source="PAYMENT_DAYS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CASH_DISC_PCT" source="CASH_DISC_PCT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BDM_EXP_NOTIFY_FL" source="BDM_EXP_NOTIFY_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAY_AMOUNT" source="PAY_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_BGN_DT" source="ORDER_BGN_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_END_DT" source="ORDER_END_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DIST_DT_GMT" source="QUOTE_DIST_DT_GMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLEX_DEAL_FL" source="COMPLEX_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AGENT_DEAL_FL" source="AGENT_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECT_FL" source="DIRECT_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TERM_COND_ID" source="TERM_COND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_PRIMARY_RSLR_TYPE" source="QUOTE_PRIMARY_RSLR_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ORIG_SYSTEM" source="OPPORTUNITY_ORIG_SYSTEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQUEST_ID" source="REQUEST_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_VRSN" source="ASSET_QUOTE_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAYMENT_TERM" source="PAYMENT_TERM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_NR" source="DEAL_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQUEST_F_QUOTE_RCVD_TS" source="REQUEST_F_QUOTE_RCVD_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_INSTANCE" source="ASSET_INSTANCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SFDC_STATUS" source="SFDC_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORG" source="SALES_ORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_ID" source="ORG_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_ASSET" source="ORIG_REF_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_QUOTE_ID" source="ORIG_REF_QUOTE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_SERVICES" source="DELIVERY_SERVICES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_SPEED" source="DELIVERY_SPEED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROUND_DIGIT" source="ROUND_DIGIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE_PASSES_AT" source="TITLE_PASSES_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SIGNIFICANT_DIGITS" source="SIGNIFICANT_DIGITS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_TERM_CD" source="PRICE_TERM_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_NR_AND_VRSN" source="ASSET_QUOTE_NR_AND_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NO_SRVC_RSN_CD" source="NO_SRVC_RSN_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="APPL_CODE_VERTICAL" source="APPL_CODE_VERTICAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMMENCE_DATE_TIME" source="COMMENCE_DATE_TIME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PDF_ORIGIN_ASSET" source="PDF_ORIGIN_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SRT_PADDING_VALUE" source="SRT_PADDING_VALUE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_ID_TYPE" source="PRICE_ID_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PDF_IN_CASSANDRA" source="PDF_IN_CASSANDRA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_DEAL_FL" source="SPLIT_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_QUOTE_DEAL_NOTIFY_FL" source="SPLIT_QUOTE_DEAL_NOTIFY_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BMI_CREATE_VERSION_FL" source="BMI_CREATE_VERSION_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DSTRBTR_ACTONBHLFOF_RSLLR_FL" source="DSTRBTR_ACTONBHLFOF_RSLLR_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GO_TO_MRKT_RT" source="GO_TO_MRKT_RT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CMPLT_SRC" source="CMPLT_SRC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SNGL_DSTRBTR_FL" source="SNGL_DSTRBTR_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUS_UNIT_CD" source="BUS_UNIT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LEAD_BUS_GRP" source="LEAD_BUS_GRP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VSOE_APPROVER_ID" source="VSOE_APPROVER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_QUOTE_VRSN" source="ORIG_REF_QUOTE_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NO_SRVC_FL" source="NO_SRVC_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOW_SRVC_FL" source="LOW_SRVC_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TENANT_CD" source="TENANT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABSOLUTLY_NO_SUPPORT_FL" source="ABSOLUTLY_NO_SUPPORT_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_FINANCED_FL" source="DEAL_FINANCED_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPE_SELL_TO_HPE_FL" source="HPE_SELL_TO_HPE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNFG_VAL_REQ_FL" source="CNFG_VAL_REQ_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HUB_FL" source="HUB_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MIXED_ORDER_FL" source="MIXED_ORDER_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_REQ_FL" source="SPLIT_REQ_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_QUOTE_FL" source="SPLIT_QUOTE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ARUBA_QUOTE_FL" source="ARUBA_QUOTE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_NR" source="PO_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_STTS_CD" source="PO_STTS_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PCOMM_SUPP_FL" source="PCOMM_SUPP_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOM_CONFIG_FL" source="CUSTOM_CONFIG_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_SOURCE_ENV" source="QUOTE_SOURCE_ENV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_SOURCE_TYPE" source="DEAL_SOURCE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_CREATED_APP" source="DEAL_CREATED_APP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K" source="EST_TOT_K"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="OpportunityID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HIGHER_LEVEL_ITEM" source="HIGHER_LEVEL_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DATE" source="REQ_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GI_DATE" source="GI_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER" source="CUSTOMER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="HPQUOTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_PLANT" source="PLANNED_PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU_DESCRIPTION" source="SKU_DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENCE_LEVEL" source="CONFIDENCE_LEVEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MPQTY" source="MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MP_DATE" source="MP_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_DATE" source="SHIP_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_NAME" source="COUNTRY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATECREATED" source="DATECREATED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATEINTODP" source="DATEINTODP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_TAKEN" source="DATE_TAKEN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_DATA_SOURCE" source="SO_DATA_SOURCE"/>
+    </input>
+    <input node="CANCELLED_DEALS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Region" source="Region"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Geo" source="Geo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Cancellation_Config_Change" source="Cancellation/Config Change"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OP-ID" source="OP-ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CANCELLATION_DATE" source="CANCELLATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OP-ID"/>
+    </input>
+    <joinAttribute name="OPPORTUNITY_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_4" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="SLS_QTN_ID"/>
+      <viewAttribute id="SLS_QTN_VRSN_SQN_NR"/>
+      <viewAttribute id="UQID"/>
+      <viewAttribute id="ORIG_ASSET"/>
+      <viewAttribute id="COMPLETION_TS"/>
+      <viewAttribute id="DELIVERY_TERMS"/>
+      <viewAttribute id="PRICE_LIST_TYPE"/>
+      <viewAttribute id="LAST_PRICED_DT"/>
+      <viewAttribute id="PRICE_GEO"/>
+      <viewAttribute id="PA_NR"/>
+      <viewAttribute id="PA_CAC"/>
+      <viewAttribute id="MODIFIED_TS"/>
+      <viewAttribute id="AIRPACKED_TOTALWEIGHT"/>
+      <viewAttribute id="PA_EXPIRY_TS"/>
+      <viewAttribute id="ASSET_QUOTE_NR"/>
+      <viewAttribute id="DELETE_IND"/>
+      <viewAttribute id="CREATED_TS"/>
+      <viewAttribute id="LAST_MODIFIED_TS"/>
+      <viewAttribute id="RSLR_EXCLV_FL"/>
+      <viewAttribute id="W_L_STAT_CD"/>
+      <viewAttribute id="EST_TOT_K_AM"/>
+      <viewAttribute id="QUOTE_DISTRIB_DT"/>
+      <viewAttribute id="BUS_MODEL_CD"/>
+      <viewAttribute id="MC_CHARGE"/>
+      <viewAttribute id="PAYMENT_DAYS"/>
+      <viewAttribute id="CASH_DISC_PCT"/>
+      <viewAttribute id="BDM_EXP_NOTIFY_FL"/>
+      <viewAttribute id="PAY_AMOUNT"/>
+      <viewAttribute id="ORDER_BGN_DT"/>
+      <viewAttribute id="ORDER_END_DT"/>
+      <viewAttribute id="QUOTE_DIST_DT_GMT"/>
+      <viewAttribute id="COMPLEX_DEAL_FL"/>
+      <viewAttribute id="AGENT_DEAL_FL"/>
+      <viewAttribute id="DIRECT_FL"/>
+      <viewAttribute id="TERM_COND_ID"/>
+      <viewAttribute id="QUOTE_PRIMARY_RSLR_TYPE"/>
+      <viewAttribute id="OPPORTUNITY_ORIG_SYSTEM"/>
+      <viewAttribute id="REQUEST_ID"/>
+      <viewAttribute id="ASSET_QUOTE_VRSN"/>
+      <viewAttribute id="PAYMENT_TERM"/>
+      <viewAttribute id="DEAL_NR"/>
+      <viewAttribute id="REQUEST_F_QUOTE_RCVD_TS"/>
+      <viewAttribute id="ASSET_INSTANCE"/>
+      <viewAttribute id="SFDC_STATUS"/>
+      <viewAttribute id="SALES_ORG"/>
+      <viewAttribute id="ORG_ID"/>
+      <viewAttribute id="ORIG_REF_ASSET"/>
+      <viewAttribute id="ORIG_REF_QUOTE_ID"/>
+      <viewAttribute id="DELIVERY_SERVICES"/>
+      <viewAttribute id="DELIVERY_SPEED"/>
+      <viewAttribute id="ROUND_DIGIT"/>
+      <viewAttribute id="TITLE_PASSES_AT"/>
+      <viewAttribute id="SIGNIFICANT_DIGITS"/>
+      <viewAttribute id="PRICE_TERM_CD"/>
+      <viewAttribute id="ASSET_QUOTE_NR_AND_VRSN"/>
+      <viewAttribute id="NO_SRVC_RSN_CD"/>
+      <viewAttribute id="APPL_CODE_VERTICAL"/>
+      <viewAttribute id="COMMENCE_DATE_TIME"/>
+      <viewAttribute id="PDF_ORIGIN_ASSET"/>
+      <viewAttribute id="SRT_PADDING_VALUE"/>
+      <viewAttribute id="PRICE_ID_TYPE"/>
+      <viewAttribute id="PDF_IN_CASSANDRA"/>
+      <viewAttribute id="SPLIT_DEAL_FL"/>
+      <viewAttribute id="SPLIT_QUOTE_DEAL_NOTIFY_FL"/>
+      <viewAttribute id="BMI_CREATE_VERSION_FL"/>
+      <viewAttribute id="DSTRBTR_ACTONBHLFOF_RSLLR_FL"/>
+      <viewAttribute id="GO_TO_MRKT_RT"/>
+      <viewAttribute id="CMPLT_SRC"/>
+      <viewAttribute id="SNGL_DSTRBTR_FL"/>
+      <viewAttribute id="BUS_UNIT_CD"/>
+      <viewAttribute id="LEAD_BUS_GRP"/>
+      <viewAttribute id="VSOE_APPROVER_ID"/>
+      <viewAttribute id="ORIG_REF_QUOTE_VRSN"/>
+      <viewAttribute id="NO_SRVC_FL"/>
+      <viewAttribute id="LOW_SRVC_FL"/>
+      <viewAttribute id="TENANT_CD"/>
+      <viewAttribute id="ABSOLUTLY_NO_SUPPORT_FL"/>
+      <viewAttribute id="DEAL_FINANCED_FL"/>
+      <viewAttribute id="HPE_SELL_TO_HPE_FL"/>
+      <viewAttribute id="CNFG_VAL_REQ_FL"/>
+      <viewAttribute id="HUB_FL"/>
+      <viewAttribute id="MIXED_ORDER_FL"/>
+      <viewAttribute id="SPLIT_REQ_FL"/>
+      <viewAttribute id="SPLIT_QUOTE_FL"/>
+      <viewAttribute id="ARUBA_QUOTE_FL"/>
+      <viewAttribute id="PO_NR"/>
+      <viewAttribute id="PO_STTS_CD"/>
+      <viewAttribute id="PCOMM_SUPP_FL"/>
+      <viewAttribute id="CUSTOM_CONFIG_FL"/>
+      <viewAttribute id="QUOTE_SOURCE_ENV"/>
+      <viewAttribute id="DEAL_SOURCE_TYPE"/>
+      <viewAttribute id="DEAL_CREATED_APP"/>
+      <viewAttribute id="EST_TOT_K" aggregationType="sum"/>
+      <viewAttribute id="SALES_ORDER"/>
+      <viewAttribute id="OpportunityID"/>
+      <viewAttribute id="ITEM"/>
+      <viewAttribute id="HIGHER_LEVEL_ITEM"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="REQ_DATE"/>
+      <viewAttribute id="GI_DATE"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="ORDER_QTY" aggregationType="sum"/>
+      <viewAttribute id="CUSTOMER"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="HPQUOTE"/>
+      <viewAttribute id="OPPORTUNITY_ID"/>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="PLANNED_PLANT"/>
+      <viewAttribute id="SKU_DESCRIPTION"/>
+      <viewAttribute id="CONFIDENCE_LEVEL" aggregationType="sum"/>
+      <viewAttribute id="MPQTY" aggregationType="sum"/>
+      <viewAttribute id="MP_DATE"/>
+      <viewAttribute id="SHIP_DATE"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="COUNTRY_NAME"/>
+      <viewAttribute id="DATECREATED"/>
+      <viewAttribute id="DATEINTODP"/>
+      <viewAttribute id="DATE_TAKEN"/>
+      <viewAttribute id="Region"/>
+      <viewAttribute id="Geo"/>
+      <viewAttribute id="Cancellation_Config_Change"/>
+      <viewAttribute id="OP-ID"/>
+      <viewAttribute id="CANCELLATION_DATE"/>
+      <viewAttribute id="PROD_DESC"/>
+      <viewAttribute id="OPTIONS_CATEGORY"/>
+      <viewAttribute id="BUSINESS_SEGMENT"/>
+      <viewAttribute id="SO_DATA_SOURCE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SLS_QTN_ID" source="SLS_QTN_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SLS_QTN_VRSN_SQN_NR" source="SLS_QTN_VRSN_SQN_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UQID" source="UQID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_ASSET" source="ORIG_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION_TS" source="COMPLETION_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_TERMS" source="DELIVERY_TERMS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_LIST_TYPE" source="PRICE_LIST_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_PRICED_DT" source="LAST_PRICED_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_GEO" source="PRICE_GEO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_NR" source="PA_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_CAC" source="PA_CAC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIED_TS" source="MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AIRPACKED_TOTALWEIGHT" source="AIRPACKED_TOTALWEIGHT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_EXPIRY_TS" source="PA_EXPIRY_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_NR" source="ASSET_QUOTE_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELETE_IND" source="DELETE_IND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TS" source="CREATED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_MODIFIED_TS" source="LAST_MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RSLR_EXCLV_FL" source="RSLR_EXCLV_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="W_L_STAT_CD" source="W_L_STAT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K_AM" source="EST_TOT_K_AM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DISTRIB_DT" source="QUOTE_DISTRIB_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUS_MODEL_CD" source="BUS_MODEL_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MC_CHARGE" source="MC_CHARGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAYMENT_DAYS" source="PAYMENT_DAYS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CASH_DISC_PCT" source="CASH_DISC_PCT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BDM_EXP_NOTIFY_FL" source="BDM_EXP_NOTIFY_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAY_AMOUNT" source="PAY_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_BGN_DT" source="ORDER_BGN_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_END_DT" source="ORDER_END_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DIST_DT_GMT" source="QUOTE_DIST_DT_GMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLEX_DEAL_FL" source="COMPLEX_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AGENT_DEAL_FL" source="AGENT_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECT_FL" source="DIRECT_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TERM_COND_ID" source="TERM_COND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_PRIMARY_RSLR_TYPE" source="QUOTE_PRIMARY_RSLR_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ORIG_SYSTEM" source="OPPORTUNITY_ORIG_SYSTEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQUEST_ID" source="REQUEST_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_VRSN" source="ASSET_QUOTE_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAYMENT_TERM" source="PAYMENT_TERM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_NR" source="DEAL_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQUEST_F_QUOTE_RCVD_TS" source="REQUEST_F_QUOTE_RCVD_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_INSTANCE" source="ASSET_INSTANCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SFDC_STATUS" source="SFDC_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORG" source="SALES_ORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_ID" source="ORG_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_ASSET" source="ORIG_REF_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_QUOTE_ID" source="ORIG_REF_QUOTE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_SERVICES" source="DELIVERY_SERVICES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_SPEED" source="DELIVERY_SPEED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROUND_DIGIT" source="ROUND_DIGIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE_PASSES_AT" source="TITLE_PASSES_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SIGNIFICANT_DIGITS" source="SIGNIFICANT_DIGITS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_TERM_CD" source="PRICE_TERM_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ASSET_QUOTE_NR_AND_VRSN" source="ASSET_QUOTE_NR_AND_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NO_SRVC_RSN_CD" source="NO_SRVC_RSN_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="APPL_CODE_VERTICAL" source="APPL_CODE_VERTICAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMMENCE_DATE_TIME" source="COMMENCE_DATE_TIME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PDF_ORIGIN_ASSET" source="PDF_ORIGIN_ASSET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SRT_PADDING_VALUE" source="SRT_PADDING_VALUE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE_ID_TYPE" source="PRICE_ID_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PDF_IN_CASSANDRA" source="PDF_IN_CASSANDRA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_DEAL_FL" source="SPLIT_DEAL_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_QUOTE_DEAL_NOTIFY_FL" source="SPLIT_QUOTE_DEAL_NOTIFY_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BMI_CREATE_VERSION_FL" source="BMI_CREATE_VERSION_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DSTRBTR_ACTONBHLFOF_RSLLR_FL" source="DSTRBTR_ACTONBHLFOF_RSLLR_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GO_TO_MRKT_RT" source="GO_TO_MRKT_RT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CMPLT_SRC" source="CMPLT_SRC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SNGL_DSTRBTR_FL" source="SNGL_DSTRBTR_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUS_UNIT_CD" source="BUS_UNIT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LEAD_BUS_GRP" source="LEAD_BUS_GRP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VSOE_APPROVER_ID" source="VSOE_APPROVER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORIG_REF_QUOTE_VRSN" source="ORIG_REF_QUOTE_VRSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NO_SRVC_FL" source="NO_SRVC_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOW_SRVC_FL" source="LOW_SRVC_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TENANT_CD" source="TENANT_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABSOLUTLY_NO_SUPPORT_FL" source="ABSOLUTLY_NO_SUPPORT_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_FINANCED_FL" source="DEAL_FINANCED_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPE_SELL_TO_HPE_FL" source="HPE_SELL_TO_HPE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNFG_VAL_REQ_FL" source="CNFG_VAL_REQ_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HUB_FL" source="HUB_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MIXED_ORDER_FL" source="MIXED_ORDER_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_REQ_FL" source="SPLIT_REQ_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPLIT_QUOTE_FL" source="SPLIT_QUOTE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ARUBA_QUOTE_FL" source="ARUBA_QUOTE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_NR" source="PO_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_STTS_CD" source="PO_STTS_CD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PCOMM_SUPP_FL" source="PCOMM_SUPP_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOM_CONFIG_FL" source="CUSTOM_CONFIG_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_SOURCE_ENV" source="QUOTE_SOURCE_ENV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_SOURCE_TYPE" source="DEAL_SOURCE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEAL_CREATED_APP" source="DEAL_CREATED_APP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K" source="EST_TOT_K"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="OpportunityID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HIGHER_LEVEL_ITEM" source="HIGHER_LEVEL_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DATE" source="REQ_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GI_DATE" source="GI_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER" source="CUSTOMER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="HPQUOTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_PLANT" source="PLANNED_PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU_DESCRIPTION" source="SKU_DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENCE_LEVEL" source="CONFIDENCE_LEVEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MPQTY" source="MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MP_DATE" source="MP_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_DATE" source="SHIP_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_NAME" source="COUNTRY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATECREATED" source="DATECREATED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATEINTODP" source="DATEINTODP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_TAKEN" source="DATE_TAKEN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Region" source="Region"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Geo" source="Geo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Cancellation_Config_Change" source="Cancellation_Config_Change"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OP-ID" source="OP-ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CANCELLATION_DATE" source="CANCELLATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_DATA_SOURCE" source="SO_DATA_SOURCE"/>
+    </input>
+    <input node="MAINSTREAM_LISTING">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROD_DESC" source="PROD_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPTIONS_CATEGORY" source="OPTIONS_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_SEGMENT" source="BUSINESS_SEGMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
+    </input>
+    <joinAttribute name="SKU"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1_4">
+  <attributes>
+    <attribute id="OPPORTUNITY_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPPORTUNITY_ID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="OPPORTUNITY_ID"/>
+    </attribute>
+    <attribute id="SKU" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SKU"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SKU"/>
+    </attribute>
+    <attribute id="PLANNED_PLANT" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PLANNED_PLANT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PLANNED_PLANT"/>
+    </attribute>
+    <attribute id="SKU_DESCRIPTION" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SKU_DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SKU_DESCRIPTION"/>
+    </attribute>
+    <attribute id="CONFIDENCE_LEVEL" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONFIDENCE_LEVEL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="CONFIDENCE_LEVEL"/>
+    </attribute>
+    <attribute id="MP_DATE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MP_DATE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="MP_DATE"/>
+    </attribute>
+    <attribute id="SHIP_DATE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SHIP_DATE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SHIP_DATE"/>
+    </attribute>
+    <attribute id="REGION" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGION"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="REGION"/>
+    </attribute>
+    <attribute id="COUNTRY_NAME" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY_NAME"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="COUNTRY_NAME"/>
+    </attribute>
+    <attribute id="DATECREATED" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATECREATED"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DATECREATED"/>
+    </attribute>
+    <attribute id="DATEINTODP" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATEINTODP"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DATEINTODP"/>
+    </attribute>
+    <attribute id="DATE_TAKEN" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_TAKEN"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DATE_TAKEN"/>
+    </attribute>
+    <attribute id="Region" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Region"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="Region"/>
+    </attribute>
+    <attribute id="Geo" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Geo"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="Geo"/>
+    </attribute>
+    <attribute id="Cancellation_Config_Change" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Cancellation_Config_Change"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="Cancellation_Config_Change"/>
+    </attribute>
+    <attribute id="OP-ID" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OP-ID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="OP-ID"/>
+    </attribute>
+    <attribute id="CANCELLATION_DATE" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CANCELLATION_DATE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="CANCELLATION_DATE"/>
+    </attribute>
+    <attribute id="PROD_DESC" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROD_DESC"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PROD_DESC"/>
+    </attribute>
+    <attribute id="OPTIONS_CATEGORY" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPTIONS_CATEGORY"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="OPTIONS_CATEGORY"/>
+    </attribute>
+    <attribute id="BUSINESS_SEGMENT" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUSINESS_SEGMENT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="BUSINESS_SEGMENT"/>
+    </attribute>
+    <attribute id="SLS_QTN_ID" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SLS_QTN_ID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SLS_QTN_ID"/>
+    </attribute>
+    <attribute id="SLS_QTN_VRSN_SQN_NR" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SLS_QTN_VRSN_SQN_NR"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SLS_QTN_VRSN_SQN_NR"/>
+    </attribute>
+    <attribute id="UQID" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UQID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="UQID"/>
+    </attribute>
+    <attribute id="ORIG_ASSET" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORIG_ASSET"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ORIG_ASSET"/>
+    </attribute>
+    <attribute id="COMPLETION_TS" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPLETION_TS"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="COMPLETION_TS"/>
+    </attribute>
+    <attribute id="DELIVERY_TERMS" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELIVERY_TERMS"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DELIVERY_TERMS"/>
+    </attribute>
+    <attribute id="PRICE_LIST_TYPE" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRICE_LIST_TYPE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PRICE_LIST_TYPE"/>
+    </attribute>
+    <attribute id="LAST_PRICED_DT" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_PRICED_DT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="LAST_PRICED_DT"/>
+    </attribute>
+    <attribute id="PRICE_GEO" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRICE_GEO"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PRICE_GEO"/>
+    </attribute>
+    <attribute id="PA_NR" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PA_NR"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PA_NR"/>
+    </attribute>
+    <attribute id="PA_CAC" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PA_CAC"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PA_CAC"/>
+    </attribute>
+    <attribute id="MODIFIED_TS" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MODIFIED_TS"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="MODIFIED_TS"/>
+    </attribute>
+    <attribute id="AIRPACKED_TOTALWEIGHT" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AIRPACKED_TOTALWEIGHT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="AIRPACKED_TOTALWEIGHT"/>
+    </attribute>
+    <attribute id="PA_EXPIRY_TS" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PA_EXPIRY_TS"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PA_EXPIRY_TS"/>
+    </attribute>
+    <attribute id="ASSET_QUOTE_NR" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ASSET_QUOTE_NR"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ASSET_QUOTE_NR"/>
+    </attribute>
+    <attribute id="DELETE_IND" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELETE_IND"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DELETE_IND"/>
+    </attribute>
+    <attribute id="CREATED_TS" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_TS"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="CREATED_TS"/>
+    </attribute>
+    <attribute id="LAST_MODIFIED_TS" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_MODIFIED_TS"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="LAST_MODIFIED_TS"/>
+    </attribute>
+    <attribute id="RSLR_EXCLV_FL" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RSLR_EXCLV_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="RSLR_EXCLV_FL"/>
+    </attribute>
+    <attribute id="W_L_STAT_CD" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="W_L_STAT_CD"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="W_L_STAT_CD"/>
+    </attribute>
+    <attribute id="EST_TOT_K_AM" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EST_TOT_K_AM"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="EST_TOT_K_AM"/>
+    </attribute>
+    <attribute id="QUOTE_DISTRIB_DT" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUOTE_DISTRIB_DT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="QUOTE_DISTRIB_DT"/>
+    </attribute>
+    <attribute id="BUS_MODEL_CD" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUS_MODEL_CD"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="BUS_MODEL_CD"/>
+    </attribute>
+    <attribute id="MC_CHARGE" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MC_CHARGE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="MC_CHARGE"/>
+    </attribute>
+    <attribute id="CASH_DISC_PCT" order="47" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CASH_DISC_PCT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="CASH_DISC_PCT"/>
+    </attribute>
+    <attribute id="BDM_EXP_NOTIFY_FL" order="48" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BDM_EXP_NOTIFY_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="BDM_EXP_NOTIFY_FL"/>
+    </attribute>
+    <attribute id="PAY_AMOUNT" order="49" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PAY_AMOUNT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PAY_AMOUNT"/>
+    </attribute>
+    <attribute id="ORDER_BGN_DT" order="50" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_BGN_DT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ORDER_BGN_DT"/>
+    </attribute>
+    <attribute id="ORDER_END_DT" order="51" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_END_DT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ORDER_END_DT"/>
+    </attribute>
+    <attribute id="QUOTE_DIST_DT_GMT" order="52" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUOTE_DIST_DT_GMT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="QUOTE_DIST_DT_GMT"/>
+    </attribute>
+    <attribute id="COMPLEX_DEAL_FL" order="53" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPLEX_DEAL_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="COMPLEX_DEAL_FL"/>
+    </attribute>
+    <attribute id="AGENT_DEAL_FL" order="54" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AGENT_DEAL_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="AGENT_DEAL_FL"/>
+    </attribute>
+    <attribute id="DIRECT_FL" order="55" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DIRECT_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DIRECT_FL"/>
+    </attribute>
+    <attribute id="TERM_COND_ID" order="56" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TERM_COND_ID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="TERM_COND_ID"/>
+    </attribute>
+    <attribute id="QUOTE_PRIMARY_RSLR_TYPE" order="57" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUOTE_PRIMARY_RSLR_TYPE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="QUOTE_PRIMARY_RSLR_TYPE"/>
+    </attribute>
+    <attribute id="OPPORTUNITY_ORIG_SYSTEM" order="58" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPPORTUNITY_ORIG_SYSTEM"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="OPPORTUNITY_ORIG_SYSTEM"/>
+    </attribute>
+    <attribute id="REQUEST_ID" order="59" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REQUEST_ID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="REQUEST_ID"/>
+    </attribute>
+    <attribute id="ASSET_QUOTE_VRSN" order="60" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ASSET_QUOTE_VRSN"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ASSET_QUOTE_VRSN"/>
+    </attribute>
+    <attribute id="PAYMENT_TERM" order="61" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PAYMENT_TERM"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PAYMENT_TERM"/>
+    </attribute>
+    <attribute id="DEAL_NR" order="62" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEAL_NR"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DEAL_NR"/>
+    </attribute>
+    <attribute id="REQUEST_F_QUOTE_RCVD_TS" order="63" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REQUEST_F_QUOTE_RCVD_TS"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="REQUEST_F_QUOTE_RCVD_TS"/>
+    </attribute>
+    <attribute id="ASSET_INSTANCE" order="64" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ASSET_INSTANCE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ASSET_INSTANCE"/>
+    </attribute>
+    <attribute id="SFDC_STATUS" order="65" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SFDC_STATUS"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SFDC_STATUS"/>
+    </attribute>
+    <attribute id="SALES_ORG" order="66" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALES_ORG"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SALES_ORG"/>
+    </attribute>
+    <attribute id="ORG_ID" order="67" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORG_ID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ORG_ID"/>
+    </attribute>
+    <attribute id="ORIG_REF_ASSET" order="68" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORIG_REF_ASSET"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ORIG_REF_ASSET"/>
+    </attribute>
+    <attribute id="ORIG_REF_QUOTE_ID" order="69" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORIG_REF_QUOTE_ID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ORIG_REF_QUOTE_ID"/>
+    </attribute>
+    <attribute id="DELIVERY_SERVICES" order="70" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELIVERY_SERVICES"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DELIVERY_SERVICES"/>
+    </attribute>
+    <attribute id="DELIVERY_SPEED" order="71" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELIVERY_SPEED"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DELIVERY_SPEED"/>
+    </attribute>
+    <attribute id="ROUND_DIGIT" order="72" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ROUND_DIGIT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ROUND_DIGIT"/>
+    </attribute>
+    <attribute id="TITLE_PASSES_AT" order="73" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TITLE_PASSES_AT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="TITLE_PASSES_AT"/>
+    </attribute>
+    <attribute id="SIGNIFICANT_DIGITS" order="74" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SIGNIFICANT_DIGITS"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SIGNIFICANT_DIGITS"/>
+    </attribute>
+    <attribute id="PRICE_TERM_CD" order="75" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRICE_TERM_CD"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PRICE_TERM_CD"/>
+    </attribute>
+    <attribute id="ASSET_QUOTE_NR_AND_VRSN" order="76" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ASSET_QUOTE_NR_AND_VRSN"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ASSET_QUOTE_NR_AND_VRSN"/>
+    </attribute>
+    <attribute id="NO_SRVC_RSN_CD" order="77" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NO_SRVC_RSN_CD"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="NO_SRVC_RSN_CD"/>
+    </attribute>
+    <attribute id="APPL_CODE_VERTICAL" order="78" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="APPL_CODE_VERTICAL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="APPL_CODE_VERTICAL"/>
+    </attribute>
+    <attribute id="COMMENCE_DATE_TIME" order="79" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMMENCE_DATE_TIME"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="COMMENCE_DATE_TIME"/>
+    </attribute>
+    <attribute id="PDF_ORIGIN_ASSET" order="80" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PDF_ORIGIN_ASSET"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PDF_ORIGIN_ASSET"/>
+    </attribute>
+    <attribute id="SRT_PADDING_VALUE" order="81" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SRT_PADDING_VALUE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SRT_PADDING_VALUE"/>
+    </attribute>
+    <attribute id="PRICE_ID_TYPE" order="82" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRICE_ID_TYPE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PRICE_ID_TYPE"/>
+    </attribute>
+    <attribute id="PDF_IN_CASSANDRA" order="83" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PDF_IN_CASSANDRA"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PDF_IN_CASSANDRA"/>
+    </attribute>
+    <attribute id="SPLIT_DEAL_FL" order="84" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SPLIT_DEAL_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SPLIT_DEAL_FL"/>
+    </attribute>
+    <attribute id="SPLIT_QUOTE_DEAL_NOTIFY_FL" order="85" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SPLIT_QUOTE_DEAL_NOTIFY_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SPLIT_QUOTE_DEAL_NOTIFY_FL"/>
+    </attribute>
+    <attribute id="BMI_CREATE_VERSION_FL" order="86" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BMI_CREATE_VERSION_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="BMI_CREATE_VERSION_FL"/>
+    </attribute>
+    <attribute id="DSTRBTR_ACTONBHLFOF_RSLLR_FL" order="87" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DSTRBTR_ACTONBHLFOF_RSLLR_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DSTRBTR_ACTONBHLFOF_RSLLR_FL"/>
+    </attribute>
+    <attribute id="GO_TO_MRKT_RT" order="88" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GO_TO_MRKT_RT"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="GO_TO_MRKT_RT"/>
+    </attribute>
+    <attribute id="CMPLT_SRC" order="89" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CMPLT_SRC"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="CMPLT_SRC"/>
+    </attribute>
+    <attribute id="SNGL_DSTRBTR_FL" order="90" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SNGL_DSTRBTR_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SNGL_DSTRBTR_FL"/>
+    </attribute>
+    <attribute id="BUS_UNIT_CD" order="91" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUS_UNIT_CD"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="BUS_UNIT_CD"/>
+    </attribute>
+    <attribute id="LEAD_BUS_GRP" order="92" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LEAD_BUS_GRP"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="LEAD_BUS_GRP"/>
+    </attribute>
+    <attribute id="VSOE_APPROVER_ID" order="93" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VSOE_APPROVER_ID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="VSOE_APPROVER_ID"/>
+    </attribute>
+    <attribute id="ORIG_REF_QUOTE_VRSN" order="94" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORIG_REF_QUOTE_VRSN"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ORIG_REF_QUOTE_VRSN"/>
+    </attribute>
+    <attribute id="NO_SRVC_FL" order="95" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NO_SRVC_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="NO_SRVC_FL"/>
+    </attribute>
+    <attribute id="LOW_SRVC_FL" order="96" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOW_SRVC_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="LOW_SRVC_FL"/>
+    </attribute>
+    <attribute id="TENANT_CD" order="97" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TENANT_CD"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="TENANT_CD"/>
+    </attribute>
+    <attribute id="ABSOLUTLY_NO_SUPPORT_FL" order="98" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ABSOLUTLY_NO_SUPPORT_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ABSOLUTLY_NO_SUPPORT_FL"/>
+    </attribute>
+    <attribute id="DEAL_FINANCED_FL" order="99" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEAL_FINANCED_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DEAL_FINANCED_FL"/>
+    </attribute>
+    <attribute id="HPE_SELL_TO_HPE_FL" order="100" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HPE_SELL_TO_HPE_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="HPE_SELL_TO_HPE_FL"/>
+    </attribute>
+    <attribute id="CNFG_VAL_REQ_FL" order="101" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CNFG_VAL_REQ_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="CNFG_VAL_REQ_FL"/>
+    </attribute>
+    <attribute id="HUB_FL" order="102" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HUB_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="HUB_FL"/>
+    </attribute>
+    <attribute id="MIXED_ORDER_FL" order="103" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MIXED_ORDER_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="MIXED_ORDER_FL"/>
+    </attribute>
+    <attribute id="SPLIT_REQ_FL" order="104" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SPLIT_REQ_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SPLIT_REQ_FL"/>
+    </attribute>
+    <attribute id="SPLIT_QUOTE_FL" order="105" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SPLIT_QUOTE_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SPLIT_QUOTE_FL"/>
+    </attribute>
+    <attribute id="ARUBA_QUOTE_FL" order="106" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ARUBA_QUOTE_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ARUBA_QUOTE_FL"/>
+    </attribute>
+    <attribute id="PO_NR" order="107" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PO_NR"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PO_NR"/>
+    </attribute>
+    <attribute id="PO_STTS_CD" order="108" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PO_STTS_CD"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PO_STTS_CD"/>
+    </attribute>
+    <attribute id="PCOMM_SUPP_FL" order="109" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PCOMM_SUPP_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PCOMM_SUPP_FL"/>
+    </attribute>
+    <attribute id="CUSTOM_CONFIG_FL" order="110" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOM_CONFIG_FL"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="CUSTOM_CONFIG_FL"/>
+    </attribute>
+    <attribute id="QUOTE_SOURCE_ENV" order="111" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUOTE_SOURCE_ENV"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="QUOTE_SOURCE_ENV"/>
+    </attribute>
+    <attribute id="DEAL_SOURCE_TYPE" order="112" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEAL_SOURCE_TYPE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DEAL_SOURCE_TYPE"/>
+    </attribute>
+    <attribute id="DEAL_CREATED_APP" order="113" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEAL_CREATED_APP"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="DEAL_CREATED_APP"/>
+    </attribute>
+    <attribute id="SALES_ORDER" order="115" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales Order"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SALES_ORDER"/>
+    </attribute>
+    <attribute id="OpportunityID" order="116" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Opportunity ID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="OpportunityID"/>
+    </attribute>
+    <attribute id="ITEM" order="117" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Item"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ITEM"/>
+    </attribute>
+    <attribute id="HIGHER_LEVEL_ITEM" order="118" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Higher-Level Item"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="HIGHER_LEVEL_ITEM"/>
+    </attribute>
+    <attribute id="MATERIAL" order="119" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Material"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="MATERIAL"/>
+    </attribute>
+    <attribute id="PLANT" order="120" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Plant"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="PLANT"/>
+    </attribute>
+    <attribute id="REQ_DATE" order="121" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Req. Date"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="REQ_DATE"/>
+    </attribute>
+    <attribute id="GI_DATE" order="122" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GI Date"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="GI_DATE"/>
+    </attribute>
+    <attribute id="ORDER_DATE" order="123" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Order Date"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="ORDER_DATE"/>
+    </attribute>
+    <attribute id="CUSTOMER" order="125" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="CUSTOMER"/>
+    </attribute>
+    <attribute id="COUNTRY" order="126" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Country"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="HPQUOTE" order="127" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Quote ID"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="HPQUOTE"/>
+    </attribute>
+  
+    <attribute id="SO_DATA_SOURCE" order="128" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SO_DATA_SOURCE"/>
+      <keyMapping columnObjectName="Join_1_4" columnName="SO_DATA_SOURCE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="MPQTY" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MPQTY"/>
+      <measureMapping columnObjectName="Join_1_4" columnName="MPQTY"/>
+    </measure>
+    <measure id="PAYMENT_DAYS" order="46" aggregationType="count" measureType="simple">
+      <descriptions defaultDescription="PAYMENT_DAYS"/>
+      <measureMapping columnObjectName="Join_1_4" columnName="PAYMENT_DAYS"/>
+    </measure>
+    <measure id="EST_TOT_K" order="114" aggregationType="count" measureType="simple">
+      <descriptions defaultDescription="EST_TOT_K"/>
+      <measureMapping columnObjectName="Join_1_4" columnName="EST_TOT_K"/>
+    </measure>
+    <measure id="ORDER_QTY" order="124" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Order Quantity"/>
+      <measureMapping columnObjectName="Join_1_4" columnName="ORDER_QTY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="379" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="379" y="219"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="MAINSTREAM_LISTING" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="401" y="15"/>
+      <rectangleSize width="202"/>
+    </shape>
+    <shape modelObjectName="CANCELLED_DEALS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="935" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  
+    <shape modelObjectName="DEAL_HISTORY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="635" y="-15"/>
+      <rectangleSize width="199"/>
+    </shape>
+    <shape modelObjectName="QUOTE_OPP" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="935" y="195"/>
+      <rectangleSize width="232"/>
+    </shape>
+    <shape modelObjectName="CV_OPEN_SALES_ORDER_COMBINED" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="1235" y="30"/>
+      <rectangleSize width="290"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
