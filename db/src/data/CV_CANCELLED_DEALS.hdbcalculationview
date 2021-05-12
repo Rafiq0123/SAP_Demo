@@ -35,7 +35,7 @@
       <keyMapping columnObjectName="Projection_1" columnName="Geo"/>
     </attribute>
     <attribute id="Cancellation_Config_Change" order="3" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Cancellation_Config_Change"/>
+      <descriptions defaultDescription="Cancellation Config Change"/>
       <keyMapping columnObjectName="Projection_1" columnName="Cancellation_Config_Change"/>
     </attribute>
     <attribute id="OP-ID" order="4" displayAttribute="false" attributeHierarchyActive="false">
@@ -43,7 +43,7 @@
       <keyMapping columnObjectName="Projection_1" columnName="OP-ID"/>
     </attribute>
     <attribute id="CANCELLATION_DATE" order="5" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Cancellation date"/>
+      <descriptions defaultDescription="Cancellation Date"/>
       <keyMapping columnObjectName="Projection_1" columnName="CANCELLATION_DATE"/>
     </attribute>
   </attributes>
