@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_OPEN_SALES_ORDER_COMBINED" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_OPEN_SALES_ORDER_COMBINED"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="FUSIONSO_OPPORTUNITY">
+    <resourceUri>FUSIONSO_OPPORTUNITY</resourceUri>
+  </DataSource>
+  <DataSource id="OPEN_SALES_ORDER_FUSION">
+    <resourceUri>OPEN_SALES_ORDER_FUSION</resourceUri>
+  </DataSource>
+  <DataSource id="OPEN_SALES_ORDER_S4">
+    <resourceUri>OPEN_SALES_ORDER_S4</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1" partitionedExecution="false">
+    <viewAttributes>
+      <viewAttribute id="SALES_ORDER" aggregationType="sum"/>
+      <viewAttribute id="OpportunityID"/>
+      <viewAttribute id="ITEM" aggregationType="sum"/>
+      <viewAttribute id="HIGHER_LEVEL_ITEM" aggregationType="sum"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="REQ_DATE"/>
+      <viewAttribute id="GI_DATE"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="ORDER_QTY" aggregationType="sum"/>
+      <viewAttribute id="SALES_ORG"/>
+      <viewAttribute id="CUSTOMER" aggregationType="sum"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="HPQUOTE"/>
+      <viewAttribute id="SINGLE_CHARACTER_FLAG"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="IBP_CUSTOMER_ID"/>
+      <viewAttribute id="SALES_DOC_TYPE"/>
+      <viewAttribute id="ITEM_CATEGORY"/>
+    
+      <viewAttribute id="SUBNETWORK"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Fusion_Open_SO" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="OpportunityID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HIGHER_LEVEL_ITEM" source="HIGHER_LEVEL_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DATE" source="REQ_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GI_DATE" source="GI_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORG" source="SALES_ORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER" source="CUSTOMER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="HPQUOTE"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SINGLE_CHARACTER_FLAG" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIVISION" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IBP_CUSTOMER_ID" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_DOC_TYPE" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ITEM_CATEGORY" null="true" value=""/>
+    
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SUBNETWORK" null="true" value=""/>
+    </input>
+    <input node="P_OPEN_SALES_ORDER_S4" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_DOCUMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="SALESFORCE_OPP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HIGHER_LEVEL_ITEM" source="HIGHER_LEVEL_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REQ_DATE" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GI_DATE" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORG" source="SALES_ORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER" source="CUSTOMER"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COUNTRY" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="QUOTE_NO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SINGLE_CHARACTER_FLAG" source="SINGLE_CHARACTER_FLAG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_CUSTOMER_ID" source="IBP_CUSTOMER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOC_TYPE" source="SALES_DOC_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_CATEGORY" source="ITEM_CATEGORY"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUBNETWORK" source="SUBNETWORK"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Fusion_Open_SO" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="SALES_ORDER" aggregationType="sum"/>
+      <viewAttribute id="OpportunityID"/>
+      <viewAttribute id="ITEM" aggregationType="sum"/>
+      <viewAttribute id="HIGHER_LEVEL_ITEM" aggregationType="sum"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="REQ_DATE"/>
+      <viewAttribute id="GI_DATE"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="ORDER_QTY" aggregationType="sum"/>
+      <viewAttribute id="SALES_ORG"/>
+      <viewAttribute id="CUSTOMER" aggregationType="sum"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="HPQUOTE"/>
+      <viewAttribute hidden="true" id="JOIN$Salesorder$SALES_ORDER"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="FUSIONSO_OPPORTUNITY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="OpportunityID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$Salesorder$SALES_ORDER" source="Salesorder"/>
+    </input>
+    <input node="OPEN_SALES_ORDER_FUSION">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HIGHER_LEVEL_ITEM" source="HIGHER_LEVEL_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DATE" source="REQ_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GI_DATE" source="GI_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORG" source="SALES_ORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER" source="CUSTOMER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="HPQUOTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$Salesorder$SALES_ORDER" source="SALES_ORDER"/>
+    </input>
+    <joinAttribute name="JOIN$Salesorder$SALES_ORDER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_OPEN_SALES_ORDER_S4">
+    <viewAttributes>
+      <viewAttribute id="SALES_DOCUMENT"/>
+      <viewAttribute id="SALESFORCE_OPP_ID"/>
+      <viewAttribute id="ITEM"/>
+      <viewAttribute id="HIGHER_LEVEL_ITEM"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="DATE"/>
+      <viewAttribute id="SALES_ORG"/>
+      <viewAttribute id="CUSTOMER"/>
+      <viewAttribute id="QUOTE_NO"/>
+      <viewAttribute id="SINGLE_CHARACTER_FLAG"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="IBP_CUSTOMER_ID"/>
+      <viewAttribute id="SALES_DOC_TYPE"/>
+      <viewAttribute id="ITEM_CATEGORY"/>
+      <viewAttribute id="SUBNETWORK"/>
+      <viewAttribute id="QTY"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="ORDER_QTY" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>&quot;QTY&quot;</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="OPEN_SALES_ORDER_S4"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Union_1">
+  <attributes>
+    <attribute id="SALES_ORDER" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales Order"/>
+      <keyMapping columnObjectName="Union_1" columnName="SALES_ORDER"/>
+    </attribute>
+    <attribute id="OpportunityID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Opportunity ID"/>
+      <keyMapping columnObjectName="Union_1" columnName="OpportunityID"/>
+    </attribute>
+    <attribute id="ITEM" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Item"/>
+      <keyMapping columnObjectName="Union_1" columnName="ITEM"/>
+    </attribute>
+    <attribute id="HIGHER_LEVEL_ITEM" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Higher-Level Item"/>
+      <keyMapping columnObjectName="Union_1" columnName="HIGHER_LEVEL_ITEM"/>
+    </attribute>
+    <attribute id="MATERIAL" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Material"/>
+      <keyMapping columnObjectName="Union_1" columnName="MATERIAL"/>
+    </attribute>
+    <attribute id="PLANT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Plant"/>
+      <keyMapping columnObjectName="Union_1" columnName="PLANT"/>
+    </attribute>
+    <attribute id="REQ_DATE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Req. Date"/>
+      <keyMapping columnObjectName="Union_1" columnName="REQ_DATE"/>
+    </attribute>
+    <attribute id="GI_DATE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GI Date"/>
+      <keyMapping columnObjectName="Union_1" columnName="GI_DATE"/>
+    </attribute>
+    <attribute id="ORDER_DATE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Order Date"/>
+      <keyMapping columnObjectName="Union_1" columnName="ORDER_DATE"/>
+    </attribute>
+    <attribute id="SALES_ORG" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Oales Org."/>
+      <keyMapping columnObjectName="Union_1" columnName="SALES_ORG"/>
+    </attribute>
+    <attribute id="CUSTOMER" order="12" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer"/>
+      <keyMapping columnObjectName="Union_1" columnName="CUSTOMER"/>
+    </attribute>
+    <attribute id="COUNTRY" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Country"/>
+      <keyMapping columnObjectName="Union_1" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="HPQUOTE" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Quote ID"/>
+      <keyMapping columnObjectName="Union_1" columnName="HPQUOTE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ORDER_QTY" order="10" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Order Quantity"/>
+      <measureMapping columnObjectName="Union_1" columnName="ORDER_QTY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="195"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Fusion_Open_SO" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="90" y="323"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="FUSIONSO_OPPORTUNITY" modelObjectNameSpace="Fusion_Open_SO" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="65" y="60"/>
+      <rectangleSize width="220"/>
+    </shape>
+    <shape modelObjectName="OPEN_SALES_ORDER_FUSION" modelObjectNameSpace="Fusion_Open_SO" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="371" y="30"/>
+      <rectangleSize width="246"/>
+    </shape>
+    <shape expanded="true" modelObjectName="P_OPEN_SALES_ORDER_S4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="281" y="323"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
