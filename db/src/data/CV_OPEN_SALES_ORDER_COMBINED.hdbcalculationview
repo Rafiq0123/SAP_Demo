@@ -13,9 +13,6 @@
   <DataSource id="OPEN_SALES_ORDER_S4">
     <resourceUri>OPEN_SALES_ORDER_S4</resourceUri>
   </DataSource>
-  <DataSource id="HIST_SALES_ORDER_S4">
-    <resourceUri>HIST_SALES_ORDER_S4</resourceUri>
-  </DataSource>
 </dataSources>
 <calculationViews>
   <calculationView xsi:type="Calculation:UnionView" id="Union_1" partitionedExecution="false">
@@ -94,36 +91,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="SUBNETWORK" source="SUBNETWORK"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="SO_DATA_SOURCE" source="SO_DATA_SOURCE"/>
-    </input>
-  
-    <input node="P_HIST_SO_S4" emptyUnionBehavior="NO_ROW">
-      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_DOCUMENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="SALESFORCE_OPP_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="HIGHER_LEVEL_ITEM" source="HIGHER_LEVEL_ITEM"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REQ_DATE" null="true" value=""/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GI_DATE" null="true" value=""/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="INV_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORG" source="SALES_ORG"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER" source="CUSTOMER"/>
-      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COUNTRY" null="true" value=""/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="QUOTE_NO"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SINGLE_CHARACTER_FLAG" source="SINGLE_CHARACTER_FLAG"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_CUSTOMER_ID" source="IBP_CUSTOMER_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOC_TYPE" source="SALES_DOCUMENT_TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_CATEGORY" source="ITEM_CATEGORY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SUBNETWORK" source="SUBNETWORK"/>
-    
-  
-      <mapping xsi:type="Calculation:AttributeMapping" target="SO_DATA_SOURCE" source="SO_DATA_SOURCE"/>
-  
-    </input>
-  </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Fusion_Open_SO" cardinality="CN_N" joinType="inner">
+    </input></calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Fusion_Open_SO" cardinality="CN_N" joinType="rightOuter">
     <viewAttributes>
       <viewAttribute id="SALES_ORDER" aggregationType="sum"/>
       <viewAttribute id="OpportunityID"/>
@@ -198,37 +167,6 @@
       </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="OPEN_SALES_ORDER_S4"/>
-  </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="P_HIST_SO_S4">
-    <viewAttributes>
-      <viewAttribute id="SALES_DOCUMENT"/>
-      <viewAttribute id="SALESFORCE_OPP_ID"/>
-      <viewAttribute id="ITEM"/>
-      <viewAttribute id="HIGHER_LEVEL_ITEM"/>
-      <viewAttribute id="MATERIAL"/>
-      <viewAttribute id="PLANT"/>
-      <viewAttribute id="INV_DATE"/>
-      <viewAttribute id="SALES_ORG"/>
-      <viewAttribute id="CUSTOMER"/>
-      <viewAttribute id="QUOTE_NO"/>
-      <viewAttribute id="SINGLE_CHARACTER_FLAG"/>
-      <viewAttribute id="DIVISION"/>
-      <viewAttribute id="IBP_CUSTOMER_ID"/>
-      <viewAttribute id="SALES_DOCUMENT_TYPE"/>
-      <viewAttribute id="ITEM_CATEGORY"/>
-      <viewAttribute id="SUBNETWORK"/>
-      <viewAttribute id="QUANTITY"/>
-    </viewAttributes>
-    <calculatedViewAttributes>
-      <calculatedViewAttribute id="ORDER_QTY" datatype="INTEGER" expressionLanguage="SQL">
-        <formula>&quot;QUANTITY&quot;</formula>
-      </calculatedViewAttribute>
-    
-      <calculatedViewAttribute id="SO_DATA_SOURCE" datatype="NVARCHAR" length="20" expressionLanguage="SQL">
-        <formula>'HIST_S4'</formula>
-      </calculatedViewAttribute>
-    </calculatedViewAttributes>
-    <input node="HIST_SALES_ORDER_S4"/>
   </calculationView>
 </calculationViews>
 
@@ -329,12 +267,6 @@
     <shape expanded="true" modelObjectName="P_OPEN_SO_S4" modelObjectNameSpace="CalculationView">
       <upperLeftCorner x="107" y="341"/>
       <rectangleSize height="30" width="160"/>
-    </shape>
-  
-    <shape expanded="true" modelObjectName="P_HIST_SO_S4" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="315" y="341"/>
-      <rectangleSize height="30" width="160"/>
-    </shape>
-  </shapes>
+    </shape></shapes>
 </layout>
 </Calculation:scenario>

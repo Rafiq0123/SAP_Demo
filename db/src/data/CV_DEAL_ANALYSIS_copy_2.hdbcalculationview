@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_DEAL_ANALYSIS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_DEAL_ANALYSIS_copy_2" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_DEAL_ANALYSIS.hdbcalculationview"/>
 <localVariables/>
 <variableMappings/>
@@ -901,7 +901,7 @@
       <keyMapping columnObjectName="Join_1_5" columnName="SALESFORCE_OPP_ID_1"/>
     </attribute>
     <attribute id="SALES_DOCUMENT_1" order="60" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SALES_DOCUMENT (HSO)"/>
+      <descriptions defaultDescription="SALES_DOCUMENT (SO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SALES_DOCUMENT_1"/>
     </attribute>
     <attribute id="HSO_ITEM" order="61" displayAttribute="false" attributeHierarchyActive="false">
@@ -980,11 +980,7 @@
       <measureMapping columnObjectName="Join_1_5" columnName="QUANTITY"/>
     </measure>
   </baseMeasures>
-  <calculatedMeasures>
-    <measure id="COUNTER" order="76" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="SQL">
-      <formula>1</formula>
-    </measure>
-  </calculatedMeasures>
+  <calculatedMeasures/>
   <restrictedMeasures/>
   <localDimensions/>
 </logicalModel>

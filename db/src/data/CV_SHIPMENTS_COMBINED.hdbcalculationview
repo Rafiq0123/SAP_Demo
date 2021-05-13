@@ -41,7 +41,7 @@
       <viewAttribute id="Country"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="P_SHIPMENTS_S4">
+    <input node="P_SHIPMENTS_S4" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY" source="DELIVERY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT" source="SALES_DOCUMENT"/>
@@ -65,7 +65,7 @@
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GI_DATE" null="true" value=""/>
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Country" null="true" value=""/>
     </input>
-    <input node="J_FUSION_SHIPMENTS">
+    <input node="J_FUSION_SHIPMENTS" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DELIVERY" null="true" value=""/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM_NO"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT" source="SALES_ORDER"/>
@@ -103,14 +103,14 @@
       <viewAttribute id="IBP_CUSTOMER_ID"/>
       <viewAttribute id="SALES_DOC_TYPE"/>
       <viewAttribute id="ITEM_CATEGORY"/>
-      <viewAttribute id="QTY"/>
       <viewAttribute id="REQ_DELIVERY_DATE"/>
       <viewAttribute id="PLANNED_GDS_MOVEMENT_DATE"/>
       <viewAttribute id="DELIVERY_DATE"/>
       <viewAttribute id="CUSTOMER"/>
       <viewAttribute id="QUOTE_NO"/>
       <viewAttribute id="SALESFORCE_OPP_ID"/>
-    </viewAttributes>
+    
+      <viewAttribute id="QTY"/></viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="SHIP_QTY" datatype="INTEGER" expressionLanguage="SQL">
         <formula>&quot;QTY&quot;</formula>
@@ -120,20 +120,20 @@
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="J_FUSION_SHIPMENTS" cardinality="CN_N" joinType="inner">
     <viewAttributes>
-      <viewAttribute id="SALES_ORDER" aggregationType="sum"/>
       <viewAttribute id="ITEM_NO" aggregationType="sum"/>
-      <viewAttribute id="HLI" aggregationType="sum"/>
+      <viewAttribute id="SALES_ORDER" aggregationType="sum"/>
       <viewAttribute id="MATERIAL_NO"/>
       <viewAttribute id="PLANT"/>
-      <viewAttribute id="REQ_DATE"/>
-      <viewAttribute id="GI_DATE"/>
-      <viewAttribute id="ORDER_DATE"/>
-      <viewAttribute id="SHIP_QTY" aggregationType="sum"/>
       <viewAttribute id="SALES_ORG"/>
+      <viewAttribute id="REQ_DATE"/>
       <viewAttribute id="Customer" aggregationType="sum"/>
-      <viewAttribute id="Country"/>
       <viewAttribute id="ZZHPQUOTE"/>
       <viewAttribute id="OpportunityID"/>
+      <viewAttribute id="SHIP_QTY" aggregationType="sum"/>
+      <viewAttribute id="HLI" aggregationType="sum"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="GI_DATE"/>
+      <viewAttribute id="Country"/>
       <viewAttribute hidden="true" id="JOIN$Salesorder$SALES_ORDER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -280,11 +280,11 @@
     </shape>
     <shape modelObjectName="FUSIONSO_OPPORTUNITY" modelObjectNameSpace="J_FUSION_SHIPMENTS" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="220.017578125"/>
+      <rectangleSize width="220"/>
     </shape>
     <shape modelObjectName="FUSION_SHIPMENTS" modelObjectNameSpace="J_FUSION_SHIPMENTS" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="186.015625"/>
+      <rectangleSize width="186"/>
     </shape>
   </shapes>
 </layout>
