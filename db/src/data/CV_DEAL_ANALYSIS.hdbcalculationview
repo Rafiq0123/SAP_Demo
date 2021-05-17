@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_DEAL_ANALYSIS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="CV_DEAL_ANALYSIS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_DEAL_ANALYSIS.hdbcalculationview"/>
 <localVariables/>
 <variableMappings/>
@@ -741,7 +741,7 @@
       <keyMapping columnObjectName="Join_1_5" columnName="PLANT"/>
     </attribute>
     <attribute id="REQ_DATE" order="17" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Req. Date"/>
+      <descriptions defaultDescription="Req. Date (SOC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="REQ_DATE"/>
     </attribute>
     <attribute id="GI_DATE" order="18" displayAttribute="false" attributeHierarchyActive="false">
@@ -753,11 +753,11 @@
       <keyMapping columnObjectName="Join_1_5" columnName="ORDER_DATE"/>
     </attribute>
     <attribute id="SALES_ORG" order="21" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Oales Org."/>
+      <descriptions defaultDescription="Sales Org. (SOC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SALES_ORG"/>
     </attribute>
     <attribute id="CUSTOMER" order="22" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Customer"/>
+      <descriptions defaultDescription="Customer (SOC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="CUSTOMER"/>
     </attribute>
     <attribute id="COUNTRY" order="23" displayAttribute="false" attributeHierarchyActive="false">
@@ -765,7 +765,7 @@
       <keyMapping columnObjectName="Join_1_5" columnName="COUNTRY"/>
     </attribute>
     <attribute id="HPQUOTE" order="24" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Quote ID"/>
+      <descriptions defaultDescription="Quote ID (SOC))"/>
       <keyMapping columnObjectName="Join_1_5" columnName="HPQUOTE"/>
     </attribute>
     <attribute id="SO_DATA_SOURCE" order="25" displayAttribute="false" attributeHierarchyActive="false">
@@ -797,7 +797,7 @@
       <keyMapping columnObjectName="Join_1_5" columnName="SC_PLANT"/>
     </attribute>
     <attribute id="SINGLE_DELIVERY_FLAG" order="32" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Single Delivery Flag"/>
+      <descriptions defaultDescription="Single Delivery Flag (SC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SINGLE_DELIVERY_FLAG"/>
     </attribute>
     <attribute id="SC_SALES_ORG" order="33" displayAttribute="false" attributeHierarchyActive="false">
@@ -813,23 +813,23 @@
       <keyMapping columnObjectName="Join_1_5" columnName="IBP_CUSTOMER_ID"/>
     </attribute>
     <attribute id="SALES_DOC_TYPE" order="36" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Sales Doc Type"/>
+      <descriptions defaultDescription="Sales Doc Type (SC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SALES_DOC_TYPE"/>
     </attribute>
     <attribute id="ITEM_CATEGORY" order="37" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Item Category"/>
+      <descriptions defaultDescription="Item Category (SC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="ITEM_CATEGORY"/>
     </attribute>
     <attribute id="REQ_DELIVERY_DATE" order="38" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Req. Delivery Date"/>
+      <descriptions defaultDescription="Req. Delivery Date (SC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="REQ_DELIVERY_DATE"/>
     </attribute>
     <attribute id="PLANNED_GDS_MOVEMENT_DATE" order="39" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Planned GDS Movement Date"/>
+      <descriptions defaultDescription="Planned GDS Movement Date (SC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="PLANNED_GDS_MOVEMENT_DATE"/>
     </attribute>
     <attribute id="DELIVERY_DATE" order="40" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Delivery Date"/>
+      <descriptions defaultDescription="Delivery Date (SC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="DELIVERY_DATE"/>
     </attribute>
     <attribute id="SC_CUSTOMER" order="41" displayAttribute="false" attributeHierarchyActive="false">
@@ -837,11 +837,11 @@
       <keyMapping columnObjectName="Join_1_5" columnName="SC_CUSTOMER"/>
     </attribute>
     <attribute id="QUOTE_NO" order="42" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Quote No"/>
+      <descriptions defaultDescription="Quote No (SC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="QUOTE_NO"/>
     </attribute>
     <attribute id="HLI" order="44" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="HLI"/>
+      <descriptions defaultDescription="HLI (SC)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="HLI"/>
     </attribute>
     <attribute id="SC_ORDER_DATE" order="45" displayAttribute="false" attributeHierarchyActive="false">
@@ -857,79 +857,79 @@
       <keyMapping columnObjectName="Join_1_5" columnName="Country"/>
     </attribute>
     <attribute id="PLANNED_PLANT" order="48" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PLANNED_PLANT"/>
+      <descriptions defaultDescription="Planned Plant (Deal)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="PLANNED_PLANT"/>
     </attribute>
     <attribute id="SKU_DESCRIPTION" order="49" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SKU_DESCRIPTION"/>
+      <descriptions defaultDescription="SKU Description"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SKU_DESCRIPTION"/>
     </attribute>
     <attribute id="CONFIDENCE_LEVEL" order="50" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CONFIDENCE_LEVEL"/>
+      <descriptions defaultDescription="Confidence level (Deal)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="CONFIDENCE_LEVEL"/>
     </attribute>
     <attribute id="MP_DATE" order="52" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="MP_DATE"/>
+      <descriptions defaultDescription="MP Date (Deal)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="MP_DATE"/>
     </attribute>
     <attribute id="SHIP_DATE" order="53" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SHIP_DATE"/>
+      <descriptions defaultDescription="Ship Date (Deal)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SHIP_DATE"/>
     </attribute>
     <attribute id="REGION" order="54" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Deal Region"/>
+      <descriptions defaultDescription="Region (Deal)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="REGION"/>
     </attribute>
     <attribute id="COUNTRY_NAME" order="55" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="COUNTRY_NAME (Deal)"/>
+      <descriptions defaultDescription="Country Name (Deal)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="COUNTRY_NAME"/>
     </attribute>
     <attribute id="DATECREATED" order="56" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DATECREATED"/>
+      <descriptions defaultDescription="Date Created (Deal)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="DATECREATED"/>
     </attribute>
     <attribute id="DATEINTODP" order="57" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DATEINTODP"/>
+      <descriptions defaultDescription="Date into DP (Deal)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="DATEINTODP"/>
     </attribute>
     <attribute id="DATE_TAKEN" order="58" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DATE_TAKEN"/>
+      <descriptions defaultDescription="Date Taken (Deal)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="DATE_TAKEN"/>
     </attribute>
     <attribute id="SALESFORCE_OPP_ID_1" order="59" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SALESFORCE_OPP_ID (SO)"/>
+      <descriptions defaultDescription="Salesforce Opp. ID (SO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SALESFORCE_OPP_ID_1"/>
     </attribute>
     <attribute id="SALES_DOCUMENT_1" order="60" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SALES_DOCUMENT (HSO)"/>
+      <descriptions defaultDescription="Sales Document (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SALES_DOCUMENT_1"/>
     </attribute>
     <attribute id="HSO_ITEM" order="61" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ITEM (HSO)"/>
+      <descriptions defaultDescription="Item (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="HSO_ITEM"/>
     </attribute>
     <attribute id="HSO_HIGHER_LEVEL_ITEM" order="62" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="HIGHER_LEVEL_ITEM (HSO)"/>
+      <descriptions defaultDescription="Higher Level Item (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="HSO_HIGHER_LEVEL_ITEM"/>
     </attribute>
     <attribute id="HSO_MATERIAL" order="63" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="MATERIAL (HSO)"/>
+      <descriptions defaultDescription="Material (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="HSO_MATERIAL"/>
     </attribute>
     <attribute id="HSO_PLANT" order="64" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PLANT (HSO)"/>
+      <descriptions defaultDescription="Plant (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="HSO_PLANT"/>
     </attribute>
     <attribute id="SINGLE_CHARACTER_FLAG" order="65" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SINGLE_CHARACTER_FLAG"/>
+      <descriptions defaultDescription="Single Character Flag (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SINGLE_CHARACTER_FLAG"/>
     </attribute>
     <attribute id="HSO_SALES_ORG" order="66" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SALES_ORG (HSO)"/>
+      <descriptions defaultDescription="Sales Org. (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="HSO_SALES_ORG"/>
     </attribute>
     <attribute id="HSO_DIVISION" order="67" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DIVISION (HSO)"/>
+      <descriptions defaultDescription="Division (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="HSO_DIVISION"/>
     </attribute>
     <attribute id="HSO_IBP_CUSTOMER_ID" order="68" displayAttribute="false" attributeHierarchyActive="false">
@@ -937,19 +937,19 @@
       <keyMapping columnObjectName="Join_1_5" columnName="HSO_IBP_CUSTOMER_ID"/>
     </attribute>
     <attribute id="SALES_DOCUMENT_TYPE" order="69" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SALES_DOCUMENT_TYPE"/>
+      <descriptions defaultDescription="Sales Document Type (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SALES_DOCUMENT_TYPE"/>
     </attribute>
     <attribute id="HSO_ITEM_CATEGORY" order="70" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ITEM_CATEGORY (HSO)"/>
+      <descriptions defaultDescription="Item Category (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="HSO_ITEM_CATEGORY"/>
     </attribute>
     <attribute id="HSO_CUSTOMER" order="71" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CUSTOMER (HSO)"/>
+      <descriptions defaultDescription="Customer (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="HSO_CUSTOMER"/>
     </attribute>
     <attribute id="SUBNETWORK" order="72" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SUBNETWORK"/>
+      <descriptions defaultDescription="Subnetwork (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="SUBNETWORK"/>
     </attribute>
     <attribute id="HSO_QUOTE_NO" order="73" displayAttribute="false" attributeHierarchyActive="false">
@@ -957,11 +957,41 @@
       <keyMapping columnObjectName="Join_1_5" columnName="HSO_QUOTE_NO"/>
     </attribute>
     <attribute id="INV_DATE" order="75" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="INV_DATE"/>
+      <descriptions defaultDescription="INV_DATE (HSO)"/>
       <keyMapping columnObjectName="Join_1_5" columnName="INV_DATE"/>
     </attribute>
   </attributes>
-  <calculatedAttributes/>
+  <calculatedAttributes>
+    <calculatedAttribute id="ORDER_DATE_YEAR" order="77" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Order Date (Year)"/>
+      <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
+        <formula>year(&quot;ORDER_DATE&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="ORDER_DATE_MONTH" order="78" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Order Date (Month Name)"/>
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="3">
+        <formula>CONCAT(
+UPPER(LEFT(MONTHNAME(&quot;ORDER_DATE&quot;),1)),
+LOWER(SUBSTR(MONTHNAME(&quot;ORDER_DATE&quot;),2,2)) 
+)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="ORDER_DATE_DAY" order="79" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Order Date (Day)"/>
+      <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
+        <formula>EXTRACT_DAY(&quot;ORDER_DATE&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  
+    <calculatedAttribute id="ORDER_DATE_MONTH_NUMBER" order="80" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Order Date (Month Number)"/>
+      <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
+        <formula>MONTH(&quot;ORDER_DATE&quot;)
+</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures>
     <measure id="ORDER_QTY" order="20" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="Order Quantity (SOC)"/>
@@ -972,7 +1002,7 @@
       <measureMapping columnObjectName="Join_1_5" columnName="SHIP_QTY"/>
     </measure>
     <measure id="MPQTY" order="51" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="MPQTY (Deal)"/>
+      <descriptions defaultDescription="MP QTY (Deal)"/>
       <measureMapping columnObjectName="Join_1_5" columnName="MPQTY"/>
     </measure>
     <measure id="QUANTITY" order="74" aggregationType="sum" measureType="simple">
@@ -983,10 +1013,41 @@
   <calculatedMeasures>
     <measure id="COUNTER" order="76" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="SQL">
       <formula>1</formula>
-    </measure>
+      </measure>
   </calculatedMeasures>
   <restrictedMeasures/>
-  <localDimensions/>
+  <localDimensions>
+    <localDimension id="REGION_COUNTRY_HIERARCHY">
+      <attributeRef xsi:type="DataFoundation:Attribute">REGION</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">COUNTRY_NAME</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="REGION_COUNTRY_HIERARCHY" aggregateAllNodes="false" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_PATH_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="Region Country Hierarchy"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="REGION" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="REGION" sortDirection="ASC"/>
+            <level levelAttribute="COUNTRY_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="COUNTRY" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+    <localDimension id="ORDER_DATE_HIERARCHY">
+      <attributeRef xsi:type="DataFoundation:Attribute">ORDER_DATE_YEAR</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">ORDER_DATE_MONTH</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">ORDER_DATE</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="ORDER_DATE_HIERARCHY" aggregateAllNodes="false" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_PATH_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="Order Date Hierarchy "/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="ORDER_DATE_YEAR" levelType="MDLEVEL_TYPE_TIME_YEARS" order="1" orderAttribute="ORDER_DATE_YEAR" sortDirection="ASC"/>
+            <level levelAttribute="ORDER_DATE_MONTH" levelType="MDLEVEL_TYPE_TIME_MONTHS" order="2" orderAttribute="ORDER_DATE_MONTH_NUMBER" sortDirection="ASC"/>
+            <level levelAttribute="ORDER_DATE" levelType="MDLEVEL_TYPE_TIME_DAYS" order="3" orderAttribute="ORDER_DATE" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
 </logicalModel>
 <layout>
   <shapes>
@@ -1014,7 +1075,7 @@
       <rectangleSize width="290"/>
     </shape>
     <shape modelObjectName="CV_SHIPMENTS_COMBINED" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
-      <upperLeftCorner x="671" y="356"/>
+      <upperLeftCorner x="586" y="329"/>
       <rectangleSize width="272"/>
     </shape>
   
@@ -1023,7 +1084,7 @@
       <rectangleSize width="199"/>
     </shape>
     <shape modelObjectName="HIST_SALES_ORDER_S4" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
-      <upperLeftCorner x="386" y="347"/>
+      <upperLeftCorner x="278" y="290"/>
       <rectangleSize width="235"/>
     </shape>
   </shapes>

@@ -1,0 +1,7 @@
+column table "LOCATION_DATA_COUNTRY" (
+    "COUNTRY_CODE" NVARCHAR(5)  unique not null COMMENT 'Country Code',
+    "LATITUDE" DOUBLE not null COMMENT 'Latitude',
+    "LONGITUDE" DOUBLE not null COMMENT 'Longitude',
+    PRIMARY KEY ("COUNTRY_CODE")
+)
+COMMENT 'Location data by country' 

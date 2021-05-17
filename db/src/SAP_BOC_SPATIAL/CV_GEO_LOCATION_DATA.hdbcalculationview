@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_BOC_SPATIAL::CV_GEO_LOCATION_DATA" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_GEO_LOCATION_DATA.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="GEOLOCATION_COUNTRY_W_POINT">
+    <resourceUri>GEOLOCATION_COUNTRY_W_POINT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="GEOLOCATION_COUNTRY_W_POINT">
+  <attributes>
+    <attribute id="COUNTRY_CODE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Country Code"/>
+      <keyMapping columnObjectName="GEOLOCATION_COUNTRY_W_POINT" columnName="COUNTRY_CODE"/>
+    </attribute>
+    <attribute id="LATITUDE" order="2" semanticType="geoLocation.latitude" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Latitude"/>
+      <keyMapping columnObjectName="GEOLOCATION_COUNTRY_W_POINT" columnName="LATITUDE"/>
+    </attribute>
+    <attribute id="LONGITUDE" order="3" semanticType="geoLocation.longitude" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Longitude"/>
+      <keyMapping columnObjectName="GEOLOCATION_COUNTRY_W_POINT" columnName="LONGITUDE"/>
+    </attribute>
+    <attribute id="XY_POINT" order="4" semanticType="geoLocation.cartoId" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XY_POINT"/>
+      <keyMapping columnObjectName="GEOLOCATION_COUNTRY_W_POINT" columnName="XY_POINT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures>
+    <measure id="CC_1" order="5" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="SQL">
+      <formula>1</formula>
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>
