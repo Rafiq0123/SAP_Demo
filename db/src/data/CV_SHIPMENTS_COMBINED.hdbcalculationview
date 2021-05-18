@@ -39,6 +39,8 @@
       <viewAttribute id="ORDER_DATE"/>
       <viewAttribute id="GI_DATE"/>
       <viewAttribute id="Country"/>
+    
+      <viewAttribute id="SHIPMENT_DATA_SOURCE"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="P_SHIPMENTS_S4" emptyUnionBehavior="NO_ROW">
@@ -64,6 +66,8 @@
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ORDER_DATE" null="true" value=""/>
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="GI_DATE" null="true" value=""/>
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Country" null="true" value=""/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIPMENT_DATA_SOURCE" source="SHIPMENT_DATA_SOURCE"/>
     </input>
     <input node="J_FUSION_SHIPMENTS" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DELIVERY" null="true" value=""/>
@@ -88,6 +92,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GI_DATE" source="GI_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIPMENT_DATA_SOURCE" source="SHIPMENT_DATA_SOURCE"/>
     </input>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="P_SHIPMENTS_S4">
@@ -115,6 +121,12 @@
       <calculatedViewAttribute id="SHIP_QTY" datatype="INTEGER" expressionLanguage="SQL">
         <formula>&quot;QTY&quot;</formula>
       </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="SHIPMENT_DATA_SOURCE" datatype="NVARCHAR" length="20" expressionLanguage="SQL">
+    
+        <formula>'OPEN_S4'</formula>
+    
+      </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="SHIPMENTS_S4"/>
   </calculationView>
@@ -136,7 +148,11 @@
       <viewAttribute id="Country"/>
       <viewAttribute hidden="true" id="JOIN$Salesorder$SALES_ORDER"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="SHIPMENT_DATA_SOURCE" datatype="NVARCHAR" length="20" expressionLanguage="SQL">
+        <formula>'FUSION'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input node="FUSIONSO_OPPORTUNITY">
       <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="OpportunityID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$Salesorder$SALES_ORDER" source="Salesorder"/>
@@ -247,8 +263,21 @@
       <descriptions defaultDescription="Country"/>
       <keyMapping columnObjectName="Union_1" columnName="Country"/>
     </attribute>
+  
+    <attribute id="SHIPMENT_DATA_SOURCE" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SHIPMENT_DATA_SOURCE"/>
+  
+      <keyMapping columnObjectName="Union_1" columnName="SHIPMENT_DATA_SOURCE"/>
+  
+    </attribute>
   </attributes>
-  <calculatedAttributes/>
+  <calculatedAttributes>
+    <calculatedAttribute id="SHIPPED_OR_SO_DATA_SOURCE" order="24" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="20">
+        <formula>'Shipment'</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures>
     <measure id="SHIP_QTY" order="18" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="Ship Qty"/>

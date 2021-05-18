@@ -7,6 +7,9 @@
   <DataSource id="DEAL_HISTORY">
     <resourceUri>DEAL_HISTORY</resourceUri>
   </DataSource>
+  <DataSource id="QUOTE_OPP">
+    <resourceUri>QUOTE_OPP</resourceUri>
+  </DataSource>
   <DataSource id="HIST_SALES_ORDER_S4">
     <resourceUri>HIST_SALES_ORDER_S4</resourceUri>
   </DataSource>
@@ -39,6 +42,67 @@
       <viewAttribute id="DATECREATED"/>
       <viewAttribute id="DATEINTODP"/>
       <viewAttribute id="DATE_TAKEN"/>
+      <viewAttribute id="OPPORTUNITY_ID_1"/>
+      <viewAttribute id="EST_TOT_K" aggregationType="sum"/>
+      <viewAttribute id="LAST_PRICED_DT"/>
+      <viewAttribute id="MODIFIED_TS"/>
+      <viewAttribute id="PA_EXPIRY_TS"/>
+      <viewAttribute id="CREATED_TS"/>
+      <viewAttribute id="LAST_MODIFIED_TS"/>
+      <viewAttribute id="QUOTE_DISTRIB_DT"/>
+      <viewAttribute id="ORDER_BGN_DT"/>
+      <viewAttribute id="ORDER_END_DT"/>
+      <viewAttribute id="QUOTE_DIST_DT_GMT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DEAL_HISTORY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_PLANT" source="PLANNED_PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU_DESCRIPTION" source="SKU_DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENCE_LEVEL" source="CONFIDENCE_LEVEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MPQTY" source="MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MP_DATE" source="MP_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_DATE" source="SHIP_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_NAME" source="COUNTRY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATECREATED" source="DATECREATED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATEINTODP" source="DATEINTODP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_TAKEN" source="DATE_TAKEN"/>
+    </input>
+    <input node="QUOTE_OPP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID_1" source="OPPORTUNITY_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K" source="EST_TOT_K"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_PRICED_DT" source="LAST_PRICED_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIED_TS" source="MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_EXPIRY_TS" source="PA_EXPIRY_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TS" source="CREATED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_MODIFIED_TS" source="LAST_MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DISTRIB_DT" source="QUOTE_DISTRIB_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_BGN_DT" source="ORDER_BGN_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_END_DT" source="ORDER_END_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DIST_DT_GMT" source="QUOTE_DIST_DT_GMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
+    </input>
+    <joinAttribute name="OPPORTUNITY_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="OPPORTUNITY_ID"/>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="PLANNED_PLANT"/>
+      <viewAttribute id="SKU_DESCRIPTION"/>
+      <viewAttribute id="CONFIDENCE_LEVEL" aggregationType="sum"/>
+      <viewAttribute id="MPQTY" aggregationType="sum"/>
+      <viewAttribute id="MP_DATE"/>
+      <viewAttribute id="SHIP_DATE"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="COUNTRY_NAME"/>
+      <viewAttribute id="DATECREATED"/>
+      <viewAttribute id="DATEINTODP"/>
+      <viewAttribute id="DATE_TAKEN"/>
+      <viewAttribute id="OPPORTUNITY_ID_1"/>
+      <viewAttribute id="EST_TOT_K" aggregationType="sum"/>
       <viewAttribute id="SALESFORCE_OPP_ID_1"/>
       <viewAttribute id="SALES_DOCUMENT_1" aggregationType="sum"/>
       <viewAttribute id="HSO_ITEM" aggregationType="sum"/>
@@ -56,9 +120,18 @@
       <viewAttribute id="HSO_QUOTE_NO"/>
       <viewAttribute id="QUANTITY" aggregationType="sum"/>
       <viewAttribute id="INV_DATE"/>
+      <viewAttribute id="LAST_PRICED_DT"/>
+      <viewAttribute id="MODIFIED_TS"/>
+      <viewAttribute id="PA_EXPIRY_TS"/>
+      <viewAttribute id="CREATED_TS"/>
+      <viewAttribute id="LAST_MODIFIED_TS"/>
+      <viewAttribute id="QUOTE_DISTRIB_DT"/>
+      <viewAttribute id="ORDER_BGN_DT"/>
+      <viewAttribute id="ORDER_END_DT"/>
+      <viewAttribute id="QUOTE_DIST_DT_GMT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="DEAL_HISTORY">
+    <input node="Join_1_1">
       <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_PLANT" source="PLANNED_PLANT"/>
@@ -72,6 +145,17 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="DATECREATED" source="DATECREATED"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DATEINTODP" source="DATEINTODP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DATE_TAKEN" source="DATE_TAKEN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID_1" source="OPPORTUNITY_ID_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K" source="EST_TOT_K"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_PRICED_DT" source="LAST_PRICED_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIED_TS" source="MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_EXPIRY_TS" source="PA_EXPIRY_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TS" source="CREATED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_MODIFIED_TS" source="LAST_MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DISTRIB_DT" source="QUOTE_DISTRIB_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_BGN_DT" source="ORDER_BGN_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_END_DT" source="ORDER_END_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DIST_DT_GMT" source="QUOTE_DIST_DT_GMT"/>
     </input>
     <input node="HIST_SALES_ORDER_S4">
       <mapping xsi:type="Calculation:AttributeMapping" target="SALESFORCE_OPP_ID_1" source="SALESFORCE_OPP_ID"/>
@@ -95,7 +179,7 @@
     </input>
     <joinAttribute name="OPPORTUNITY_ID"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
     <viewAttributes>
       <viewAttribute id="OPPORTUNITY_ID"/>
       <viewAttribute id="SKU"/>
@@ -110,6 +194,8 @@
       <viewAttribute id="DATECREATED"/>
       <viewAttribute id="DATEINTODP"/>
       <viewAttribute id="DATE_TAKEN"/>
+      <viewAttribute id="OPPORTUNITY_ID_1"/>
+      <viewAttribute id="EST_TOT_K" aggregationType="sum"/>
       <viewAttribute id="SALESFORCE_OPP_ID_1"/>
       <viewAttribute id="SALES_DOCUMENT_1" aggregationType="sum"/>
       <viewAttribute id="HSO_ITEM" aggregationType="sum"/>
@@ -149,9 +235,18 @@
       <viewAttribute id="SC_ORDER_DATE"/>
       <viewAttribute id="SC_GI_DATE"/>
       <viewAttribute id="Country"/>
+      <viewAttribute id="LAST_PRICED_DT"/>
+      <viewAttribute id="MODIFIED_TS"/>
+      <viewAttribute id="PA_EXPIRY_TS"/>
+      <viewAttribute id="CREATED_TS"/>
+      <viewAttribute id="LAST_MODIFIED_TS"/>
+      <viewAttribute id="QUOTE_DISTRIB_DT"/>
+      <viewAttribute id="ORDER_BGN_DT"/>
+      <viewAttribute id="ORDER_END_DT"/>
+      <viewAttribute id="QUOTE_DIST_DT_GMT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="Join_1_1">
+    <input node="Join_1_2">
       <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_PLANT" source="PLANNED_PLANT"/>
@@ -165,6 +260,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="DATECREATED" source="DATECREATED"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DATEINTODP" source="DATEINTODP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DATE_TAKEN" source="DATE_TAKEN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID_1" source="OPPORTUNITY_ID_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K" source="EST_TOT_K"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALESFORCE_OPP_ID_1" source="SALESFORCE_OPP_ID_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT_1" source="SALES_DOCUMENT_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="HSO_ITEM" source="HSO_ITEM"/>
@@ -182,6 +279,15 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="HSO_QUOTE_NO" source="HSO_QUOTE_NO"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUANTITY" source="QUANTITY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="INV_DATE" source="INV_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_PRICED_DT" source="LAST_PRICED_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIED_TS" source="MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_EXPIRY_TS" source="PA_EXPIRY_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TS" source="CREATED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_MODIFIED_TS" source="LAST_MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DISTRIB_DT" source="QUOTE_DISTRIB_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_BGN_DT" source="ORDER_BGN_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_END_DT" source="ORDER_END_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DIST_DT_GMT" source="QUOTE_DIST_DT_GMT"/>
     </input>
     <input node="CV_SHIPMENTS_COMBINED">
       <mapping xsi:type="Calculation:AttributeMapping" target="SALESFORCE_OPP_ID" source="SALESFORCE_OPP_ID"/>
@@ -210,7 +316,7 @@
     </input>
     <joinAttribute name="OPPORTUNITY_ID"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="CN_N" joinType="rightOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_4" cardinality="CN_N" joinType="rightOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
     <viewAttributes>
       <viewAttribute id="OPPORTUNITY_ID"/>
       <viewAttribute id="SKU"/>
@@ -225,6 +331,8 @@
       <viewAttribute id="DATECREATED"/>
       <viewAttribute id="DATEINTODP"/>
       <viewAttribute id="DATE_TAKEN"/>
+      <viewAttribute id="OPPORTUNITY_ID_1"/>
+      <viewAttribute id="EST_TOT_K" aggregationType="sum"/>
       <viewAttribute id="SALESFORCE_OPP_ID_1"/>
       <viewAttribute id="SALES_DOCUMENT_1" aggregationType="sum"/>
       <viewAttribute id="HSO_ITEM" aggregationType="sum"/>
@@ -279,6 +387,15 @@
       <viewAttribute id="COUNTRY"/>
       <viewAttribute id="HPQUOTE"/>
       <viewAttribute id="SO_DATA_SOURCE"/>
+      <viewAttribute id="LAST_PRICED_DT"/>
+      <viewAttribute id="MODIFIED_TS"/>
+      <viewAttribute id="PA_EXPIRY_TS"/>
+      <viewAttribute id="CREATED_TS"/>
+      <viewAttribute id="LAST_MODIFIED_TS"/>
+      <viewAttribute id="QUOTE_DISTRIB_DT"/>
+      <viewAttribute id="ORDER_BGN_DT"/>
+      <viewAttribute id="ORDER_END_DT"/>
+      <viewAttribute id="QUOTE_DIST_DT_GMT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="CV_OPEN_SALES_ORDER_COMBINED">
@@ -298,7 +415,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="HPQUOTE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SO_DATA_SOURCE" source="SO_DATA_SOURCE"/>
     </input>
-    <input node="Join_1_2">
+    <input node="Join_1_3">
       <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_PLANT" source="PLANNED_PLANT"/>
@@ -312,6 +429,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="DATECREATED" source="DATECREATED"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DATEINTODP" source="DATEINTODP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DATE_TAKEN" source="DATE_TAKEN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID_1" source="OPPORTUNITY_ID_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K" source="EST_TOT_K"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALESFORCE_OPP_ID_1" source="SALESFORCE_OPP_ID_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT_1" source="SALES_DOCUMENT_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="HSO_ITEM" source="HSO_ITEM"/>
@@ -351,11 +470,20 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="SC_ORDER_DATE" source="SC_ORDER_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SC_GI_DATE" source="SC_GI_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_PRICED_DT" source="LAST_PRICED_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIED_TS" source="MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_EXPIRY_TS" source="PA_EXPIRY_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TS" source="CREATED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_MODIFIED_TS" source="LAST_MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DISTRIB_DT" source="QUOTE_DISTRIB_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_BGN_DT" source="ORDER_BGN_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_END_DT" source="ORDER_END_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DIST_DT_GMT" source="QUOTE_DIST_DT_GMT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="OPPORTUNITY_ID"/>
     </input>
     <joinAttribute name="OpportunityID"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1_4" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_5" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
     <viewAttributes>
       <viewAttribute id="OPPORTUNITY_ID"/>
       <viewAttribute id="SKU"/>
@@ -370,6 +498,8 @@
       <viewAttribute id="DATECREATED"/>
       <viewAttribute id="DATEINTODP"/>
       <viewAttribute id="DATE_TAKEN"/>
+      <viewAttribute id="OPPORTUNITY_ID_1"/>
+      <viewAttribute id="EST_TOT_K" aggregationType="sum"/>
       <viewAttribute id="SALESFORCE_OPP_ID_1"/>
       <viewAttribute id="SALES_DOCUMENT_1" aggregationType="sum"/>
       <viewAttribute id="HSO_ITEM" aggregationType="sum"/>
@@ -429,9 +559,18 @@
       <viewAttribute id="Geo"/>
       <viewAttribute id="Cancellation_Config_Change"/>
       <viewAttribute id="CANCELLATION_DATE"/>
+      <viewAttribute id="LAST_PRICED_DT"/>
+      <viewAttribute id="MODIFIED_TS"/>
+      <viewAttribute id="PA_EXPIRY_TS"/>
+      <viewAttribute id="CREATED_TS"/>
+      <viewAttribute id="LAST_MODIFIED_TS"/>
+      <viewAttribute id="QUOTE_DISTRIB_DT"/>
+      <viewAttribute id="ORDER_BGN_DT"/>
+      <viewAttribute id="ORDER_END_DT"/>
+      <viewAttribute id="QUOTE_DIST_DT_GMT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="Join_1_3">
+    <input node="Join_1_4">
       <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_PLANT" source="PLANNED_PLANT"/>
@@ -445,6 +584,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="DATECREATED" source="DATECREATED"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DATEINTODP" source="DATEINTODP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DATE_TAKEN" source="DATE_TAKEN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID_1" source="OPPORTUNITY_ID_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K" source="EST_TOT_K"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALESFORCE_OPP_ID_1" source="SALESFORCE_OPP_ID_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT_1" source="SALES_DOCUMENT_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="HSO_ITEM" source="HSO_ITEM"/>
@@ -499,6 +640,15 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="HPQUOTE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SO_DATA_SOURCE" source="SO_DATA_SOURCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_PRICED_DT" source="LAST_PRICED_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIED_TS" source="MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_EXPIRY_TS" source="PA_EXPIRY_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TS" source="CREATED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_MODIFIED_TS" source="LAST_MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DISTRIB_DT" source="QUOTE_DISTRIB_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_BGN_DT" source="ORDER_BGN_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_END_DT" source="ORDER_END_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DIST_DT_GMT" source="QUOTE_DIST_DT_GMT"/>
     </input>
     <input node="CANCELLED_DEALS">
       <mapping xsi:type="Calculation:AttributeMapping" target="OP-ID" source="OP-ID"/>
@@ -510,7 +660,7 @@
     </input>
     <joinAttribute name="OPPORTUNITY_ID"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1_5" cardinality="CN_N" joinType="rightOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_6" cardinality="CN_N" joinType="rightOuter" multiJoinNode="Join_1" multiJoinCentralTable="MAINSTREAM_LISTING" multiJoinOrder="Outside In">
     <viewAttributes>
       <viewAttribute id="OPPORTUNITY_ID"/>
       <viewAttribute id="SKU"/>
@@ -525,6 +675,8 @@
       <viewAttribute id="DATECREATED"/>
       <viewAttribute id="DATEINTODP"/>
       <viewAttribute id="DATE_TAKEN"/>
+      <viewAttribute id="OPPORTUNITY_ID_1"/>
+      <viewAttribute id="EST_TOT_K" aggregationType="sum"/>
       <viewAttribute id="SALESFORCE_OPP_ID_1"/>
       <viewAttribute id="SALES_DOCUMENT_1" aggregationType="sum"/>
       <viewAttribute id="HSO_ITEM" aggregationType="sum"/>
@@ -587,6 +739,15 @@
       <viewAttribute id="PROD_DESC"/>
       <viewAttribute id="OPTIONS_CATEGORY"/>
       <viewAttribute id="BUSINESS_SEGMENT"/>
+      <viewAttribute id="LAST_PRICED_DT"/>
+      <viewAttribute id="MODIFIED_TS"/>
+      <viewAttribute id="PA_EXPIRY_TS"/>
+      <viewAttribute id="CREATED_TS"/>
+      <viewAttribute id="LAST_MODIFIED_TS"/>
+      <viewAttribute id="QUOTE_DISTRIB_DT"/>
+      <viewAttribute id="ORDER_BGN_DT"/>
+      <viewAttribute id="ORDER_END_DT"/>
+      <viewAttribute id="QUOTE_DIST_DT_GMT"/>
       <viewAttribute hidden="true" id="JOIN$SKU$SKU"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -596,7 +757,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_SEGMENT" source="BUSINESS_SEGMENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SKU$SKU" source="SKU"/>
     </input>
-    <input node="Join_1_4">
+    <input node="Join_1_5">
       <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_PLANT" source="PLANNED_PLANT"/>
@@ -610,6 +771,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="DATECREATED" source="DATECREATED"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DATEINTODP" source="DATEINTODP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DATE_TAKEN" source="DATE_TAKEN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID_1" source="OPPORTUNITY_ID_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EST_TOT_K" source="EST_TOT_K"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALESFORCE_OPP_ID_1" source="SALESFORCE_OPP_ID_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT_1" source="SALES_DOCUMENT_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="HSO_ITEM" source="HSO_ITEM"/>
@@ -669,296 +832,337 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Geo" source="Geo"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Cancellation_Config_Change" source="Cancellation_Config_Change"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CANCELLATION_DATE" source="CANCELLATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_PRICED_DT" source="LAST_PRICED_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIED_TS" source="MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PA_EXPIRY_TS" source="PA_EXPIRY_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TS" source="CREATED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_MODIFIED_TS" source="LAST_MODIFIED_TS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DISTRIB_DT" source="QUOTE_DISTRIB_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_BGN_DT" source="ORDER_BGN_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_END_DT" source="ORDER_END_DT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUOTE_DIST_DT_GMT" source="QUOTE_DIST_DT_GMT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SKU$SKU" source="SKU"/>
     </input>
     <joinAttribute name="JOIN$SKU$SKU"/>
   </calculationView>
 </calculationViews>
-<logicalModel id="Join_1_5">
+<logicalModel id="Join_1_6">
   <attributes>
     <attribute id="OPPORTUNITY_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="OPPORTUNITY_ID (Deal)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="OPPORTUNITY_ID"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="OPPORTUNITY_ID"/>
     </attribute>
     <attribute id="SKU" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SKU"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SKU"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SKU"/>
     </attribute>
     <attribute id="PROD_DESC" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PROD_DESC"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="PROD_DESC"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="PROD_DESC"/>
     </attribute>
     <attribute id="OPTIONS_CATEGORY" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="OPTIONS_CATEGORY"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="OPTIONS_CATEGORY"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="OPTIONS_CATEGORY"/>
     </attribute>
     <attribute id="BUSINESS_SEGMENT" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="BUSINESS_SEGMENT"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="BUSINESS_SEGMENT"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="BUSINESS_SEGMENT"/>
     </attribute>
     <attribute id="OP-ID" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Cancellation OP-ID"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="OP-ID"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="OP-ID"/>
     </attribute>
     <attribute id="Region" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Cancellation Region"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="Region"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Region"/>
     </attribute>
     <attribute id="Geo" order="8" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Geo"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="Geo"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Geo"/>
     </attribute>
     <attribute id="Cancellation_Config_Change" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Cancellation_Config_Change"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="Cancellation_Config_Change"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Cancellation_Config_Change"/>
     </attribute>
     <attribute id="CANCELLATION_DATE" order="10" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CANCELLATION_DATE"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="CANCELLATION_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="CANCELLATION_DATE"/>
     </attribute>
     <attribute id="OpportunityID" order="11" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Opportunity ID (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="OpportunityID"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="OpportunityID"/>
     </attribute>
     <attribute id="SALES_ORDER" order="12" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Sales Order (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SALES_ORDER"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SALES_ORDER"/>
     </attribute>
     <attribute id="SOC_ITEM" order="13" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Item (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SOC_ITEM"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SOC_ITEM"/>
     </attribute>
     <attribute id="HIGHER_LEVEL_ITEM" order="14" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Higher-Level Item (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HIGHER_LEVEL_ITEM"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HIGHER_LEVEL_ITEM"/>
     </attribute>
     <attribute id="MATERIAL" order="15" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Material (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="MATERIAL"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="MATERIAL"/>
     </attribute>
     <attribute id="PLANT" order="16" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Plant (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="PLANT"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="PLANT"/>
     </attribute>
     <attribute id="REQ_DATE" order="17" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Req. Date (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="REQ_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="REQ_DATE"/>
     </attribute>
     <attribute id="GI_DATE" order="18" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="GI Date (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="GI_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="GI_DATE"/>
     </attribute>
     <attribute id="ORDER_DATE" order="19" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Order Date (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="ORDER_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="ORDER_DATE"/>
     </attribute>
     <attribute id="SALES_ORG" order="21" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Sales Org. (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SALES_ORG"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SALES_ORG"/>
     </attribute>
     <attribute id="CUSTOMER" order="22" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Customer (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="CUSTOMER"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="CUSTOMER"/>
     </attribute>
     <attribute id="COUNTRY" order="23" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Country (SOC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="COUNTRY"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="COUNTRY"/>
     </attribute>
     <attribute id="HPQUOTE" order="24" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Quote ID (SOC))"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HPQUOTE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HPQUOTE"/>
     </attribute>
     <attribute id="SO_DATA_SOURCE" order="25" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SO_DATA_SOURCE"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SO_DATA_SOURCE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SO_DATA_SOURCE"/>
     </attribute>
     <attribute id="SALESFORCE_OPP_ID" order="26" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Salesforce Opportunity ID (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SALESFORCE_OPP_ID"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SALESFORCE_OPP_ID"/>
     </attribute>
     <attribute id="DELIVERY" order="27" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Delivery (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="DELIVERY"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="DELIVERY"/>
     </attribute>
     <attribute id="SC_ITEM" order="28" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Item (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SC_ITEM"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SC_ITEM"/>
     </attribute>
     <attribute id="SALES_DOCUMENT" order="29" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Sales Order (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SALES_DOCUMENT"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SALES_DOCUMENT"/>
     </attribute>
     <attribute id="SC_MATERIAL" order="30" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Material (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SC_MATERIAL"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SC_MATERIAL"/>
     </attribute>
     <attribute id="SC_PLANT" order="31" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Plant (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SC_PLANT"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SC_PLANT"/>
     </attribute>
     <attribute id="SINGLE_DELIVERY_FLAG" order="32" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Single Delivery Flag (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SINGLE_DELIVERY_FLAG"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SINGLE_DELIVERY_FLAG"/>
     </attribute>
     <attribute id="SC_SALES_ORG" order="33" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Sales Org. (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SC_SALES_ORG"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SC_SALES_ORG"/>
     </attribute>
     <attribute id="DIVISION" order="34" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Division (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="DIVISION"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="DIVISION"/>
     </attribute>
     <attribute id="IBP_CUSTOMER_ID" order="35" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="IBP Customer ID (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="IBP_CUSTOMER_ID"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="IBP_CUSTOMER_ID"/>
     </attribute>
     <attribute id="SALES_DOC_TYPE" order="36" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Sales Doc Type (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SALES_DOC_TYPE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SALES_DOC_TYPE"/>
     </attribute>
     <attribute id="ITEM_CATEGORY" order="37" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Item Category (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="ITEM_CATEGORY"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="ITEM_CATEGORY"/>
     </attribute>
     <attribute id="REQ_DELIVERY_DATE" order="38" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Req. Delivery Date (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="REQ_DELIVERY_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="REQ_DELIVERY_DATE"/>
     </attribute>
     <attribute id="PLANNED_GDS_MOVEMENT_DATE" order="39" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Planned GDS Movement Date (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="PLANNED_GDS_MOVEMENT_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="PLANNED_GDS_MOVEMENT_DATE"/>
     </attribute>
     <attribute id="DELIVERY_DATE" order="40" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Delivery Date (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="DELIVERY_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="DELIVERY_DATE"/>
     </attribute>
     <attribute id="SC_CUSTOMER" order="41" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Customer (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SC_CUSTOMER"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SC_CUSTOMER"/>
     </attribute>
     <attribute id="QUOTE_NO" order="42" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Quote No (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="QUOTE_NO"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="QUOTE_NO"/>
     </attribute>
     <attribute id="HLI" order="44" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="HLI (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HLI"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HLI"/>
     </attribute>
     <attribute id="SC_ORDER_DATE" order="45" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Order Date (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SC_ORDER_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SC_ORDER_DATE"/>
     </attribute>
     <attribute id="SC_GI_DATE" order="46" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="GI Date (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SC_GI_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SC_GI_DATE"/>
     </attribute>
     <attribute id="Country" order="47" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Country (SC)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="Country"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Country"/>
     </attribute>
     <attribute id="PLANNED_PLANT" order="48" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Planned Plant (Deal)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="PLANNED_PLANT"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="PLANNED_PLANT"/>
     </attribute>
     <attribute id="SKU_DESCRIPTION" order="49" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SKU Description"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SKU_DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SKU_DESCRIPTION"/>
     </attribute>
     <attribute id="CONFIDENCE_LEVEL" order="50" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Confidence level (Deal)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="CONFIDENCE_LEVEL"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="CONFIDENCE_LEVEL"/>
     </attribute>
     <attribute id="MP_DATE" order="52" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="MP Date (Deal)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="MP_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="MP_DATE"/>
     </attribute>
     <attribute id="SHIP_DATE" order="53" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Ship Date (Deal)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SHIP_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SHIP_DATE"/>
     </attribute>
     <attribute id="REGION" order="54" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Region (Deal)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="REGION"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="REGION"/>
     </attribute>
     <attribute id="COUNTRY_NAME" order="55" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Country Name (Deal)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="COUNTRY_NAME"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="COUNTRY_NAME"/>
     </attribute>
     <attribute id="DATECREATED" order="56" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Date Created (Deal)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="DATECREATED"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="DATECREATED"/>
     </attribute>
     <attribute id="DATEINTODP" order="57" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Date into DP (Deal)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="DATEINTODP"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="DATEINTODP"/>
     </attribute>
     <attribute id="DATE_TAKEN" order="58" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Date Taken (Deal)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="DATE_TAKEN"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="DATE_TAKEN"/>
     </attribute>
     <attribute id="SALESFORCE_OPP_ID_1" order="59" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Salesforce Opp. ID (SO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SALESFORCE_OPP_ID_1"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SALESFORCE_OPP_ID_1"/>
     </attribute>
     <attribute id="SALES_DOCUMENT_1" order="60" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Sales Document (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SALES_DOCUMENT_1"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SALES_DOCUMENT_1"/>
     </attribute>
     <attribute id="HSO_ITEM" order="61" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Item (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HSO_ITEM"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HSO_ITEM"/>
     </attribute>
     <attribute id="HSO_HIGHER_LEVEL_ITEM" order="62" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Higher Level Item (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HSO_HIGHER_LEVEL_ITEM"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HSO_HIGHER_LEVEL_ITEM"/>
     </attribute>
     <attribute id="HSO_MATERIAL" order="63" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Material (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HSO_MATERIAL"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HSO_MATERIAL"/>
     </attribute>
     <attribute id="HSO_PLANT" order="64" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Plant (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HSO_PLANT"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HSO_PLANT"/>
     </attribute>
     <attribute id="SINGLE_CHARACTER_FLAG" order="65" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Single Character Flag (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SINGLE_CHARACTER_FLAG"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SINGLE_CHARACTER_FLAG"/>
     </attribute>
     <attribute id="HSO_SALES_ORG" order="66" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Sales Org. (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HSO_SALES_ORG"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HSO_SALES_ORG"/>
     </attribute>
     <attribute id="HSO_DIVISION" order="67" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Division (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HSO_DIVISION"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HSO_DIVISION"/>
     </attribute>
     <attribute id="HSO_IBP_CUSTOMER_ID" order="68" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="IBP_CUSTOMER_ID (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HSO_IBP_CUSTOMER_ID"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HSO_IBP_CUSTOMER_ID"/>
     </attribute>
     <attribute id="SALES_DOCUMENT_TYPE" order="69" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Sales Document Type (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SALES_DOCUMENT_TYPE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SALES_DOCUMENT_TYPE"/>
     </attribute>
     <attribute id="HSO_ITEM_CATEGORY" order="70" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Item Category (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HSO_ITEM_CATEGORY"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HSO_ITEM_CATEGORY"/>
     </attribute>
     <attribute id="HSO_CUSTOMER" order="71" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Customer (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HSO_CUSTOMER"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HSO_CUSTOMER"/>
     </attribute>
     <attribute id="SUBNETWORK" order="72" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Subnetwork (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="SUBNETWORK"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="SUBNETWORK"/>
     </attribute>
     <attribute id="HSO_QUOTE_NO" order="73" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="QUOTE_NO (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="HSO_QUOTE_NO"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HSO_QUOTE_NO"/>
     </attribute>
     <attribute id="INV_DATE" order="75" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="INV_DATE (HSO)"/>
-      <keyMapping columnObjectName="Join_1_5" columnName="INV_DATE"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="INV_DATE"/>
+    </attribute>
+  
+    <attribute id="OPPORTUNITY_ID_1" order="82" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPPORTUNITY_ID (Quote)"/>
+  
+      <keyMapping columnObjectName="Join_1_6" columnName="OPPORTUNITY_ID_1"/>
+  
+    </attribute>
+  
+    <attribute id="LAST_PRICED_DT" order="83" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_PRICED_DT (Quote)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="LAST_PRICED_DT"/>
+    </attribute>
+    <attribute id="MODIFIED_TS" order="84" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MODIFIED_TS (Quote)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="MODIFIED_TS"/>
+    </attribute>
+    <attribute id="PA_EXPIRY_TS" order="85" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PA_EXPIRY_TS (Quote)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="PA_EXPIRY_TS"/>
+    </attribute>
+    <attribute id="CREATED_TS" order="86" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_TS (Quote)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="CREATED_TS"/>
+    </attribute>
+    <attribute id="LAST_MODIFIED_TS" order="87" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_MODIFIED_TS (Quote)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="LAST_MODIFIED_TS"/>
+    </attribute>
+    <attribute id="QUOTE_DISTRIB_DT" order="88" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUOTE_DISTRIB_DT (Quote)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="QUOTE_DISTRIB_DT"/>
     </attribute>
   </attributes>
   <calculatedAttributes>
@@ -967,7 +1171,7 @@
       <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
         <formula>year(&quot;ORDER_DATE&quot;)</formula>
       </keyCalculation>
-    </calculatedAttribute>
+      </calculatedAttribute>
     <calculatedAttribute id="ORDER_DATE_MONTH" order="78" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Order Date (Month Name)"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="3">
@@ -976,43 +1180,53 @@ UPPER(LEFT(MONTHNAME(&quot;ORDER_DATE&quot;),1)),
 LOWER(SUBSTR(MONTHNAME(&quot;ORDER_DATE&quot;),2,2)) 
 )</formula>
       </keyCalculation>
-    </calculatedAttribute>
+      </calculatedAttribute>
     <calculatedAttribute id="ORDER_DATE_DAY" order="79" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Order Date (Day)"/>
       <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
         <formula>EXTRACT_DAY(&quot;ORDER_DATE&quot;)</formula>
       </keyCalculation>
-    </calculatedAttribute>
+      </calculatedAttribute>
   
     <calculatedAttribute id="ORDER_DATE_MONTH_NUMBER" order="80" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Order Date (Month Number)"/>
+  
       <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
+  
         <formula>MONTH(&quot;ORDER_DATE&quot;)
 </formula>
+  
       </keyCalculation>
-    </calculatedAttribute>
+      </calculatedAttribute>
   </calculatedAttributes>
   <baseMeasures>
     <measure id="ORDER_QTY" order="20" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="Order Quantity (SOC)"/>
-      <measureMapping columnObjectName="Join_1_5" columnName="ORDER_QTY"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="ORDER_QTY"/>
     </measure>
     <measure id="SHIP_QTY" order="43" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="Ship Qty (SC)"/>
-      <measureMapping columnObjectName="Join_1_5" columnName="SHIP_QTY"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="SHIP_QTY"/>
     </measure>
     <measure id="MPQTY" order="51" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="MP QTY (Deal)"/>
-      <measureMapping columnObjectName="Join_1_5" columnName="MPQTY"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="MPQTY"/>
     </measure>
     <measure id="QUANTITY" order="74" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="QUANTITY (HSO)"/>
-      <measureMapping columnObjectName="Join_1_5" columnName="QUANTITY"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="QUANTITY"/>
+    </measure>
+  
+    <measure id="EST_TOT_K" order="81" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="EST_TOT_K"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="EST_TOT_K"/>
     </measure>
   </baseMeasures>
   <calculatedMeasures>
     <measure id="COUNTER" order="76" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="SQL">
       <formula>1</formula>
+      
+      
       </measure>
   </calculatedMeasures>
   <restrictedMeasures/>
@@ -1043,6 +1257,22 @@ LOWER(SUBSTR(MONTHNAME(&quot;ORDER_DATE&quot;),2,2))
             <level levelAttribute="ORDER_DATE_YEAR" levelType="MDLEVEL_TYPE_TIME_YEARS" order="1" orderAttribute="ORDER_DATE_YEAR" sortDirection="ASC"/>
             <level levelAttribute="ORDER_DATE_MONTH" levelType="MDLEVEL_TYPE_TIME_MONTHS" order="2" orderAttribute="ORDER_DATE_MONTH_NUMBER" sortDirection="ASC"/>
             <level levelAttribute="ORDER_DATE" levelType="MDLEVEL_TYPE_TIME_DAYS" order="3" orderAttribute="ORDER_DATE" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+    <localDimension id="SKU_PRODUCT_HIERARCHY">
+      <attributeRef xsi:type="DataFoundation:Attribute">BUSINESS_SEGMENT</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">OPTIONS_CATEGORY</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">SKU</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="SKU_PRODUCT_HIERARCHY" aggregateAllNodes="false" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_PATH_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="SKU_PRODUCT_HIERARCHY"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="BUSINESS_SEGMENT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="BUSINESS_SEGMENT" sortDirection="ASC"/>
+            <level levelAttribute="OPTIONS_CATEGORY" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="OPTIONS_CATEGORY" sortDirection="ASC"/>
+            <level levelAttribute="SKU" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="SKU" sortDirection="ASC"/>
           </levels>
         </hierarchy>
       </hierarchies>
@@ -1078,14 +1308,19 @@ LOWER(SUBSTR(MONTHNAME(&quot;ORDER_DATE&quot;),2,2))
       <upperLeftCorner x="586" y="329"/>
       <rectangleSize width="272"/>
     </shape>
+    <shape modelObjectName="HIST_SALES_ORDER_S4" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="278" y="290"/>
+      <rectangleSize width="235"/>
+    </shape>
   
     <shape modelObjectName="DEAL_HISTORY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="648" y="-15"/>
       <rectangleSize width="199"/>
     </shape>
-    <shape modelObjectName="HIST_SALES_ORDER_S4" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
-      <upperLeftCorner x="278" y="290"/>
-      <rectangleSize width="235"/>
+  
+    <shape modelObjectName="QUOTE_OPP" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="1274" y="5"/>
+      <rectangleSize width="232"/>
     </shape>
   </shapes>
 </layout>

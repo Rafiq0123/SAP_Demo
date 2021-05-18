@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_SUPPLY_ANALYSIS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_SUPPLY_ANALYSIS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PO_DELIVERY">
+    <resourceUri>PO_DELIVERY</resourceUri>
+  </DataSource>
+  <DataSource id="INVENTORY">
+    <resourceUri>INVENTORY</resourceUri>
+  </DataSource>
+  <DataSource id="PRODUCTION_ITEM">
+    <resourceUri>PRODUCTION_ITEM</resourceUri>
+  </DataSource>
+  <DataSource id="PRODUCTION_HEADER">
+    <resourceUri>PRODUCTION_HEADER</resourceUri>
+  </DataSource>
+  <DataSource id="LOCATION_PRODUCT">
+    <resourceUri>LOCATION_PRODUCT</resourceUri>
+  </DataSource>
+  <DataSource id="LOCATION_SOURCE">
+    <resourceUri>LOCATION_SOURCE</resourceUri>
+  </DataSource>
+  <DataSource id="LOCATION">
+    <resourceUri>LOCATION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="LOCATION_PRODUCT" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="PART"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="PO_QTY" aggregationType="sum"/>
+      <viewAttribute id="DELIVERY_DATE"/>
+      <viewAttribute id="LOCATION_ID"/>
+      <viewAttribute id="COMPONENT"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="TOT_ONHAND_QTY" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PO_DELIVERY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PART" source="PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_QTY" source="PO_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
+    </input>
+    <input node="INVENTORY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION_ID" source="LOCATION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENT" source="COMPONENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOT_ONHAND_QTY" source="TOT_ONHAND_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="LOCATION_ID"/>
+    </input>
+    <joinAttribute name="PLANT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="LOCATION_PRODUCT" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="Item_Number"/>
+      <viewAttribute id="Header_Material_Number"/>
+      <viewAttribute id="Component_Material_Number"/>
+      <viewAttribute id="Component_Coefficient" aggregationType="sum"/>
+      <viewAttribute id="Component_Coefficient_Time_Series_ID"/>
+      <viewAttribute id="Item_Demand_Type"/>
+      <viewAttribute id="VALID_FROM"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="KEY_FIGURE_DATE"/>
+      <viewAttribute id="HM"/>
+      <viewAttribute id="CM"/>
+      <viewAttribute id="PART"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="PO_QTY" aggregationType="sum"/>
+      <viewAttribute id="DELIVERY_DATE"/>
+      <viewAttribute id="LOCATION_ID"/>
+      <viewAttribute id="COMPONENT"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="TOT_ONHAND_QTY" aggregationType="sum"/>
+      <viewAttribute id="LOC_PROD"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PRODUCTION_ITEM">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Item_Number" source="Item Number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Header_Material_Number" source="Header Material Number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_Material_Number" source="Component Material Number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_Coefficient" source="Component Coefficient"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_Coefficient_Time_Series_ID" source="Component Coefficient Time Series ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Item_Demand_Type" source="Item Demand Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_FROM" source="VALID_FROM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_TO" source="VALID_TO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KEY_FIGURE_DATE" source="KEY_FIGURE_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HM" source="HM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="CM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_PROD" source="LOC_PROD"/>
+    </input>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PART" source="PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_QTY" source="PO_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION_ID" source="LOCATION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENT" source="COMPONENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOT_ONHAND_QTY" source="TOT_ONHAND_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Header_Material_Number" source="PART"/>
+    </input>
+    <joinAttribute name="Header_Material_Number"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="LOCATION_PRODUCT" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="LOC_PROD"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="LOCATION"/>
+      <viewAttribute id="Source_Type"/>
+      <viewAttribute id="Component_quantity" aggregationType="sum"/>
+      <viewAttribute id="Output_Coefficient" aggregationType="sum"/>
+      <viewAttribute id="Prod__Ratio" aggregationType="sum"/>
+      <viewAttribute id="Demand_Type"/>
+      <viewAttribute id="Planning_Unit_ID"/>
+      <viewAttribute id="Lead_Time" aggregationType="sum"/>
+      <viewAttribute id="Item_Number"/>
+      <viewAttribute id="Header_Material_Number"/>
+      <viewAttribute id="Component_Material_Number"/>
+      <viewAttribute id="Component_Coefficient" aggregationType="sum"/>
+      <viewAttribute id="Component_Coefficient_Time_Series_ID"/>
+      <viewAttribute id="Item_Demand_Type"/>
+      <viewAttribute id="VALID_FROM"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="KEY_FIGURE_DATE"/>
+      <viewAttribute id="HM"/>
+      <viewAttribute id="CM"/>
+      <viewAttribute id="PART"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="PO_QTY" aggregationType="sum"/>
+      <viewAttribute id="DELIVERY_DATE"/>
+      <viewAttribute id="LOCATION_ID"/>
+      <viewAttribute id="COMPONENT"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="TOT_ONHAND_QTY" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PRODUCTION_HEADER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_PROD" source="LOC_PROD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION" source="LOCATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Source_Type" source="Source Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_quantity" source="Component quantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Output_Coefficient" source="Output Coefficient"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Prod__Ratio" source="Prod. Ratio"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Demand_Type" source="Demand Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Planning_Unit_ID" source="Planning Unit ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Lead_Time" source="Lead Time"/>
+    </input>
+    <input node="Join_1_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Item_Number" source="Item_Number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Header_Material_Number" source="Header_Material_Number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_Material_Number" source="Component_Material_Number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_Coefficient" source="Component_Coefficient"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_Coefficient_Time_Series_ID" source="Component_Coefficient_Time_Series_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Item_Demand_Type" source="Item_Demand_Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_FROM" source="VALID_FROM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_TO" source="VALID_TO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KEY_FIGURE_DATE" source="KEY_FIGURE_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HM" source="HM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="CM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PART" source="PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_QTY" source="PO_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION_ID" source="LOCATION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENT" source="COMPONENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOT_ONHAND_QTY" source="TOT_ONHAND_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_PROD" source="LOC_PROD"/>
+    </input>
+    <joinAttribute name="LOC_PROD"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_4" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="LOCATION_PRODUCT" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="IBP_LOCATION_ID"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Generic_Flag"/>
+      <viewAttribute id="End_of_Life_Date"/>
+      <viewAttribute id="Coverage_Days" aggregationType="sum"/>
+      <viewAttribute id="Frozen_Horizon" aggregationType="sum"/>
+      <viewAttribute id="Location_Prod_Att_01"/>
+      <viewAttribute id="Location_Prod_Att_02"/>
+      <viewAttribute id="Subnetwork"/>
+      <viewAttribute id="Safety_Stock" aggregationType="sum"/>
+      <viewAttribute id="Block_Status" aggregationType="sum"/>
+      <viewAttribute id="ZMOD_Indicator"/>
+      <viewAttribute id="MRP_Controller_ID"/>
+      <viewAttribute id="NPI_Technology"/>
+      <viewAttribute id="Purchasing_Grp_Name"/>
+      <viewAttribute id="Purchasing_Group_ID"/>
+      <viewAttribute id="IBP_Forecast_Relevnt"/>
+      <viewAttribute id="IBP_Relevant"/>
+      <viewAttribute id="PBOM_Generation_ref"/>
+      <viewAttribute id="Valid_From_Override"/>
+      <viewAttribute id="Valid_To_Override"/>
+      <viewAttribute id="Procurement_Type"/>
+      <viewAttribute id="Regional_CTR"/>
+      <viewAttribute id="REGIONAL_DISC_DATE"/>
+      <viewAttribute id="REGIONAL_INTRO_DATE"/>
+      <viewAttribute id="REGIONAL_OBS_DATE"/>
+      <viewAttribute id="Location_From"/>
+      <viewAttribute id="Product_ID"/>
+      <viewAttribute id="Lead_Time_1" aggregationType="sum"/>
+      <viewAttribute id="Ratio_Time_Serie_Ind"/>
+      <viewAttribute id="Location_Trans_Ratio" aggregationType="sum"/>
+      <viewAttribute id="Scope_Locat__Source" aggregationType="sum"/>
+      <viewAttribute id="VALID_FROM_1"/>
+      <viewAttribute id="VALID_TO_1"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="LOCATION_PRODUCT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_LOCATION_ID" source="IBP_LOCATION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Generic_Flag" source="Generic Flag"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="End_of_Life_Date" source="End of Life Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Coverage_Days" source="Coverage Days"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Frozen_Horizon" source="Frozen Horizon"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_Prod_Att_01" source="Location Prod Att 01"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_Prod_Att_02" source="Location Prod Att 02"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subnetwork" source="Subnetwork"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Safety_Stock" source="Safety Stock"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Block_Status" source="Block Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZMOD_Indicator" source="ZMOD Indicator"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRP_Controller_ID" source="MRP Controller ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NPI_Technology" source="NPI Technology"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Purchasing_Grp_Name" source="Purchasing Grp Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Purchasing_Group_ID" source="Purchasing Group ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_Forecast_Relevnt" source="IBP Forecast Relevnt"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_Relevant" source="IBP Relevant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PBOM_Generation_ref" source="PBOM Generation ref"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Valid_From_Override" source="Valid From Override"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Valid_To_Override" source="Valid To Override"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Procurement_Type" source="Procurement Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Regional_CTR" source="Regional CTR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_DISC_DATE" source="REGIONAL_DISC_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_INTRO_DATE" source="REGIONAL_INTRO_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_OBS_DATE" source="REGIONAL_OBS_DATE"/>
+    </input>
+    <input node="LOCATION_SOURCE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_From" source="Location From"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_ID" source="Product ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Lead_Time_1" source="Lead Time"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Ratio_Time_Serie_Ind" source="Ratio Time Serie Ind"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_Trans_Ratio" source="Location Trans Ratio"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Scope_Locat__Source" source="Scope Locat. Source"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_FROM_1" source="VALID_FROM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_TO_1" source="VALID_TO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_LOCATION_ID" source="IBP_LOCATION_ID"/>
+    </input>
+    <joinAttribute name="IBP_LOCATION_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_5" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="LOCATION_PRODUCT" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="IBP_LOCATION_ID"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Generic_Flag"/>
+      <viewAttribute id="End_of_Life_Date"/>
+      <viewAttribute id="Coverage_Days" aggregationType="sum"/>
+      <viewAttribute id="Frozen_Horizon" aggregationType="sum"/>
+      <viewAttribute id="Location_Prod_Att_01"/>
+      <viewAttribute id="Location_Prod_Att_02"/>
+      <viewAttribute id="Subnetwork"/>
+      <viewAttribute id="Safety_Stock" aggregationType="sum"/>
+      <viewAttribute id="Block_Status" aggregationType="sum"/>
+      <viewAttribute id="ZMOD_Indicator"/>
+      <viewAttribute id="MRP_Controller_ID"/>
+      <viewAttribute id="NPI_Technology"/>
+      <viewAttribute id="Purchasing_Grp_Name"/>
+      <viewAttribute id="Purchasing_Group_ID"/>
+      <viewAttribute id="IBP_Forecast_Relevnt"/>
+      <viewAttribute id="IBP_Relevant"/>
+      <viewAttribute id="PBOM_Generation_ref"/>
+      <viewAttribute id="Valid_From_Override"/>
+      <viewAttribute id="Valid_To_Override"/>
+      <viewAttribute id="Procurement_Type"/>
+      <viewAttribute id="Regional_CTR"/>
+      <viewAttribute id="REGIONAL_DISC_DATE"/>
+      <viewAttribute id="REGIONAL_INTRO_DATE"/>
+      <viewAttribute id="REGIONAL_OBS_DATE"/>
+      <viewAttribute id="LOC_DESC"/>
+      <viewAttribute id="LOC_REGION"/>
+      <viewAttribute id="LOC_TYPE"/>
+      <viewAttribute id="Location_From"/>
+      <viewAttribute id="Product_ID"/>
+      <viewAttribute id="Lead_Time_1" aggregationType="sum"/>
+      <viewAttribute id="Ratio_Time_Serie_Ind"/>
+      <viewAttribute id="Location_Trans_Ratio" aggregationType="sum"/>
+      <viewAttribute id="Scope_Locat__Source" aggregationType="sum"/>
+      <viewAttribute id="VALID_FROM_1"/>
+      <viewAttribute id="VALID_TO_1"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1_4">
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_LOCATION_ID" source="IBP_LOCATION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Generic_Flag" source="Generic_Flag"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="End_of_Life_Date" source="End_of_Life_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Coverage_Days" source="Coverage_Days"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Frozen_Horizon" source="Frozen_Horizon"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_Prod_Att_01" source="Location_Prod_Att_01"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_Prod_Att_02" source="Location_Prod_Att_02"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subnetwork" source="Subnetwork"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Safety_Stock" source="Safety_Stock"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Block_Status" source="Block_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZMOD_Indicator" source="ZMOD_Indicator"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRP_Controller_ID" source="MRP_Controller_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NPI_Technology" source="NPI_Technology"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Purchasing_Grp_Name" source="Purchasing_Grp_Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Purchasing_Group_ID" source="Purchasing_Group_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_Forecast_Relevnt" source="IBP_Forecast_Relevnt"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_Relevant" source="IBP_Relevant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PBOM_Generation_ref" source="PBOM_Generation_ref"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Valid_From_Override" source="Valid_From_Override"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Valid_To_Override" source="Valid_To_Override"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Procurement_Type" source="Procurement_Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Regional_CTR" source="Regional_CTR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_DISC_DATE" source="REGIONAL_DISC_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_INTRO_DATE" source="REGIONAL_INTRO_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_OBS_DATE" source="REGIONAL_OBS_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_From" source="Location_From"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_ID" source="Product_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Lead_Time_1" source="Lead_Time_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Ratio_Time_Serie_Ind" source="Ratio_Time_Serie_Ind"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_Trans_Ratio" source="Location_Trans_Ratio"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Scope_Locat__Source" source="Scope_Locat__Source"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_FROM_1" source="VALID_FROM_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_TO_1" source="VALID_TO_1"/>
+    </input>
+    <input node="LOCATION">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_DESC" source="LOC_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_REGION" source="LOC_REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_TYPE" source="LOC_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_LOCATION_ID" source="IBP_LOCATION_ID"/>
+    </input>
+    <joinAttribute name="IBP_LOCATION_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_6" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="LOCATION_PRODUCT" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="IBP_LOCATION_ID"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Generic_Flag"/>
+      <viewAttribute id="End_of_Life_Date"/>
+      <viewAttribute id="Coverage_Days" aggregationType="sum"/>
+      <viewAttribute id="Frozen_Horizon" aggregationType="sum"/>
+      <viewAttribute id="Location_Prod_Att_01"/>
+      <viewAttribute id="Location_Prod_Att_02"/>
+      <viewAttribute id="Subnetwork"/>
+      <viewAttribute id="Safety_Stock" aggregationType="sum"/>
+      <viewAttribute id="Block_Status" aggregationType="sum"/>
+      <viewAttribute id="ZMOD_Indicator"/>
+      <viewAttribute id="MRP_Controller_ID"/>
+      <viewAttribute id="NPI_Technology"/>
+      <viewAttribute id="Purchasing_Grp_Name"/>
+      <viewAttribute id="Purchasing_Group_ID"/>
+      <viewAttribute id="IBP_Forecast_Relevnt"/>
+      <viewAttribute id="IBP_Relevant"/>
+      <viewAttribute id="PBOM_Generation_ref"/>
+      <viewAttribute id="Valid_From_Override"/>
+      <viewAttribute id="Valid_To_Override"/>
+      <viewAttribute id="Procurement_Type"/>
+      <viewAttribute id="Regional_CTR"/>
+      <viewAttribute id="REGIONAL_DISC_DATE"/>
+      <viewAttribute id="REGIONAL_INTRO_DATE"/>
+      <viewAttribute id="REGIONAL_OBS_DATE"/>
+      <viewAttribute id="LOC_PROD"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="LOCATION"/>
+      <viewAttribute id="Source_Type"/>
+      <viewAttribute id="Component_quantity" aggregationType="sum"/>
+      <viewAttribute id="Output_Coefficient" aggregationType="sum"/>
+      <viewAttribute id="Prod__Ratio" aggregationType="sum"/>
+      <viewAttribute id="Demand_Type"/>
+      <viewAttribute id="Planning_Unit_ID"/>
+      <viewAttribute id="Lead_Time" aggregationType="sum"/>
+      <viewAttribute id="Item_Number"/>
+      <viewAttribute id="Header_Material_Number"/>
+      <viewAttribute id="Component_Material_Number"/>
+      <viewAttribute id="Component_Coefficient" aggregationType="sum"/>
+      <viewAttribute id="Component_Coefficient_Time_Series_ID"/>
+      <viewAttribute id="Item_Demand_Type"/>
+      <viewAttribute id="VALID_FROM"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="KEY_FIGURE_DATE"/>
+      <viewAttribute id="HM"/>
+      <viewAttribute id="CM"/>
+      <viewAttribute id="LOC_DESC"/>
+      <viewAttribute id="LOC_REGION"/>
+      <viewAttribute id="LOC_TYPE"/>
+      <viewAttribute id="Location_From"/>
+      <viewAttribute id="Product_ID"/>
+      <viewAttribute id="Lead_Time_1" aggregationType="sum"/>
+      <viewAttribute id="Ratio_Time_Serie_Ind"/>
+      <viewAttribute id="Location_Trans_Ratio" aggregationType="sum"/>
+      <viewAttribute id="Scope_Locat__Source" aggregationType="sum"/>
+      <viewAttribute id="VALID_FROM_1"/>
+      <viewAttribute id="VALID_TO_1"/>
+      <viewAttribute id="PART"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="PO_QTY" aggregationType="sum"/>
+      <viewAttribute id="DELIVERY_DATE"/>
+      <viewAttribute id="LOCATION_ID"/>
+      <viewAttribute id="COMPONENT"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="TOT_ONHAND_QTY" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1_5">
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_LOCATION_ID" source="IBP_LOCATION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Generic_Flag" source="Generic_Flag"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="End_of_Life_Date" source="End_of_Life_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Coverage_Days" source="Coverage_Days"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Frozen_Horizon" source="Frozen_Horizon"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_Prod_Att_01" source="Location_Prod_Att_01"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_Prod_Att_02" source="Location_Prod_Att_02"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Subnetwork" source="Subnetwork"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Safety_Stock" source="Safety_Stock"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Block_Status" source="Block_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZMOD_Indicator" source="ZMOD_Indicator"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRP_Controller_ID" source="MRP_Controller_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NPI_Technology" source="NPI_Technology"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Purchasing_Grp_Name" source="Purchasing_Grp_Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Purchasing_Group_ID" source="Purchasing_Group_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_Forecast_Relevnt" source="IBP_Forecast_Relevnt"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_Relevant" source="IBP_Relevant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PBOM_Generation_ref" source="PBOM_Generation_ref"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Valid_From_Override" source="Valid_From_Override"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Valid_To_Override" source="Valid_To_Override"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Procurement_Type" source="Procurement_Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Regional_CTR" source="Regional_CTR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_DISC_DATE" source="REGIONAL_DISC_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_INTRO_DATE" source="REGIONAL_INTRO_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_OBS_DATE" source="REGIONAL_OBS_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_DESC" source="LOC_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_REGION" source="LOC_REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_TYPE" source="LOC_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_From" source="Location_From"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_ID" source="Product_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Lead_Time_1" source="Lead_Time_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Ratio_Time_Serie_Ind" source="Ratio_Time_Serie_Ind"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Location_Trans_Ratio" source="Location_Trans_Ratio"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Scope_Locat__Source" source="Scope_Locat__Source"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_FROM_1" source="VALID_FROM_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_TO_1" source="VALID_TO_1"/>
+    </input>
+    <input node="Join_1_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_PROD" source="LOC_PROD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION" source="LOCATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Source_Type" source="Source_Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_quantity" source="Component_quantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Output_Coefficient" source="Output_Coefficient"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Prod__Ratio" source="Prod__Ratio"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Demand_Type" source="Demand_Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Planning_Unit_ID" source="Planning_Unit_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Lead_Time" source="Lead_Time"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Item_Number" source="Item_Number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Header_Material_Number" source="Header_Material_Number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_Material_Number" source="Component_Material_Number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_Coefficient" source="Component_Coefficient"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_Coefficient_Time_Series_ID" source="Component_Coefficient_Time_Series_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Item_Demand_Type" source="Item_Demand_Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_FROM" source="VALID_FROM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_TO" source="VALID_TO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KEY_FIGURE_DATE" source="KEY_FIGURE_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HM" source="HM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="CM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PART" source="PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_QTY" source="PO_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION_ID" source="LOCATION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENT" source="COMPONENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOT_ONHAND_QTY" source="TOT_ONHAND_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="MATERIAL"/>
+    </input>
+    <joinAttribute name="Material"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1_6">
+  <attributes>
+    <attribute id="IBP_LOCATION_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IBP_LOCATION_ID"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="IBP_LOCATION_ID"/>
+    </attribute>
+    <attribute id="Material" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Material (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Material"/>
+    </attribute>
+    <attribute id="Generic_Flag" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Generic Flag (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Generic_Flag"/>
+    </attribute>
+    <attribute id="End_of_Life_Date" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="End of Life Date (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="End_of_Life_Date"/>
+    </attribute>
+    <attribute id="Location_Prod_Att_01" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Location_Prod_Att_01 (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Location_Prod_Att_01"/>
+    </attribute>
+    <attribute id="Location_Prod_Att_02" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Location_Prod_Att_02 (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Location_Prod_Att_02"/>
+    </attribute>
+    <attribute id="Subnetwork" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Subnetwork (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Subnetwork"/>
+    </attribute>
+    <attribute id="ZMOD_Indicator" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZMOD_Indicator (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="ZMOD_Indicator"/>
+    </attribute>
+    <attribute id="MRP_Controller_ID" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MRP_Controller_ID (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="MRP_Controller_ID"/>
+    </attribute>
+    <attribute id="NPI_Technology" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NPI_Technology (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="NPI_Technology"/>
+    </attribute>
+    <attribute id="Purchasing_Grp_Name" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Purchasing_Grp_Name (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Purchasing_Grp_Name"/>
+    </attribute>
+    <attribute id="Purchasing_Group_ID" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Purchasing_Group_ID (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Purchasing_Group_ID"/>
+    </attribute>
+    <attribute id="IBP_Forecast_Relevnt" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IBP_Forecast_Relevnt (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="IBP_Forecast_Relevnt"/>
+    </attribute>
+    <attribute id="IBP_Relevant" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IBP_Relevant (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="IBP_Relevant"/>
+    </attribute>
+    <attribute id="PBOM_Generation_ref" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PBOM_Generation_ref (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="PBOM_Generation_ref"/>
+    </attribute>
+    <attribute id="Valid_From_Override" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Valid_From_Override (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Valid_From_Override"/>
+    </attribute>
+    <attribute id="Valid_To_Override" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Valid_To_Override (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Valid_To_Override"/>
+    </attribute>
+    <attribute id="Procurement_Type" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Procurement_Type (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Procurement_Type"/>
+    </attribute>
+    <attribute id="Regional_CTR" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Regional_CTR (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Regional_CTR"/>
+    </attribute>
+    <attribute id="REGIONAL_DISC_DATE" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGIONAL_DISC_DATE (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="REGIONAL_DISC_DATE"/>
+    </attribute>
+    <attribute id="REGIONAL_INTRO_DATE" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGIONAL_INTRO_DATE (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="REGIONAL_INTRO_DATE"/>
+    </attribute>
+    <attribute id="REGIONAL_OBS_DATE" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGIONAL_OBS_DATE (Loc.Prod)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="REGIONAL_OBS_DATE"/>
+    </attribute>
+    <attribute id="LOC_PROD" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOC_PROD (Prod. Header)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="LOC_PROD"/>
+    </attribute>
+    <attribute id="MATERIAL" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATERIAL (Prod. Header)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="MATERIAL"/>
+    </attribute>
+    <attribute id="LOCATION" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOCATION (Prod. Header)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="LOCATION"/>
+    </attribute>
+    <attribute id="Source_Type" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source_Type (Prod. Header)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Source_Type"/>
+    </attribute>
+    <attribute id="Demand_Type" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Demand_Type (Prod. Header)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Demand_Type"/>
+    </attribute>
+    <attribute id="Planning_Unit_ID" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Planning_Unit_ID (Prod. Header)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Planning_Unit_ID"/>
+    </attribute>
+    <attribute id="Item_Number" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Item_Number (Prod. Item)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Item_Number"/>
+    </attribute>
+    <attribute id="Header_Material_Number" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Header_Material_Number (Prod. Item)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Header_Material_Number"/>
+    </attribute>
+    <attribute id="Component_Material_Number" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Component_Material_Number (Prod. Item)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Component_Material_Number"/>
+    </attribute>
+    <attribute id="Component_Coefficient_Time_Series_ID" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Component_Coefficient_Time_Series_ID (Prod. Item)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Component_Coefficient_Time_Series_ID"/>
+    </attribute>
+    <attribute id="Item_Demand_Type" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Item_Demand_Type (Prod. Item)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Item_Demand_Type"/>
+    </attribute>
+    <attribute id="VALID_FROM" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Valid From (Prod. Item)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="VALID_FROM"/>
+    </attribute>
+    <attribute id="VALID_TO" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Valid To (Prod. Item)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="VALID_TO"/>
+    </attribute>
+    <attribute id="KEY_FIGURE_DATE" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KEY_FIGURE_DATE (Prod. Item)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="KEY_FIGURE_DATE"/>
+    </attribute>
+    <attribute id="HM" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HM"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="HM"/>
+    </attribute>
+    <attribute id="CM" order="47" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CM"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="CM"/>
+    </attribute>
+    <attribute id="LOC_DESC" order="48" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOC_DESC (Location)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="LOC_DESC"/>
+    </attribute>
+    <attribute id="LOC_REGION" order="49" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOC_REGION (Location)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="LOC_REGION"/>
+    </attribute>
+    <attribute id="LOC_TYPE" order="50" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOC_TYPE (Location)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="LOC_TYPE"/>
+    </attribute>
+    <attribute id="Location_From" order="51" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Location_From (Loc. Source)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Location_From"/>
+    </attribute>
+    <attribute id="Product_ID" order="52" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_ID (Loc. Source)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Product_ID"/>
+    </attribute>
+    <attribute id="Ratio_Time_Serie_Ind" order="54" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Ratio_Time_Serie_Ind (Loc. Source)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="Ratio_Time_Serie_Ind"/>
+    </attribute>
+    <attribute id="VALID_FROM_1" order="57" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Valid From (Loc. Source)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="VALID_FROM_1"/>
+    </attribute>
+    <attribute id="VALID_TO_1" order="58" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Valid To (Loc. Source)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="VALID_TO_1"/>
+    </attribute>
+    <attribute id="PART" order="59" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PART (PO Delivery)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="PART"/>
+    </attribute>
+    <attribute id="PLANT" order="60" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PLANT (PO Delivery)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="PLANT"/>
+    </attribute>
+    <attribute id="DELIVERY_DATE" order="62" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELIVERY_DATE (PO Delivery)"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="DELIVERY_DATE"/>
+    </attribute>
+    <attribute id="LOCATION_ID" order="63" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOCATION_ID"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="LOCATION_ID"/>
+    </attribute>
+    <attribute id="COMPONENT" order="64" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPONENT"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="COMPONENT"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="65" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_1_6" columnName="DESCRIPTION"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="Coverage_Days" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Coverage Days (Loc.Prod)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Coverage_Days"/>
+    </measure>
+    <measure id="Frozen_Horizon" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Frozen Horizon (Loc.Prod)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Frozen_Horizon"/>
+    </measure>
+    <measure id="Safety_Stock" order="10" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Safety_Stock (Loc.Prod)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Safety_Stock"/>
+    </measure>
+    <measure id="Block_Status" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Block_Status (Loc.Prod)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Block_Status"/>
+    </measure>
+    <measure id="Component_quantity" order="31" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Component_quantity (Prod. Header)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Component_quantity"/>
+    </measure>
+    <measure id="Output_Coefficient" order="32" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Output_Coefficient (Prod. Header)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Output_Coefficient"/>
+    </measure>
+    <measure id="Prod__Ratio" order="33" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Prod__Ratio (Prod. Header)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Prod__Ratio"/>
+    </measure>
+    <measure id="Lead_Time" order="36" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Lead Time (Prod. Header)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Lead_Time"/>
+    </measure>
+    <measure id="Component_Coefficient" order="40" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Component_Coefficient (Prod. Item)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Component_Coefficient"/>
+    </measure>
+    <measure id="Lead_Time_1" order="53" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Lead Time (Loc. Source)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Lead_Time_1"/>
+    </measure>
+    <measure id="Location_Trans_Ratio" order="55" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Location_Trans_Ratio (Loc. Source)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Location_Trans_Ratio"/>
+    </measure>
+    <measure id="Scope_Locat__Source" order="56" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Scope_Locat__Source (Loc. Source)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="Scope_Locat__Source"/>
+    </measure>
+    <measure id="PO_QTY" order="61" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PO_QTY (PO Delivery)"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="PO_QTY"/>
+    </measure>
+    <measure id="TOT_ONHAND_QTY" order="66" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TOT_ONHAND_QTY"/>
+      <measureMapping columnObjectName="Join_1_6" columnName="TOT_ONHAND_QTY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="87" y="209"/>
+      <rectangleSize height="30" width="173"/>
+    </shape>
+    <shape modelObjectName="LOCATION_PRODUCT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="7" y="35"/>
+      <rectangleSize width="194.82373046875"/>
+    </shape>
+    <shape modelObjectName="PRODUCTION_HEADER" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="202.01171875"/>
+    </shape>
+    <shape modelObjectName="PRODUCTION_ITEM" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="273.08056640625"/>
+    </shape>
+    <shape modelObjectName="LOCATION" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="327" y="302"/>
+      <rectangleSize width="182.37890625"/>
+    </shape>
+    <shape modelObjectName="LOCATION_SOURCE" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="291" y="436"/>
+      <rectangleSize width="188.12060546875"/>
+    </shape>
+    <shape modelObjectName="PO_DELIVERY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="691" y="349"/>
+      <rectangleSize width="174.8486328125"/>
+    </shape>
+    <shape modelObjectName="INVENTORY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="696" y="513"/>
+      <rectangleSize width="190.31201171875"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

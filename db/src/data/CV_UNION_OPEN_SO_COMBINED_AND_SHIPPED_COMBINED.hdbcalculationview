@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_UNION_OPEN_SO_COMBINED_AND_SHIPPED_COMBINED" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_UNION_OPEN_SO_COMBINED_AND_SHIPPED_COMBINED"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="CV_OPEN_SALES_ORDER_COMBINED">
+    <resourceUri>CV_OPEN_SALES_ORDER_COMBINED</resourceUri>
+  </DataSource>
+  <DataSource id="CV_SHIPMENTS_COMBINED">
+    <resourceUri>CV_SHIPMENTS_COMBINED</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="SALES_ORDER"/>
+      <viewAttribute id="OpportunityID"/>
+      <viewAttribute id="ITEM"/>
+      <viewAttribute id="HIGHER_LEVEL_ITEM"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="REQ_DATE"/>
+      <viewAttribute id="GI_DATE"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="ORDER_QTY" aggregationType="sum"/>
+      <viewAttribute id="SALES_ORG"/>
+      <viewAttribute id="CUSTOMER"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="HPQUOTE"/>
+      <viewAttribute id="SO_DATA_SOURCE"/>
+      <viewAttribute id="DELIVERY"/>
+      <viewAttribute id="SINGLE_DELIVERY_FLAG"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="IBP_CUSTOMER_ID"/>
+      <viewAttribute id="SALES_DOC_TYPE"/>
+      <viewAttribute id="ITEM_CATEGORY"/>
+      <viewAttribute id="PLANNED_GDS_MOVEMENT_DATE"/>
+      <viewAttribute id="DELIVERY_DATE"/>
+      <viewAttribute id="SHIP_QTY" aggregationType="sum"/>
+      <viewAttribute id="HLI"/>
+    
+      <viewAttribute id="SHIPMENT_DATA_SOURCE"/>
+    
+      <viewAttribute id="SHIPPED_OR_SO_DATA_SOURCE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CV_OPEN_SALES_ORDER_COMBINED" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="OpportunityID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HIGHER_LEVEL_ITEM" source="HIGHER_LEVEL_ITEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REQ_DATE" null="true"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GI_DATE" source="GI_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORG" source="SALES_ORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER" source="CUSTOMER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="HPQUOTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_DATA_SOURCE" source="SO_DATA_SOURCE"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DELIVERY" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SINGLE_DELIVERY_FLAG" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIVISION" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IBP_CUSTOMER_ID" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_DOC_TYPE" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ITEM_CATEGORY" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PLANNED_GDS_MOVEMENT_DATE" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DELIVERY_DATE" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SHIP_QTY" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HLI" null="true" value=""/>
+    
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SHIPMENT_DATA_SOURCE" null="true" value=""/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIPPED_OR_SO_DATA_SOURCE" source="SHIPPED_OR_SO_DATA_SOURCE"/>
+    </input>
+    <input node="CV_SHIPMENTS_COMBINED" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_DOCUMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OpportunityID" source="SALESFORCE_OPP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM" source="ITEM"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HIGHER_LEVEL_ITEM" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DATE" source="REQ_DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GI_DATE" source="GI_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ORDER_QTY" null="true"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORG" source="SALES_ORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER" source="CUSTOMER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HPQUOTE" source="QUOTE_NO"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SO_DATA_SOURCE" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY" source="DELIVERY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SINGLE_DELIVERY_FLAG" source="SINGLE_DELIVERY_FLAG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IBP_CUSTOMER_ID" source="IBP_CUSTOMER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOC_TYPE" source="SALES_DOC_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_CATEGORY" source="ITEM_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANNED_GDS_MOVEMENT_DATE" source="PLANNED_GDS_MOVEMENT_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_QTY" source="SHIP_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HLI" source="HLI"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIPMENT_DATA_SOURCE" source="SHIPMENT_DATA_SOURCE"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHIPPED_OR_SO_DATA_SOURCE" source="SHIPPED_OR_SO_DATA_SOURCE"/>
+    </input>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Union_1">
+  <attributes>
+    <attribute id="SALES_ORDER" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales Order"/>
+      <keyMapping columnObjectName="Union_1" columnName="SALES_ORDER"/>
+    </attribute>
+    <attribute id="OpportunityID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Opportunity ID"/>
+      <keyMapping columnObjectName="Union_1" columnName="OpportunityID"/>
+    </attribute>
+    <attribute id="ITEM" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Item"/>
+      <keyMapping columnObjectName="Union_1" columnName="ITEM"/>
+    </attribute>
+    <attribute id="HIGHER_LEVEL_ITEM" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Higher-Level Item"/>
+      <keyMapping columnObjectName="Union_1" columnName="HIGHER_LEVEL_ITEM"/>
+    </attribute>
+    <attribute id="MATERIAL" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Material"/>
+      <keyMapping columnObjectName="Union_1" columnName="MATERIAL"/>
+    </attribute>
+    <attribute id="PLANT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Plant"/>
+      <keyMapping columnObjectName="Union_1" columnName="PLANT"/>
+    </attribute>
+    <attribute id="REQ_DATE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Req. Date"/>
+      <keyMapping columnObjectName="Union_1" columnName="REQ_DATE"/>
+    </attribute>
+    <attribute id="GI_DATE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GI Date"/>
+      <keyMapping columnObjectName="Union_1" columnName="GI_DATE"/>
+    </attribute>
+    <attribute id="ORDER_DATE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Order Date"/>
+      <keyMapping columnObjectName="Union_1" columnName="ORDER_DATE"/>
+    </attribute>
+    <attribute id="SALES_ORG" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Oales Org."/>
+      <keyMapping columnObjectName="Union_1" columnName="SALES_ORG"/>
+    </attribute>
+    <attribute id="CUSTOMER" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer"/>
+      <keyMapping columnObjectName="Union_1" columnName="CUSTOMER"/>
+    </attribute>
+    <attribute id="COUNTRY" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Country"/>
+      <keyMapping columnObjectName="Union_1" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="HPQUOTE" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Quote ID"/>
+      <keyMapping columnObjectName="Union_1" columnName="HPQUOTE"/>
+    </attribute>
+    <attribute id="SO_DATA_SOURCE" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SO_DATA_SOURCE"/>
+      <keyMapping columnObjectName="Union_1" columnName="SO_DATA_SOURCE"/>
+    </attribute>
+    <attribute id="DELIVERY" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Delivery"/>
+      <keyMapping columnObjectName="Union_1" columnName="DELIVERY"/>
+    </attribute>
+    <attribute id="SINGLE_DELIVERY_FLAG" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Single Delivery Flag"/>
+      <keyMapping columnObjectName="Union_1" columnName="SINGLE_DELIVERY_FLAG"/>
+    </attribute>
+    <attribute id="DIVISION" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Division"/>
+      <keyMapping columnObjectName="Union_1" columnName="DIVISION"/>
+    </attribute>
+    <attribute id="IBP_CUSTOMER_ID" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IBP Customer ID"/>
+      <keyMapping columnObjectName="Union_1" columnName="IBP_CUSTOMER_ID"/>
+    </attribute>
+    <attribute id="SALES_DOC_TYPE" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales Doc Type"/>
+      <keyMapping columnObjectName="Union_1" columnName="SALES_DOC_TYPE"/>
+    </attribute>
+    <attribute id="ITEM_CATEGORY" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Item Category"/>
+      <keyMapping columnObjectName="Union_1" columnName="ITEM_CATEGORY"/>
+    </attribute>
+    <attribute id="PLANNED_GDS_MOVEMENT_DATE" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Planned GDS Movement Date"/>
+      <keyMapping columnObjectName="Union_1" columnName="PLANNED_GDS_MOVEMENT_DATE"/>
+    </attribute>
+    <attribute id="DELIVERY_DATE" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Delivery Date"/>
+      <keyMapping columnObjectName="Union_1" columnName="DELIVERY_DATE"/>
+    </attribute>
+  
+    <attribute id="SHIPMENT_DATA_SOURCE" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SHIPMENT_DATA_SOURCE"/>
+  
+      <keyMapping columnObjectName="Union_1" columnName="SHIPMENT_DATA_SOURCE"/>
+  
+    </attribute>
+  
+    <attribute id="SHIPPED_OR_SO_DATA_SOURCE" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SHIPPED_OR_SO_DATA_SOURCE"/>
+      <keyMapping columnObjectName="Union_1" columnName="SHIPPED_OR_SO_DATA_SOURCE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="SHIP_QTY" order="23" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Ship Qty"/>
+      <measureMapping columnObjectName="Union_1" columnName="SHIP_QTY"/>
+    </measure>
+    <measure id="HLI" order="24" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HLI"/>
+      <measureMapping columnObjectName="Union_1" columnName="HLI"/>
+    </measure>
+  
+    <measure id="ORDER_QTY" order="26" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ORDER_QTY"/>
+      <measureMapping columnObjectName="Union_1" columnName="ORDER_QTY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="80" y="215"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

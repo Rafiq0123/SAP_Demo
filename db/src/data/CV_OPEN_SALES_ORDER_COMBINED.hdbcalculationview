@@ -240,7 +240,7 @@
       <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
         <formula>year(&quot;ORDER_DATE&quot;)</formula>
       </keyCalculation>
-    </calculatedAttribute>
+      </calculatedAttribute>
     <calculatedAttribute id="ORDER_DATE_MONTH" order="17" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Order Date (Month Name)"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="3">
@@ -249,24 +249,37 @@ UPPER(LEFT(MONTHNAME(&quot;ORDER_DATE&quot;),1)),
 LOWER(SUBSTR(MONTHNAME(&quot;ORDER_DATE&quot;),2,2)) 
 )</formula>
       </keyCalculation>
-    </calculatedAttribute>
+      </calculatedAttribute>
     <calculatedAttribute id="ORDER_DATE_DAY" order="18" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Order Date (Day)"/>
       <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
         <formula>EXTRACT_DAY(&quot;ORDER_DATE&quot;)</formula>
       </keyCalculation>
-    </calculatedAttribute>
+      </calculatedAttribute>
   
     <calculatedAttribute id="ORDER_DATE_MONTH_NUMBER" order="19" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Order Date (Month Number)"/>
+  
       <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
+  
         <formula>MONTH(&quot;ORDER_DATE&quot;)
 </formula>
+  
       </keyCalculation>
-    </calculatedAttribute>
+      </calculatedAttribute>
+  
+    <calculatedAttribute id="SHIPPED_OR_SO_DATA_SOURCE" order="20" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+  
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="20">
+  
+        <formula>'Sales Order'</formula>
+  
+      </keyCalculation>
+  
+      </calculatedAttribute>
   </calculatedAttributes>
   <baseMeasures>
-    <measure id="ORDER_QTY" order="10" aggregationType="sum" measureType="simple">
+    <measure id="ORDER_QTY" order="10" aggregationType="sum" measureType="simple" unconverted="false">
       <descriptions defaultDescription="Order Quantity"/>
       <measureMapping columnObjectName="Union_1" columnName="ORDER_QTY"/>
     </measure>
