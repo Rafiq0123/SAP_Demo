@@ -88,5 +88,17 @@
       "object": "SHIPMENTS_S4",
       "schema": "POCUSR"
     }
+  },
+  "DEALS_HISTORY_PREDICTION": {
+    "target": {
+      "object": "DEALS_HISTORY_PREDICTION",
+      "schema": "POCUSR"
+    }
+  },
+  "DEAL_HISTORY": {
+    "target": {
+      "object": "DEAL_HISTORY",
+      "schema": "POCUSR"
+    }
   }
 }

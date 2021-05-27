@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_PREDICTIONS" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PREDICTIONS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="DEALS_HISTORY_PREDICTION">
+    <resourceUri>DEALS_HISTORY_PREDICTION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+
+<logicalModel id="DEALS_HISTORY_PREDICTION">
+  <attributes>
+    <attribute id="OPPORTUNITY_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPPORTUNITY_ID"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="OPPORTUNITY_ID"/>
+    </attribute>
+    <attribute id="TRUE_LABEL" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TRUE_LABEL"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="TRUE_LABEL"/>
+    </attribute>
+    <attribute id="PREDICTED" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PREDICTED"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="PREDICTED"/>
+    </attribute>
+    <attribute id="ID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="ID"/>
+    </attribute>
+    <attribute id="DEALAGE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEALAGE"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="DEALAGE"/>
+    </attribute>
+    <attribute id="DATECREATED" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATECREATED"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="DATECREATED"/>
+    </attribute>
+    <attribute id="ORDER_DATE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_DATE"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="ORDER_DATE"/>
+    </attribute>
+    <attribute id="SALES_ORDER" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALES_ORDER"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SALES_ORDER"/>
+    </attribute>
+    <attribute id="CONFIDENCE_LEVEL" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONFIDENCE_LEVEL"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="CONFIDENCE_LEVEL"/>
+    </attribute>
+    <attribute id="REGION" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGION"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="REGION"/>
+    </attribute>
+    <attribute id="COUNTRY_NAME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY_NAME"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="COUNTRY_NAME"/>
+    </attribute>
+    <attribute id="SKU_CNT" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SKU_CNT"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SKU_CNT"/>
+    </attribute>
+    <attribute id="MPQTY" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MPQTY"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="MPQTY"/>
+    </attribute>
+    <attribute id="GRAPHICS_SKU_CNT" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GRAPHICS_SKU_CNT"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="GRAPHICS_SKU_CNT"/>
+    </attribute>
+    <attribute id="GRAPHICS_MPQTY" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GRAPHICS_MPQTY"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="GRAPHICS_MPQTY"/>
+    </attribute>
+    <attribute id="HDD_SKU_CNT" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HDD_SKU_CNT"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="HDD_SKU_CNT"/>
+    </attribute>
+    <attribute id="HDD_MPQTY" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HDD_MPQTY"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="HDD_MPQTY"/>
+    </attribute>
+    <attribute id="MEMORY_SKU_CNT" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MEMORY_SKU_CNT"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="MEMORY_SKU_CNT"/>
+    </attribute>
+    <attribute id="MEMORY_MPQTY" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MEMORY_MPQTY"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="MEMORY_MPQTY"/>
+    </attribute>
+    <attribute id="PROCESSOR_SKU_CNT" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROCESSOR_SKU_CNT"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="PROCESSOR_SKU_CNT"/>
+    </attribute>
+    <attribute id="PROCESSOR_MPQTY" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROCESSOR_MPQTY"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="PROCESSOR_MPQTY"/>
+    </attribute>
+    <attribute id="SSD_SKU_CNT" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SSD_SKU_CNT"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SSD_SKU_CNT"/>
+    </attribute>
+    <attribute id="SSD_MPQTY" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SSD_MPQTY"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SSD_MPQTY"/>
+    </attribute>
+    <attribute id="COMPUTE_SKU_CNT" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPUTE_SKU_CNT"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="COMPUTE_SKU_CNT"/>
+    </attribute>
+    <attribute id="COMPUTE_MPQTY" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPUTE_MPQTY"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="COMPUTE_MPQTY"/>
+    </attribute>
+    <attribute id="SPECIALIZED_SKU_CNT" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SPECIALIZED_SKU_CNT"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SPECIALIZED_SKU_CNT"/>
+    </attribute>
+    <attribute id="SPECIALIZED_MPQTY" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SPECIALIZED_MPQTY"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SPECIALIZED_MPQTY"/>
+    </attribute>
+    <attribute id="STORAGE_SKU_CNT" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STORAGE_SKU_CNT"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="STORAGE_SKU_CNT"/>
+    </attribute>
+    <attribute id="STORAGE_MPQTY" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STORAGE_MPQTY"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="STORAGE_MPQTY"/>
+    </attribute>
+    <attribute id="DELETE_FL" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELETE_FL"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="DELETE_FL"/>
+    </attribute>
+    <attribute id="gb_proba_DEAL_OPEN_CLOSE" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_proba_DEAL_OPEN_CLOSE"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_proba_DEAL_OPEN_CLOSE"/>
+    </attribute>
+    <attribute id="gb_reason_top_1_name" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_1_name"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_reason_top_1_name"/>
+    </attribute>
+    <attribute id="gb_reason_top_1_value" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_1_value"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_reason_top_1_value"/>
+    </attribute>
+    <attribute id="gb_reason_top_1_strength_indicator" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_1_strength_indicator"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_reason_top_1_strength_indicator"/>
+    </attribute>
+    <attribute id="gb_reason_top_2_name" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_2_name"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_reason_top_2_name"/>
+    </attribute>
+    <attribute id="gb_reason_top_2_value" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_2_value"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_reason_top_2_value"/>
+    </attribute>
+    <attribute id="gb_reason_top_2_strength_indicator" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_2_strength_indicator"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_reason_top_2_strength_indicator"/>
+    </attribute>
+    <attribute id="gb_reason_top_3_name" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_3_name"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_reason_top_3_name"/>
+    </attribute>
+    <attribute id="gb_reason_top_3_value" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_3_value"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_reason_top_3_value"/>
+    </attribute>
+    <attribute id="gb_reason_top_3_strength_indicator" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_3_strength_indicator"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_reason_top_3_strength_indicator"/>
+    </attribute>
+    <attribute id="ApplyDate" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ApplyDate"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="ApplyDate"/>
+    </attribute>
+    <attribute id="BuildDate" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BuildDate"/>
+      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="BuildDate"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="179"/>
+    </shape>
+    
+  </shapes>
+</layout>
+</Calculation:scenario>

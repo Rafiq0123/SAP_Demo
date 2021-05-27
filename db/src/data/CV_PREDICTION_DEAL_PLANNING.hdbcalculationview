@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_PREDICTION_DEAL_PLANNING" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PREDICTION_DEAL_PLANNING"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PLANNING_HIERARCHY">
+    <resourceUri>PLANNING_HIERARCHY</resourceUri>
+  </DataSource>
+  <DataSource id="CV_SHIPMENTS_COMBINED">
+    <resourceUri>CV_SHIPMENTS_COMBINED</resourceUri>
+  </DataSource>
+  <DataSource id="DEAL_HISTORY">
+    <resourceUri>DEAL_HISTORY</resourceUri>
+  </DataSource>
+  <DataSource id="DEALS_HISTORY_PREDICTION">
+    <resourceUri>DEALS_HISTORY_PREDICTION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="DEALS_HISTORY_PREDICTION" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="Business_Segment"/>
+      <viewAttribute id="Business_Sub-Segment"/>
+      <viewAttribute id="Global_Business_Unit"/>
+      <viewAttribute id="Product_Desc"/>
+      <viewAttribute id="Product_Family"/>
+      <viewAttribute id="Product_Family_Description"/>
+      <viewAttribute id="Product_Category_Desc"/>
+      <viewAttribute id="Product_Line_Pin"/>
+      <viewAttribute id="Product_Line_Desc"/>
+      <viewAttribute id="Product_Series"/>
+      <viewAttribute id="Type_Desc"/>
+      <viewAttribute id="SALES_DOCUMENT"/>
+      <viewAttribute id="MATERIAL"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PLANNING_HIERARCHY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Business_Segment" source="Business Segment"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Business_Sub-Segment" source="Business Sub-Segment"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Global_Business_Unit" source="Global Business Unit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Desc" source="Product Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Family" source="Product Family"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Family_Description" source="Product Family Description"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Category_Desc" source="Product Category Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Line_Pin" source="Product Line Pin"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Line_Desc" source="Product Line Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Series" source="Product Series"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Type_Desc" source="Type Desc"/>
+    </input>
+    <input node="CV_SHIPMENTS_COMBINED">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT" source="SALES_DOCUMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="MATERIAL"/>
+    </input>
+    <joinAttribute name="PRODUCT_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="DEALS_HISTORY_PREDICTION" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="Business_Segment"/>
+      <viewAttribute id="Business_Sub-Segment"/>
+      <viewAttribute id="Global_Business_Unit"/>
+      <viewAttribute id="Product_Desc"/>
+      <viewAttribute id="Product_Family"/>
+      <viewAttribute id="Product_Family_Description"/>
+      <viewAttribute id="Product_Category_Desc"/>
+      <viewAttribute id="Product_Line_Pin"/>
+      <viewAttribute id="Product_Line_Desc"/>
+      <viewAttribute id="Product_Series"/>
+      <viewAttribute id="Type_Desc"/>
+      <viewAttribute id="OPPORTUNITY_ID_1"/>
+      <viewAttribute id="SALES_DOCUMENT"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="OPPORTUNITY_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DEAL_HISTORY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID_1" source="OPPORTUNITY_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
+    </input>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Business_Segment" source="Business_Segment"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Business_Sub-Segment" source="Business_Sub-Segment"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Global_Business_Unit" source="Global_Business_Unit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Desc" source="Product_Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Family" source="Product_Family"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Family_Description" source="Product_Family_Description"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Category_Desc" source="Product_Category_Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Line_Pin" source="Product_Line_Pin"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Line_Desc" source="Product_Line_Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Series" source="Product_Series"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Type_Desc" source="Type_Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT" source="SALES_DOCUMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="PRODUCT_ID"/>
+    </input>
+    <joinAttribute name="SKU"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="DEALS_HISTORY_PREDICTION" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="OPPORTUNITY_ID"/>
+      <viewAttribute id="TRUE_LABEL"/>
+      <viewAttribute id="PREDICTED"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="DEALAGE" aggregationType="sum"/>
+      <viewAttribute id="DATECREATED"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="SALES_ORDER" aggregationType="sum"/>
+      <viewAttribute id="CONFIDENCE_LEVEL" aggregationType="sum"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="COUNTRY_NAME"/>
+      <viewAttribute id="SKU_CNT" aggregationType="sum"/>
+      <viewAttribute id="MPQTY" aggregationType="sum"/>
+      <viewAttribute id="GRAPHICS_SKU_CNT" aggregationType="sum"/>
+      <viewAttribute id="GRAPHICS_MPQTY" aggregationType="sum"/>
+      <viewAttribute id="HDD_SKU_CNT" aggregationType="sum"/>
+      <viewAttribute id="HDD_MPQTY" aggregationType="sum"/>
+      <viewAttribute id="MEMORY_SKU_CNT" aggregationType="sum"/>
+      <viewAttribute id="MEMORY_MPQTY" aggregationType="sum"/>
+      <viewAttribute id="PROCESSOR_SKU_CNT" aggregationType="sum"/>
+      <viewAttribute id="PROCESSOR_MPQTY" aggregationType="sum"/>
+      <viewAttribute id="SSD_SKU_CNT" aggregationType="sum"/>
+      <viewAttribute id="SSD_MPQTY" aggregationType="sum"/>
+      <viewAttribute id="COMPUTE_SKU_CNT" aggregationType="sum"/>
+      <viewAttribute id="COMPUTE_MPQTY" aggregationType="sum"/>
+      <viewAttribute id="SPECIALIZED_SKU_CNT" aggregationType="sum"/>
+      <viewAttribute id="SPECIALIZED_MPQTY" aggregationType="sum"/>
+      <viewAttribute id="STORAGE_SKU_CNT" aggregationType="sum"/>
+      <viewAttribute id="STORAGE_MPQTY" aggregationType="sum"/>
+      <viewAttribute id="DELETE_FL" aggregationType="sum"/>
+      <viewAttribute id="gb_proba_DEAL_OPEN_CLOSE" aggregationType="sum"/>
+      <viewAttribute id="gb_reason_top_1_name"/>
+      <viewAttribute id="gb_reason_top_1_value"/>
+      <viewAttribute id="gb_reason_top_1_strength_indicator"/>
+      <viewAttribute id="gb_reason_top_2_name"/>
+      <viewAttribute id="gb_reason_top_2_value"/>
+      <viewAttribute id="gb_reason_top_2_strength_indicator"/>
+      <viewAttribute id="gb_reason_top_3_name"/>
+      <viewAttribute id="gb_reason_top_3_value"/>
+      <viewAttribute id="gb_reason_top_3_strength_indicator"/>
+      <viewAttribute id="ApplyDate" aggregationType="min"/>
+      <viewAttribute id="BuildDate" aggregationType="min"/>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="Business_Segment"/>
+      <viewAttribute id="Business_Sub-Segment"/>
+      <viewAttribute id="Global_Business_Unit"/>
+      <viewAttribute id="Product_Desc"/>
+      <viewAttribute id="Product_Family"/>
+      <viewAttribute id="Product_Family_Description"/>
+      <viewAttribute id="Product_Category_Desc"/>
+      <viewAttribute id="Product_Line_Pin"/>
+      <viewAttribute id="Product_Line_Desc"/>
+      <viewAttribute id="Product_Series"/>
+      <viewAttribute id="Type_Desc"/>
+      <viewAttribute id="OPPORTUNITY_ID_1"/>
+      <viewAttribute id="SALES_DOCUMENT"/>
+      <viewAttribute id="MATERIAL"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DEALS_HISTORY_PREDICTION">
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRUE_LABEL" source="TRUE_LABEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PREDICTED" source="PREDICTED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEALAGE" source="DEALAGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATECREATED" source="DATECREATED"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORDER" source="SALES_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONFIDENCE_LEVEL" source="CONFIDENCE_LEVEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_NAME" source="COUNTRY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU_CNT" source="SKU_CNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MPQTY" source="MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GRAPHICS_SKU_CNT" source="GRAPHICS_SKU_CNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GRAPHICS_MPQTY" source="GRAPHICS_MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HDD_SKU_CNT" source="HDD_SKU_CNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HDD_MPQTY" source="HDD_MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MEMORY_SKU_CNT" source="MEMORY_SKU_CNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MEMORY_MPQTY" source="MEMORY_MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESSOR_SKU_CNT" source="PROCESSOR_SKU_CNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESSOR_MPQTY" source="PROCESSOR_MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SSD_SKU_CNT" source="SSD_SKU_CNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SSD_MPQTY" source="SSD_MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPUTE_SKU_CNT" source="COMPUTE_SKU_CNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPUTE_MPQTY" source="COMPUTE_MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPECIALIZED_SKU_CNT" source="SPECIALIZED_SKU_CNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPECIALIZED_MPQTY" source="SPECIALIZED_MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STORAGE_SKU_CNT" source="STORAGE_SKU_CNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STORAGE_MPQTY" source="STORAGE_MPQTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELETE_FL" source="DELETE_FL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="gb_proba_DEAL_OPEN_CLOSE" source="gb_proba_DEAL_OPEN_CLOSE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="gb_reason_top_1_name" source="gb_reason_top_1_name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="gb_reason_top_1_value" source="gb_reason_top_1_value"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="gb_reason_top_1_strength_indicator" source="gb_reason_top_1_strength_indicator"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="gb_reason_top_2_name" source="gb_reason_top_2_name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="gb_reason_top_2_value" source="gb_reason_top_2_value"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="gb_reason_top_2_strength_indicator" source="gb_reason_top_2_strength_indicator"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="gb_reason_top_3_name" source="gb_reason_top_3_name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="gb_reason_top_3_value" source="gb_reason_top_3_value"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="gb_reason_top_3_strength_indicator" source="gb_reason_top_3_strength_indicator"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplyDate" source="ApplyDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BuildDate" source="BuildDate"/>
+    </input>
+    <input node="Join_1_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Business_Segment" source="Business_Segment"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Business_Sub-Segment" source="Business_Sub-Segment"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Global_Business_Unit" source="Global_Business_Unit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Desc" source="Product_Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Family" source="Product_Family"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Family_Description" source="Product_Family_Description"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Category_Desc" source="Product_Category_Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Line_Pin" source="Product_Line_Pin"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Line_Desc" source="Product_Line_Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Series" source="Product_Series"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Type_Desc" source="Type_Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID_1" source="OPPORTUNITY_ID_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT" source="SALES_DOCUMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
+    </input>
+    <joinAttribute name="OPPORTUNITY_ID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1_3">
+  <attributes>
+    <attribute id="OPPORTUNITY_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPPORTUNITY_ID (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="OPPORTUNITY_ID"/>
+    </attribute>
+    <attribute id="TRUE_LABEL" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TRUE_LABEL (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="TRUE_LABEL"/>
+    </attribute>
+    <attribute id="PREDICTED" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PREDICTED (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="PREDICTED"/>
+    </attribute>
+    <attribute id="ID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="ID"/>
+    </attribute>
+    <attribute id="DATECREATED" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATECREATED (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="DATECREATED"/>
+    </attribute>
+    <attribute id="ORDER_DATE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_DATE (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="ORDER_DATE"/>
+    </attribute>
+    <attribute id="SALES_ORDER" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALES_ORDER (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="SALES_ORDER"/>
+    </attribute>
+    <attribute id="CONFIDENCE_LEVEL" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONFIDENCE_LEVEL (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="CONFIDENCE_LEVEL"/>
+    </attribute>
+    <attribute id="REGION" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGION (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="REGION"/>
+    </attribute>
+    <attribute id="COUNTRY_NAME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY_NAME (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="COUNTRY_NAME"/>
+    </attribute>
+    <attribute id="gb_reason_top_1_name" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_1_name (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="gb_reason_top_1_name"/>
+    </attribute>
+    <attribute id="gb_reason_top_1_value" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_1_value (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="gb_reason_top_1_value"/>
+    </attribute>
+    <attribute id="gb_reason_top_1_strength_indicator" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_1_strength_indicator (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="gb_reason_top_1_strength_indicator"/>
+    </attribute>
+    <attribute id="gb_reason_top_2_name" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_2_name (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="gb_reason_top_2_name"/>
+    </attribute>
+    <attribute id="gb_reason_top_2_value" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_2_value (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="gb_reason_top_2_value"/>
+    </attribute>
+    <attribute id="gb_reason_top_2_strength_indicator" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_2_strength_indicator (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="gb_reason_top_2_strength_indicator"/>
+    </attribute>
+    <attribute id="gb_reason_top_3_name" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_3_name (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="gb_reason_top_3_name"/>
+    </attribute>
+    <attribute id="gb_reason_top_3_value" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_3_value (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="gb_reason_top_3_value"/>
+    </attribute>
+    <attribute id="gb_reason_top_3_strength_indicator" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_3_strength_indicator (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="gb_reason_top_3_strength_indicator"/>
+    </attribute>
+    <attribute id="ApplyDate" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ApplyDate (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="ApplyDate"/>
+    </attribute>
+    <attribute id="BuildDate" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BuildDate (Deals Prediction)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="BuildDate"/>
+    </attribute>
+    <attribute id="SKU" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SKU (Deal History)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="SKU"/>
+    </attribute>
+    <attribute id="PRODUCT_ID" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_ID (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="Business_Segment" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Business_Segment (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Business_Segment"/>
+    </attribute>
+    <attribute id="Business_Sub-Segment" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Business_Sub-Segment (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Business_Sub-Segment"/>
+    </attribute>
+    <attribute id="Global_Business_Unit" order="47" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Global_Business_Unit (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Global_Business_Unit"/>
+    </attribute>
+    <attribute id="Product_Desc" order="48" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Desc (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Product_Desc"/>
+    </attribute>
+    <attribute id="Product_Family" order="49" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Family (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Product_Family"/>
+    </attribute>
+    <attribute id="Product_Family_Description" order="50" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Family_Description (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Product_Family_Description"/>
+    </attribute>
+    <attribute id="Product_Category_Desc" order="51" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Category_Desc (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Product_Category_Desc"/>
+    </attribute>
+    <attribute id="Product_Line_Pin" order="52" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Line_Pin (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Product_Line_Pin"/>
+    </attribute>
+    <attribute id="Product_Line_Desc" order="53" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Line_Desc (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Product_Line_Desc"/>
+    </attribute>
+    <attribute id="Product_Series" order="54" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Series (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Product_Series"/>
+    </attribute>
+    <attribute id="Type_Desc" order="55" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Type_Desc (Planning Hierarchy)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="Type_Desc"/>
+    </attribute>
+    <attribute id="OPPORTUNITY_ID_1" order="56" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPPORTUNITY_ID (Deal History)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="OPPORTUNITY_ID_1"/>
+    </attribute>
+    <attribute id="MATERIAL" order="58" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Material (Shipment Combined)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="MATERIAL"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="DEALAGE" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DEALAGE (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="DEALAGE"/>
+    </measure>
+    <measure id="SKU_CNT" order="12" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SKU_CNT (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="SKU_CNT"/>
+    </measure>
+    <measure id="MPQTY" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MPQTY (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="MPQTY"/>
+    </measure>
+    <measure id="GRAPHICS_SKU_CNT" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="GRAPHICS_SKU_CNT (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="GRAPHICS_SKU_CNT"/>
+    </measure>
+    <measure id="GRAPHICS_MPQTY" order="15" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="GRAPHICS_MPQTY (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="GRAPHICS_MPQTY"/>
+    </measure>
+    <measure id="HDD_SKU_CNT" order="16" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HDD_SKU_CNT (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="HDD_SKU_CNT"/>
+    </measure>
+    <measure id="HDD_MPQTY" order="17" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HDD_MPQTY (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="HDD_MPQTY"/>
+    </measure>
+    <measure id="MEMORY_SKU_CNT" order="18" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MEMORY_SKU_CNT (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="MEMORY_SKU_CNT"/>
+    </measure>
+    <measure id="MEMORY_MPQTY" order="19" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MEMORY_MPQTY (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="MEMORY_MPQTY"/>
+    </measure>
+    <measure id="PROCESSOR_SKU_CNT" order="20" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROCESSOR_SKU_CNT (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="PROCESSOR_SKU_CNT"/>
+    </measure>
+    <measure id="PROCESSOR_MPQTY" order="21" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROCESSOR_MPQTY (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="PROCESSOR_MPQTY"/>
+    </measure>
+    <measure id="SSD_SKU_CNT" order="22" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SSD_SKU_CNT (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="SSD_SKU_CNT"/>
+    </measure>
+    <measure id="SSD_MPQTY" order="23" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SSD_MPQTY (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="SSD_MPQTY"/>
+    </measure>
+    <measure id="COMPUTE_SKU_CNT" order="24" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="COMPUTE_SKU_CNT (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="COMPUTE_SKU_CNT"/>
+    </measure>
+    <measure id="COMPUTE_MPQTY" order="25" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="COMPUTE_MPQTY (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="COMPUTE_MPQTY"/>
+    </measure>
+    <measure id="SPECIALIZED_SKU_CNT" order="26" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SPECIALIZED_SKU_CNT (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="SPECIALIZED_SKU_CNT"/>
+    </measure>
+    <measure id="SPECIALIZED_MPQTY" order="27" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SPECIALIZED_MPQTY (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="SPECIALIZED_MPQTY"/>
+    </measure>
+    <measure id="STORAGE_SKU_CNT" order="28" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="STORAGE_SKU_CNT (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="STORAGE_SKU_CNT"/>
+    </measure>
+    <measure id="STORAGE_MPQTY" order="29" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="STORAGE_MPQTY (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="STORAGE_MPQTY"/>
+    </measure>
+    <measure id="DELETE_FL" order="30" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DELETE_FL (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="DELETE_FL"/>
+    </measure>
+    <measure id="gb_proba_DEAL_OPEN_CLOSE" order="31" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="gb_proba_DEAL_OPEN_CLOSE (Deals Prediction)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="gb_proba_DEAL_OPEN_CLOSE"/>
+    </measure>
+    <measure id="SALES_DOCUMENT" order="57" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Sales Order (Shipment Combined)"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="SALES_DOCUMENT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="221"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="DEALS_HISTORY_PREDICTION" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="244.697265625"/>
+    </shape>
+    <shape modelObjectName="DEAL_HISTORY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="199.08837890625"/>
+    </shape>
+    <shape modelObjectName="PLANNING_HIERARCHY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="217.4306640625"/>
+    </shape>
+    <shape modelObjectName="CV_SHIPMENTS_COMBINED" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="898" y="38"/>
+      <rectangleSize width="272.2265625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_PRODUCTION_HEADER" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PRODUCTION_HEADER.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PRODUCTION_HEADER">
+    <resourceUri>PRODUCTION_HEADER</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="LOC_PROD"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="LOCATION"/>
+      <viewAttribute id="Source_Type"/>
+      <viewAttribute id="Component_quantity"/>
+      <viewAttribute id="Output_Coefficient"/>
+      <viewAttribute id="Prod__Ratio"/>
+      <viewAttribute id="Demand_Type"/>
+      <viewAttribute id="Planning_Unit_ID"/>
+      <viewAttribute id="Lead_Time"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PRODUCTION_HEADER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Source_Type" source="Source Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_quantity" source="Component quantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Output_Coefficient" source="Output Coefficient"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Prod__Ratio" source="Prod. Ratio"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Demand_Type" source="Demand Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Planning_Unit_ID" source="Planning Unit ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Lead_Time" source="Lead Time"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="LOC_PROD" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOC_PROD"/>
+      <keyMapping columnObjectName="Projection_1" columnName="LOC_PROD"/>
+    </attribute>
+    <attribute id="MATERIAL" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATERIAL"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MATERIAL"/>
+    </attribute>
+    <attribute id="LOCATION" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOCATION"/>
+      <keyMapping columnObjectName="Projection_1" columnName="LOCATION"/>
+    </attribute>
+    <attribute id="Source_Type" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source_Type"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Source_Type"/>
+    </attribute>
+    <attribute id="Demand_Type" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Demand_Type"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Demand_Type"/>
+    </attribute>
+    <attribute id="Planning_Unit_ID" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Planning_Unit_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Planning_Unit_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="Component_quantity" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Component_quantity"/>
+      <measureMapping columnObjectName="Projection_1" columnName="Component_quantity"/>
+    </measure>
+    <measure id="Output_Coefficient" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Output_Coefficient"/>
+      <measureMapping columnObjectName="Projection_1" columnName="Output_Coefficient"/>
+    </measure>
+    <measure id="Prod__Ratio" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Prod__Ratio"/>
+      <measureMapping columnObjectName="Projection_1" columnName="Prod__Ratio"/>
+    </measure>
+    <measure id="Lead_Time" order="10" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Lead_Time"/>
+      <measureMapping columnObjectName="Projection_1" columnName="Lead_Time"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="186"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

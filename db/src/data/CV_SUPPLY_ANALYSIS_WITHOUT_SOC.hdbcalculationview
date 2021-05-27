@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_SUPPLY_ANALYSIS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_SUPPLY_ANALYSIS_WITHOUT_SOC" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_SUPPLY_ANALYSIS"/>
 <localVariables/>
 <variableMappings/>
@@ -56,6 +56,14 @@
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="LOCATION_PRODUCT" multiJoinOrder="Outside In">
     <viewAttributes>
+      <viewAttribute id="PART"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="PO_QTY" aggregationType="sum"/>
+      <viewAttribute id="DELIVERY_DATE"/>
+      <viewAttribute id="LOCATION_ID"/>
+      <viewAttribute id="COMPONENT"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="TOT_ONHAND_QTY" aggregationType="sum"/>
       <viewAttribute id="Item_Number"/>
       <viewAttribute id="Header_Material_Number"/>
       <viewAttribute id="Component_Material_Number"/>
@@ -67,14 +75,6 @@
       <viewAttribute id="KEY_FIGURE_DATE"/>
       <viewAttribute id="HM"/>
       <viewAttribute id="CM"/>
-      <viewAttribute id="PART"/>
-      <viewAttribute id="PLANT"/>
-      <viewAttribute id="PO_QTY" aggregationType="sum"/>
-      <viewAttribute id="DELIVERY_DATE"/>
-      <viewAttribute id="LOCATION_ID"/>
-      <viewAttribute id="COMPONENT"/>
-      <viewAttribute id="DESCRIPTION"/>
-      <viewAttribute id="TOT_ONHAND_QTY" aggregationType="sum"/>
       <viewAttribute id="LOC_PROD"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -105,18 +105,16 @@
     </input>
     <joinAttribute name="Header_Material_Number"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="LOCATION_PRODUCT" multiJoinOrder="Outside In">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="LOCATION_PRODUCT" multiJoinOrder="Outside In">
     <viewAttributes>
-      <viewAttribute id="LOC_PROD"/>
-      <viewAttribute id="MATERIAL"/>
-      <viewAttribute id="LOCATION"/>
-      <viewAttribute id="Source_Type"/>
-      <viewAttribute id="Component_quantity" aggregationType="sum"/>
-      <viewAttribute id="Output_Coefficient" aggregationType="sum"/>
-      <viewAttribute id="Prod__Ratio" aggregationType="sum"/>
-      <viewAttribute id="Demand_Type"/>
-      <viewAttribute id="Planning_Unit_ID"/>
-      <viewAttribute id="Lead_Time" aggregationType="sum"/>
+      <viewAttribute id="PART"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="PO_QTY" aggregationType="sum"/>
+      <viewAttribute id="DELIVERY_DATE"/>
+      <viewAttribute id="LOCATION_ID"/>
+      <viewAttribute id="COMPONENT"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="TOT_ONHAND_QTY" aggregationType="sum"/>
       <viewAttribute id="Item_Number"/>
       <viewAttribute id="Header_Material_Number"/>
       <viewAttribute id="Component_Material_Number"/>
@@ -128,14 +126,15 @@
       <viewAttribute id="KEY_FIGURE_DATE"/>
       <viewAttribute id="HM"/>
       <viewAttribute id="CM"/>
-      <viewAttribute id="PART"/>
-      <viewAttribute id="PLANT"/>
-      <viewAttribute id="PO_QTY" aggregationType="sum"/>
-      <viewAttribute id="DELIVERY_DATE"/>
-      <viewAttribute id="LOCATION_ID"/>
-      <viewAttribute id="COMPONENT"/>
-      <viewAttribute id="DESCRIPTION"/>
-      <viewAttribute id="TOT_ONHAND_QTY" aggregationType="sum"/>
+      <viewAttribute id="LOC_PROD"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="LOCATION"/>
+      <viewAttribute id="Source_Type"/>
+      <viewAttribute id="Component_quantity" aggregationType="sum"/>
+      <viewAttribute id="Output_Coefficient" aggregationType="sum"/>
+      <viewAttribute id="Prod__Ratio" aggregationType="sum"/>
+      <viewAttribute id="Demand_Type"/>
+      <viewAttribute id="Planning_Unit_ID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="PRODUCTION_HEADER">
@@ -148,9 +147,16 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Prod__Ratio" source="Prod. Ratio"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Demand_Type" source="Demand Type"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Planning_Unit_ID" source="Planning Unit ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="Lead_Time" source="Lead Time"/>
     </input>
     <input node="Join_1_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PART" source="PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_QTY" source="PO_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION_ID" source="LOCATION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENT" source="COMPONENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOT_ONHAND_QTY" source="TOT_ONHAND_QTY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Item_Number" source="Item_Number"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Header_Material_Number" source="Header_Material_Number"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Component_Material_Number" source="Component_Material_Number"/>
@@ -162,14 +168,6 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="KEY_FIGURE_DATE" source="KEY_FIGURE_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="HM" source="HM"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="CM"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PART" source="PART"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PO_QTY" source="PO_QTY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION_ID" source="LOCATION_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENT" source="COMPONENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TOT_ONHAND_QTY" source="TOT_ONHAND_QTY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LOC_PROD" source="LOC_PROD"/>
     </input>
     <joinAttribute name="LOC_PROD"/>
@@ -281,9 +279,6 @@
       <viewAttribute id="REGIONAL_DISC_DATE"/>
       <viewAttribute id="REGIONAL_INTRO_DATE"/>
       <viewAttribute id="REGIONAL_OBS_DATE"/>
-      <viewAttribute id="LOC_DESC"/>
-      <viewAttribute id="LOC_REGION"/>
-      <viewAttribute id="LOC_TYPE"/>
       <viewAttribute id="Location_From"/>
       <viewAttribute id="Product_ID"/>
       <viewAttribute id="Lead_Time_1" aggregationType="sum"/>
@@ -292,6 +287,9 @@
       <viewAttribute id="Scope_Locat__Source" aggregationType="sum"/>
       <viewAttribute id="VALID_FROM_1"/>
       <viewAttribute id="VALID_TO_1"/>
+      <viewAttribute id="LOC_DESC"/>
+      <viewAttribute id="LOC_REGION"/>
+      <viewAttribute id="LOC_TYPE"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_1_4">
@@ -340,6 +338,34 @@
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_1_6" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="LOCATION_PRODUCT" multiJoinOrder="Outside In">
     <viewAttributes>
+      <viewAttribute id="PART"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="PO_QTY" aggregationType="sum"/>
+      <viewAttribute id="DELIVERY_DATE"/>
+      <viewAttribute id="LOCATION_ID"/>
+      <viewAttribute id="COMPONENT"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="TOT_ONHAND_QTY" aggregationType="sum"/>
+      <viewAttribute id="Item_Number"/>
+      <viewAttribute id="Header_Material_Number"/>
+      <viewAttribute id="Component_Material_Number"/>
+      <viewAttribute id="Component_Coefficient" aggregationType="sum"/>
+      <viewAttribute id="Component_Coefficient_Time_Series_ID"/>
+      <viewAttribute id="Item_Demand_Type"/>
+      <viewAttribute id="VALID_FROM"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="KEY_FIGURE_DATE"/>
+      <viewAttribute id="HM"/>
+      <viewAttribute id="CM"/>
+      <viewAttribute id="LOC_PROD"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="LOCATION"/>
+      <viewAttribute id="Source_Type"/>
+      <viewAttribute id="Component_quantity" aggregationType="sum"/>
+      <viewAttribute id="Output_Coefficient" aggregationType="sum"/>
+      <viewAttribute id="Prod__Ratio" aggregationType="sum"/>
+      <viewAttribute id="Demand_Type"/>
+      <viewAttribute id="Planning_Unit_ID"/>
       <viewAttribute id="IBP_LOCATION_ID"/>
       <viewAttribute id="Material"/>
       <viewAttribute id="Generic_Flag"/>
@@ -366,30 +392,6 @@
       <viewAttribute id="REGIONAL_DISC_DATE"/>
       <viewAttribute id="REGIONAL_INTRO_DATE"/>
       <viewAttribute id="REGIONAL_OBS_DATE"/>
-      <viewAttribute id="LOC_PROD"/>
-      <viewAttribute id="MATERIAL"/>
-      <viewAttribute id="LOCATION"/>
-      <viewAttribute id="Source_Type"/>
-      <viewAttribute id="Component_quantity" aggregationType="sum"/>
-      <viewAttribute id="Output_Coefficient" aggregationType="sum"/>
-      <viewAttribute id="Prod__Ratio" aggregationType="sum"/>
-      <viewAttribute id="Demand_Type"/>
-      <viewAttribute id="Planning_Unit_ID"/>
-      <viewAttribute id="Lead_Time" aggregationType="sum"/>
-      <viewAttribute id="Item_Number"/>
-      <viewAttribute id="Header_Material_Number"/>
-      <viewAttribute id="Component_Material_Number"/>
-      <viewAttribute id="Component_Coefficient" aggregationType="sum"/>
-      <viewAttribute id="Component_Coefficient_Time_Series_ID"/>
-      <viewAttribute id="Item_Demand_Type"/>
-      <viewAttribute id="VALID_FROM"/>
-      <viewAttribute id="VALID_TO"/>
-      <viewAttribute id="KEY_FIGURE_DATE"/>
-      <viewAttribute id="HM"/>
-      <viewAttribute id="CM"/>
-      <viewAttribute id="LOC_DESC"/>
-      <viewAttribute id="LOC_REGION"/>
-      <viewAttribute id="LOC_TYPE"/>
       <viewAttribute id="Location_From"/>
       <viewAttribute id="Product_ID"/>
       <viewAttribute id="Lead_Time_1" aggregationType="sum"/>
@@ -398,14 +400,9 @@
       <viewAttribute id="Scope_Locat__Source" aggregationType="sum"/>
       <viewAttribute id="VALID_FROM_1"/>
       <viewAttribute id="VALID_TO_1"/>
-      <viewAttribute id="PART"/>
-      <viewAttribute id="PLANT"/>
-      <viewAttribute id="PO_QTY" aggregationType="sum"/>
-      <viewAttribute id="DELIVERY_DATE"/>
-      <viewAttribute id="LOCATION_ID"/>
-      <viewAttribute id="COMPONENT"/>
-      <viewAttribute id="DESCRIPTION"/>
-      <viewAttribute id="TOT_ONHAND_QTY" aggregationType="sum"/>
+      <viewAttribute id="LOC_DESC"/>
+      <viewAttribute id="LOC_REGION"/>
+      <viewAttribute id="LOC_TYPE"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_1_5">
@@ -435,9 +432,6 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_DISC_DATE" source="REGIONAL_DISC_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_INTRO_DATE" source="REGIONAL_INTRO_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="REGIONAL_OBS_DATE" source="REGIONAL_OBS_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_DESC" source="LOC_DESC"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_REGION" source="LOC_REGION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_TYPE" source="LOC_TYPE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Location_From" source="Location_From"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Product_ID" source="Product_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Lead_Time_1" source="Lead_Time_1"/>
@@ -446,18 +440,19 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Scope_Locat__Source" source="Scope_Locat__Source"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VALID_FROM_1" source="VALID_FROM_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="VALID_TO_1" source="VALID_TO_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_DESC" source="LOC_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_REGION" source="LOC_REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_TYPE" source="LOC_TYPE"/>
     </input>
     <input node="Join_1_3">
-      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_PROD" source="LOC_PROD"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION" source="LOCATION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="Source_Type" source="Source_Type"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="Component_quantity" source="Component_quantity"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="Output_Coefficient" source="Output_Coefficient"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="Prod__Ratio" source="Prod__Ratio"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="Demand_Type" source="Demand_Type"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="Planning_Unit_ID" source="Planning_Unit_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="Lead_Time" source="Lead_Time"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PART" source="PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PO_QTY" source="PO_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION_ID" source="LOCATION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENT" source="COMPONENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOT_ONHAND_QTY" source="TOT_ONHAND_QTY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Item_Number" source="Item_Number"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Header_Material_Number" source="Header_Material_Number"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Component_Material_Number" source="Component_Material_Number"/>
@@ -469,14 +464,15 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="KEY_FIGURE_DATE" source="KEY_FIGURE_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="HM" source="HM"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CM" source="CM"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PART" source="PART"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PO_QTY" source="PO_QTY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION_ID" source="LOCATION_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="COMPONENT" source="COMPONENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TOT_ONHAND_QTY" source="TOT_ONHAND_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOC_PROD" source="LOC_PROD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION" source="LOCATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Source_Type" source="Source_Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Component_quantity" source="Component_quantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Output_Coefficient" source="Output_Coefficient"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Prod__Ratio" source="Prod__Ratio"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Demand_Type" source="Demand_Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Planning_Unit_ID" source="Planning_Unit_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="MATERIAL"/>
     </input>
     <joinAttribute name="Material"/>
@@ -597,103 +593,102 @@
       <descriptions defaultDescription="Planning_Unit_ID (Prod. Header)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="Planning_Unit_ID"/>
     </attribute>
-    <attribute id="Item_Number" order="37" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Item_Number" order="36" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Item_Number (Prod. Item)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="Item_Number"/>
     </attribute>
-    <attribute id="Header_Material_Number" order="38" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Header_Material_Number" order="37" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Header_Material_Number (Prod. Item)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="Header_Material_Number"/>
     </attribute>
-    <attribute id="Component_Material_Number" order="39" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Component_Material_Number" order="38" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Component_Material_Number (Prod. Item)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="Component_Material_Number"/>
     </attribute>
-    <attribute id="Component_Coefficient_Time_Series_ID" order="41" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Component_Coefficient_Time_Series_ID" order="40" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Component_Coefficient_Time_Series_ID (Prod. Item)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="Component_Coefficient_Time_Series_ID"/>
     </attribute>
-    <attribute id="Item_Demand_Type" order="42" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Item_Demand_Type" order="41" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Item_Demand_Type (Prod. Item)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="Item_Demand_Type"/>
     </attribute>
-    <attribute id="VALID_FROM" order="43" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VALID_FROM" order="42" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Valid From (Prod. Item)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="VALID_FROM"/>
     </attribute>
-    <attribute id="VALID_TO" order="44" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VALID_TO" order="43" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Valid To (Prod. Item)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="VALID_TO"/>
     </attribute>
-    <attribute id="KEY_FIGURE_DATE" order="45" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="KEY_FIGURE_DATE" order="44" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="KEY_FIGURE_DATE (Prod. Item)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="KEY_FIGURE_DATE"/>
     </attribute>
-    <attribute id="HM" order="46" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="HM" order="45" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="HM"/>
       <keyMapping columnObjectName="Join_1_6" columnName="HM"/>
     </attribute>
-    <attribute id="CM" order="47" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CM" order="46" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CM"/>
       <keyMapping columnObjectName="Join_1_6" columnName="CM"/>
     </attribute>
-    <attribute id="LOC_DESC" order="48" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LOC_DESC" order="47" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="LOC_DESC (Location)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="LOC_DESC"/>
     </attribute>
-    <attribute id="LOC_REGION" order="49" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LOC_REGION" order="48" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="LOC_REGION (Location)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="LOC_REGION"/>
     </attribute>
-    <attribute id="LOC_TYPE" order="50" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LOC_TYPE" order="49" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="LOC_TYPE (Location)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="LOC_TYPE"/>
     </attribute>
-    <attribute id="Location_From" order="51" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Location_From" order="50" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Location_From (Loc. Source)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="Location_From"/>
     </attribute>
-    <attribute id="Product_ID" order="52" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Product_ID" order="51" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Product_ID (Loc. Source)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="Product_ID"/>
     </attribute>
-    <attribute id="Ratio_Time_Serie_Ind" order="54" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Ratio_Time_Serie_Ind" order="53" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Ratio_Time_Serie_Ind (Loc. Source)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="Ratio_Time_Serie_Ind"/>
     </attribute>
-    <attribute id="VALID_FROM_1" order="57" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VALID_FROM_1" order="56" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Valid From (Loc. Source)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="VALID_FROM_1"/>
     </attribute>
-    <attribute id="VALID_TO_1" order="58" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="VALID_TO_1" order="57" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Valid To (Loc. Source)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="VALID_TO_1"/>
     </attribute>
-    <attribute id="PART" order="59" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PART" order="58" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PART (PO Delivery)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="PART"/>
     </attribute>
-    <attribute id="PLANT" order="60" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PLANT" order="59" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PLANT (PO Delivery)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="PLANT"/>
     </attribute>
-    <attribute id="DELIVERY_DATE" order="62" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="DELIVERY_DATE" order="61" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="DELIVERY_DATE (PO Delivery)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="DELIVERY_DATE"/>
     </attribute>
-    <attribute id="LOCATION_ID" order="63" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="LOCATION_ID"/>
+    <attribute id="LOCATION_ID" order="62" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOCATION_ID (Inventory)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="LOCATION_ID"/>
     </attribute>
-    <attribute id="COMPONENT" order="64" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="COMPONENT"/>
+    <attribute id="COMPONENT" order="63" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPONENT (Inventory)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="COMPONENT"/>
     </attribute>
-    <attribute id="DESCRIPTION" order="65" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DESCRIPTION"/>
+    <attribute id="DESCRIPTION" order="64" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION (Inventory)"/>
       <keyMapping columnObjectName="Join_1_6" columnName="DESCRIPTION"/>
-    </attribute>
-  </attributes>
+    </attribute></attributes>
   <calculatedAttributes/>
   <baseMeasures>
     <measure id="Coverage_Days" order="5" aggregationType="sum" measureType="simple">
@@ -720,39 +715,34 @@
       <descriptions defaultDescription="Output_Coefficient (Prod. Header)"/>
       <measureMapping columnObjectName="Join_1_6" columnName="Output_Coefficient"/>
     </measure>
-    <measure id="Prod__Ratio" order="33" aggregationType="sum" measureType="simple">
+    <measure id="Prod__Ratio" order="33" aggregationType="avg" measureType="simple" engineAggregation="sum">
       <descriptions defaultDescription="Prod__Ratio (Prod. Header)"/>
       <measureMapping columnObjectName="Join_1_6" columnName="Prod__Ratio"/>
     </measure>
-    <measure id="Lead_Time" order="36" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="Lead Time (Prod. Header)"/>
-      <measureMapping columnObjectName="Join_1_6" columnName="Lead_Time"/>
-    </measure>
-    <measure id="Component_Coefficient" order="40" aggregationType="sum" measureType="simple">
+    <measure id="Component_Coefficient" order="39" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="Component_Coefficient (Prod. Item)"/>
       <measureMapping columnObjectName="Join_1_6" columnName="Component_Coefficient"/>
     </measure>
-    <measure id="Lead_Time_1" order="53" aggregationType="sum" measureType="simple">
+    <measure id="Lead_Time_1" order="52" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="Lead Time (Loc. Source)"/>
       <measureMapping columnObjectName="Join_1_6" columnName="Lead_Time_1"/>
     </measure>
-    <measure id="Location_Trans_Ratio" order="55" aggregationType="sum" measureType="simple">
+    <measure id="Location_Trans_Ratio" order="54" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="Location_Trans_Ratio (Loc. Source)"/>
       <measureMapping columnObjectName="Join_1_6" columnName="Location_Trans_Ratio"/>
     </measure>
-    <measure id="Scope_Locat__Source" order="56" aggregationType="sum" measureType="simple">
+    <measure id="Scope_Locat__Source" order="55" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="Scope_Locat__Source (Loc. Source)"/>
       <measureMapping columnObjectName="Join_1_6" columnName="Scope_Locat__Source"/>
     </measure>
-    <measure id="PO_QTY" order="61" aggregationType="sum" measureType="simple">
+    <measure id="PO_QTY" order="60" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="PO_QTY (PO Delivery)"/>
       <measureMapping columnObjectName="Join_1_6" columnName="PO_QTY"/>
     </measure>
-    <measure id="TOT_ONHAND_QTY" order="66" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="TOT_ONHAND_QTY"/>
+    <measure id="TOT_ONHAND_QTY" order="65" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TOT_ONHAND_QTY (Inventory)"/>
       <measureMapping columnObjectName="Join_1_6" columnName="TOT_ONHAND_QTY"/>
-    </measure>
-  </baseMeasures>
+    </measure></baseMeasures>
   <calculatedMeasures/>
   <restrictedMeasures/>
   <localDimensions/>
@@ -760,18 +750,29 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="40" y="85"/>
+      <upperLeftCorner x="98" y="112"/>
+    
+      <rectangleSize width="160"/>
     </shape>
     
   
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="87" y="209"/>
+      <upperLeftCorner x="92" y="217"/>
       <rectangleSize height="30" width="173"/>
+    </shape>
+    <shape modelObjectName="LOCATION" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="327" y="302"/>
+      <rectangleSize width="182.37890625"/>
     </shape>
     <shape modelObjectName="LOCATION_PRODUCT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="7" y="35"/>
       <rectangleSize width="194.82373046875"/>
     </shape>
+    <shape modelObjectName="LOCATION_SOURCE" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="291" y="436"/>
+      <rectangleSize width="188"/>
+    </shape>
+  
     <shape modelObjectName="PRODUCTION_HEADER" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="202.01171875"/>
@@ -780,22 +781,13 @@
       <upperLeftCorner x="620" y="30"/>
       <rectangleSize width="273.08056640625"/>
     </shape>
-    <shape modelObjectName="LOCATION" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
-      <upperLeftCorner x="327" y="302"/>
-      <rectangleSize width="182.37890625"/>
-    </shape>
-    <shape modelObjectName="LOCATION_SOURCE" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
-      <upperLeftCorner x="291" y="436"/>
-      <rectangleSize width="188.12060546875"/>
-    </shape>
     <shape modelObjectName="PO_DELIVERY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="691" y="349"/>
       <rectangleSize width="174.8486328125"/>
     </shape>
     <shape modelObjectName="INVENTORY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="696" y="513"/>
-      <rectangleSize width="190.31201171875"/>
-    </shape>
-  </shapes>
+      <rectangleSize width="190"/>
+    </shape></shapes>
 </layout>
 </Calculation:scenario>
