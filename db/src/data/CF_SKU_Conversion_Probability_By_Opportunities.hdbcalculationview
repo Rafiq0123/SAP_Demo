@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CF_SKU_Conversion_Probability_By_Opportunities" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CF_SKU_Conversion_Probability_By_Opportunities"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TF_SKU_Conversion_Probability_By_Opportunities" type="TABLE_FUNCTION">
+    <resourceUri>TF_SKU_Conversion_Probability_By_Opportunities</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="Product_Category_Desc"/>
+      <viewAttribute id="PERC"/>
+      <viewAttribute id="Product_Family_Description"/>
+      <viewAttribute id="SO_OPP_COUNT"/>
+      <viewAttribute id="Product_Family"/>
+      <viewAttribute id="DH_OPP_COUNT"/>
+      <viewAttribute id="Product_Desc"/>
+      <viewAttribute id="Type_Desc"/>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="Global_Business_Unit"/>
+      <viewAttribute id="OPPORTUNITY_ID"/>
+      <viewAttribute id="Product_Series"/>
+      <viewAttribute id="Business_Segment"/>
+      <viewAttribute id="Product_Line_Desc"/>
+      <viewAttribute id="PRODUCT_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="TF_SKU_Conversion_Probability_By_Opportunities">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Category_Desc" source="Product Category Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Family_Description" source="Product Family Description"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Family" source="Product Family"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Desc" source="Product Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Type_Desc" source="Type Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Global_Business_Unit" source="Global Business Unit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Series" source="Product Series"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Business_Segment" source="Business Segment"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Line_Desc" source="Product Line Desc"/>
+    </input>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="Product_Category_Desc" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Category_Desc"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Category_Desc"/>
+    </attribute>
+    <attribute id="Product_Family_Description" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Family_Description"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Family_Description"/>
+    </attribute>
+    <attribute id="Product_Family" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Family"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Family"/>
+    </attribute>
+    <attribute id="Product_Desc" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Desc"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Desc"/>
+    </attribute>
+    <attribute id="Type_Desc" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Type_Desc"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Type_Desc"/>
+    </attribute>
+    <attribute id="SKU" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SKU"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SKU"/>
+    </attribute>
+    <attribute id="Global_Business_Unit" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Global_Business_Unit"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Global_Business_Unit"/>
+    </attribute>
+    <attribute id="OPPORTUNITY_ID" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPPORTUNITY_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="OPPORTUNITY_ID"/>
+    </attribute>
+    <attribute id="Product_Series" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Series"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Series"/>
+    </attribute>
+    <attribute id="Business_Segment" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Business_Segment"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Business_Segment"/>
+    </attribute>
+    <attribute id="Product_Line_Desc" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Line_Desc"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Line_Desc"/>
+    </attribute>
+    <attribute id="PRODUCT_ID" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PRODUCT_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="PERC" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PERC"/>
+      <measureMapping columnObjectName="Projection_1" columnName="PERC"/>
+    </measure>
+    <measure id="SO_OPP_COUNT" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SO_OPP_COUNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="SO_OPP_COUNT"/>
+    </measure>
+    <measure id="DH_OPP_COUNT" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DH_OPP_COUNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="DH_OPP_COUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="220"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

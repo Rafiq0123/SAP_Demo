@@ -57,9 +57,8 @@
     </input>
     <joinAttribute name="PRODUCT_ID"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="DEALS_HISTORY_PREDICTION" multiJoinOrder="Outside In">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="C1_1" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="DEALS_HISTORY_PREDICTION" multiJoinOrder="Outside In">
     <viewAttributes>
-      <viewAttribute id="SKU"/>
       <viewAttribute id="PRODUCT_ID"/>
       <viewAttribute id="Business_Segment"/>
       <viewAttribute id="Business_Sub-Segment"/>
@@ -72,9 +71,10 @@
       <viewAttribute id="Product_Line_Desc"/>
       <viewAttribute id="Product_Series"/>
       <viewAttribute id="Type_Desc"/>
-      <viewAttribute id="OPPORTUNITY_ID_1"/>
       <viewAttribute id="SALES_DOCUMENT"/>
       <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="OPPORTUNITY_ID_1"/>
       <viewAttribute id="OPPORTUNITY_ID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -102,8 +102,24 @@
     </input>
     <joinAttribute name="SKU"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="CN_N" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="DEALS_HISTORY_PREDICTION" multiJoinOrder="Outside In">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="C1_1" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="DEALS_HISTORY_PREDICTION" multiJoinOrder="Outside In">
     <viewAttributes>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="Business_Segment"/>
+      <viewAttribute id="Business_Sub-Segment"/>
+      <viewAttribute id="Global_Business_Unit"/>
+      <viewAttribute id="Product_Desc"/>
+      <viewAttribute id="Product_Family"/>
+      <viewAttribute id="Product_Family_Description"/>
+      <viewAttribute id="Product_Category_Desc"/>
+      <viewAttribute id="Product_Line_Pin"/>
+      <viewAttribute id="Product_Line_Desc"/>
+      <viewAttribute id="Product_Series"/>
+      <viewAttribute id="Type_Desc"/>
+      <viewAttribute id="SALES_DOCUMENT"/>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="OPPORTUNITY_ID_1"/>
       <viewAttribute id="OPPORTUNITY_ID"/>
       <viewAttribute id="TRUE_LABEL"/>
       <viewAttribute id="PREDICTED"/>
@@ -146,22 +162,6 @@
       <viewAttribute id="gb_reason_top_3_strength_indicator"/>
       <viewAttribute id="ApplyDate" aggregationType="min"/>
       <viewAttribute id="BuildDate" aggregationType="min"/>
-      <viewAttribute id="SKU"/>
-      <viewAttribute id="PRODUCT_ID"/>
-      <viewAttribute id="Business_Segment"/>
-      <viewAttribute id="Business_Sub-Segment"/>
-      <viewAttribute id="Global_Business_Unit"/>
-      <viewAttribute id="Product_Desc"/>
-      <viewAttribute id="Product_Family"/>
-      <viewAttribute id="Product_Family_Description"/>
-      <viewAttribute id="Product_Category_Desc"/>
-      <viewAttribute id="Product_Line_Pin"/>
-      <viewAttribute id="Product_Line_Desc"/>
-      <viewAttribute id="Product_Series"/>
-      <viewAttribute id="Type_Desc"/>
-      <viewAttribute id="OPPORTUNITY_ID_1"/>
-      <viewAttribute id="SALES_DOCUMENT"/>
-      <viewAttribute id="MATERIAL"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="DEALS_HISTORY_PREDICTION">
@@ -209,7 +209,6 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="BuildDate" source="BuildDate"/>
     </input>
     <input node="Join_1_2">
-      <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Business_Segment" source="Business_Segment"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Business_Sub-Segment" source="Business_Sub-Segment"/>
@@ -222,9 +221,10 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Product_Line_Desc" source="Product_Line_Desc"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Product_Series" source="Product_Series"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Type_Desc" source="Type_Desc"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID_1" source="OPPORTUNITY_ID_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT" source="SALES_DOCUMENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL" source="MATERIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SKU" source="SKU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID_1" source="OPPORTUNITY_ID_1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="OPPORTUNITY_ID" source="OPPORTUNITY_ID"/>
     </input>
     <joinAttribute name="OPPORTUNITY_ID"/>
@@ -373,6 +373,10 @@
       <descriptions defaultDescription="OPPORTUNITY_ID (Deal History)"/>
       <keyMapping columnObjectName="Join_1_3" columnName="OPPORTUNITY_ID_1"/>
     </attribute>
+    <attribute id="SALES_DOCUMENT" order="57" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales Order (Shipment Combined)"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="SALES_DOCUMENT"/>
+    </attribute>
     <attribute id="MATERIAL" order="58" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Material (Shipment Combined)"/>
       <keyMapping columnObjectName="Join_1_3" columnName="MATERIAL"/>
@@ -464,10 +468,6 @@
       <descriptions defaultDescription="gb_proba_DEAL_OPEN_CLOSE (Deals Prediction)"/>
       <measureMapping columnObjectName="Join_1_3" columnName="gb_proba_DEAL_OPEN_CLOSE"/>
     </measure>
-    <measure id="SALES_DOCUMENT" order="57" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="Sales Order (Shipment Combined)"/>
-      <measureMapping columnObjectName="Join_1_3" columnName="SALES_DOCUMENT"/>
-    </measure>
   </baseMeasures>
   <calculatedMeasures/>
   <restrictedMeasures/>
@@ -484,19 +484,19 @@
     </shape>
     <shape modelObjectName="DEALS_HISTORY_PREDICTION" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="244.697265625"/>
+      <rectangleSize width="244"/>
     </shape>
     <shape modelObjectName="DEAL_HISTORY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="199.08837890625"/>
+      <rectangleSize width="199"/>
     </shape>
     <shape modelObjectName="PLANNING_HIERARCHY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="620" y="30"/>
-      <rectangleSize width="217.4306640625"/>
+      <rectangleSize width="217"/>
     </shape>
     <shape modelObjectName="CV_SHIPMENTS_COMBINED" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="898" y="38"/>
-      <rectangleSize width="272.2265625"/>
+      <rectangleSize width="272"/>
     </shape>
   </shapes>
 </layout>

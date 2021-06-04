@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_PREDICTIONS" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_PREDICTIONS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_PREDICTIONS"/>
 <localVariables/>
 <variableMappings/>
@@ -28,10 +28,6 @@
       <descriptions defaultDescription="ID"/>
       <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="ID"/>
     </attribute>
-    <attribute id="DEALAGE" order="5" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DEALAGE"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="DEALAGE"/>
-    </attribute>
     <attribute id="DATECREATED" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="DATECREATED"/>
       <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="DATECREATED"/>
@@ -55,86 +51,6 @@
     <attribute id="COUNTRY_NAME" order="11" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="COUNTRY_NAME"/>
       <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="COUNTRY_NAME"/>
-    </attribute>
-    <attribute id="SKU_CNT" order="12" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SKU_CNT"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SKU_CNT"/>
-    </attribute>
-    <attribute id="MPQTY" order="13" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="MPQTY"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="MPQTY"/>
-    </attribute>
-    <attribute id="GRAPHICS_SKU_CNT" order="14" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="GRAPHICS_SKU_CNT"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="GRAPHICS_SKU_CNT"/>
-    </attribute>
-    <attribute id="GRAPHICS_MPQTY" order="15" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="GRAPHICS_MPQTY"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="GRAPHICS_MPQTY"/>
-    </attribute>
-    <attribute id="HDD_SKU_CNT" order="16" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="HDD_SKU_CNT"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="HDD_SKU_CNT"/>
-    </attribute>
-    <attribute id="HDD_MPQTY" order="17" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="HDD_MPQTY"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="HDD_MPQTY"/>
-    </attribute>
-    <attribute id="MEMORY_SKU_CNT" order="18" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="MEMORY_SKU_CNT"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="MEMORY_SKU_CNT"/>
-    </attribute>
-    <attribute id="MEMORY_MPQTY" order="19" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="MEMORY_MPQTY"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="MEMORY_MPQTY"/>
-    </attribute>
-    <attribute id="PROCESSOR_SKU_CNT" order="20" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PROCESSOR_SKU_CNT"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="PROCESSOR_SKU_CNT"/>
-    </attribute>
-    <attribute id="PROCESSOR_MPQTY" order="21" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PROCESSOR_MPQTY"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="PROCESSOR_MPQTY"/>
-    </attribute>
-    <attribute id="SSD_SKU_CNT" order="22" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SSD_SKU_CNT"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SSD_SKU_CNT"/>
-    </attribute>
-    <attribute id="SSD_MPQTY" order="23" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SSD_MPQTY"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SSD_MPQTY"/>
-    </attribute>
-    <attribute id="COMPUTE_SKU_CNT" order="24" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="COMPUTE_SKU_CNT"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="COMPUTE_SKU_CNT"/>
-    </attribute>
-    <attribute id="COMPUTE_MPQTY" order="25" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="COMPUTE_MPQTY"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="COMPUTE_MPQTY"/>
-    </attribute>
-    <attribute id="SPECIALIZED_SKU_CNT" order="26" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SPECIALIZED_SKU_CNT"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SPECIALIZED_SKU_CNT"/>
-    </attribute>
-    <attribute id="SPECIALIZED_MPQTY" order="27" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SPECIALIZED_MPQTY"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SPECIALIZED_MPQTY"/>
-    </attribute>
-    <attribute id="STORAGE_SKU_CNT" order="28" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="STORAGE_SKU_CNT"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="STORAGE_SKU_CNT"/>
-    </attribute>
-    <attribute id="STORAGE_MPQTY" order="29" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="STORAGE_MPQTY"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="STORAGE_MPQTY"/>
-    </attribute>
-    <attribute id="DELETE_FL" order="30" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DELETE_FL"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="DELETE_FL"/>
-    </attribute>
-    <attribute id="gb_proba_DEAL_OPEN_CLOSE" order="31" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="gb_proba_DEAL_OPEN_CLOSE"/>
-      <keyMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_proba_DEAL_OPEN_CLOSE"/>
     </attribute>
     <attribute id="gb_reason_top_1_name" order="32" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="gb_reason_top_1_name"/>
@@ -182,16 +98,100 @@
     </attribute>
   </attributes>
   <calculatedAttributes/>
-  <baseMeasures/>
+  <baseMeasures>
+    <measure id="DEALAGE" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DEALAGE"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="DEALAGE"/>
+    </measure>
+    <measure id="SKU_CNT" order="12" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SKU_CNT"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SKU_CNT"/>
+    </measure>
+    <measure id="MPQTY" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MPQTY"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="MPQTY"/>
+    </measure>
+    <measure id="GRAPHICS_SKU_CNT" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="GRAPHICS_SKU_CNT"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="GRAPHICS_SKU_CNT"/>
+    </measure>
+    <measure id="GRAPHICS_MPQTY" order="15" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="GRAPHICS_MPQTY"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="GRAPHICS_MPQTY"/>
+    </measure>
+    <measure id="HDD_SKU_CNT" order="16" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HDD_SKU_CNT"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="HDD_SKU_CNT"/>
+    </measure>
+    <measure id="HDD_MPQTY" order="17" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HDD_MPQTY"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="HDD_MPQTY"/>
+    </measure>
+    <measure id="MEMORY_SKU_CNT" order="18" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MEMORY_SKU_CNT"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="MEMORY_SKU_CNT"/>
+    </measure>
+    <measure id="MEMORY_MPQTY" order="19" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MEMORY_MPQTY"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="MEMORY_MPQTY"/>
+    </measure>
+    <measure id="PROCESSOR_SKU_CNT" order="20" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROCESSOR_SKU_CNT"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="PROCESSOR_SKU_CNT"/>
+    </measure>
+    <measure id="PROCESSOR_MPQTY" order="21" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROCESSOR_MPQTY"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="PROCESSOR_MPQTY"/>
+    </measure>
+    <measure id="SSD_SKU_CNT" order="22" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SSD_SKU_CNT"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SSD_SKU_CNT"/>
+    </measure>
+    <measure id="SSD_MPQTY" order="23" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SSD_MPQTY"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SSD_MPQTY"/>
+    </measure>
+    <measure id="COMPUTE_SKU_CNT" order="24" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="COMPUTE_SKU_CNT"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="COMPUTE_SKU_CNT"/>
+    </measure>
+    <measure id="COMPUTE_MPQTY" order="25" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="COMPUTE_MPQTY"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="COMPUTE_MPQTY"/>
+    </measure>
+    <measure id="SPECIALIZED_SKU_CNT" order="26" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SPECIALIZED_SKU_CNT"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SPECIALIZED_SKU_CNT"/>
+    </measure>
+    <measure id="SPECIALIZED_MPQTY" order="27" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SPECIALIZED_MPQTY"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="SPECIALIZED_MPQTY"/>
+    </measure>
+    <measure id="STORAGE_SKU_CNT" order="28" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="STORAGE_SKU_CNT"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="STORAGE_SKU_CNT"/>
+    </measure>
+    <measure id="STORAGE_MPQTY" order="29" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="STORAGE_MPQTY"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="STORAGE_MPQTY"/>
+    </measure>
+    <measure id="DELETE_FL" order="30" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DELETE_FL"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="DELETE_FL"/>
+    </measure>
+    <measure id="gb_proba_DEAL_OPEN_CLOSE" order="31" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="gb_proba_DEAL_OPEN_CLOSE"/>
+      <measureMapping columnObjectName="DEALS_HISTORY_PREDICTION" columnName="gb_proba_DEAL_OPEN_CLOSE"/>
+    </measure>
+  </baseMeasures>
   <calculatedMeasures/>
   <restrictedMeasures/>
+  <localDimensions/>
 </logicalModel>
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="100" y="105"/>
-    
-      <rectangleSize width="179"/>
+      <upperLeftCorner x="40" y="85"/>
     </shape>
     
   </shapes>

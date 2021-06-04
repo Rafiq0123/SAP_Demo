@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_PREDICTIONS_COUNTSO_V1" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PREDICTIONS_COUNTSO_V1"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TF_PREDICTIONS_COUNTSO_V2" type="TABLE_FUNCTION">
+    <resourceUri>TF_PREDICTIONS_COUNTSO_V2</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="SALES_STAGE_CODE"/>
+      <viewAttribute id="MEMORY_SKU_CNT"/>
+      <viewAttribute id="Global_Business_Unit"/>
+      <viewAttribute id="gb_reason_top_1_value"/>
+      <viewAttribute id="COMPUTE_SKU_CNT"/>
+      <viewAttribute id="Product_Line_Desc"/>
+      <viewAttribute id="SKU_CNT"/>
+      <viewAttribute id="gb_reason_top_3_value"/>
+      <viewAttribute id="COUNTRY_NAME"/>
+      <viewAttribute id="PREDICTED"/>
+      <viewAttribute id="HDD_MPQTY"/>
+      <viewAttribute id="Business_Sub-Segment"/>
+      <viewAttribute id="gb_reason_top_1_name"/>
+      <viewAttribute id="SSD_MPQTY"/>
+      <viewAttribute id="Product_Line_Pin"/>
+      <viewAttribute id="DEALAGE"/>
+      <viewAttribute id="gb_reason_top_3_name"/>
+      <viewAttribute id="STORAGE_MPQTY"/>
+      <viewAttribute id="TRUE_LABEL"/>
+      <viewAttribute id="HDD_SKU_CNT"/>
+      <viewAttribute id="Business_Segment"/>
+      <viewAttribute id="gb_proba_DEAL_OPEN_CLOSE"/>
+      <viewAttribute id="SSD_SKU_CNT"/>
+      <viewAttribute id="Product_Category_Desc"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="gb_reason_top_2_strength_indicator"/>
+      <viewAttribute id="STORAGE_SKU_CNT"/>
+      <viewAttribute id="OPPORTUNITY_ID"/>
+      <viewAttribute id="GRAPHICS_MPQTY"/>
+      <viewAttribute id="SKU"/>
+      <viewAttribute id="SUB_PRODUCT_LINE_DESC"/>
+      <viewAttribute id="PROCESSOR_MPQTY"/>
+      <viewAttribute id="Product_Family_Description"/>
+      <viewAttribute id="gb_reason_top_2_value"/>
+      <viewAttribute id="SPECIALIZED_MPQTY"/>
+      <viewAttribute id="GRAPHICS_SKU_CNT"/>
+      <viewAttribute id="BuildDate"/>
+      <viewAttribute id="BUSINESS_CHANNEL"/>
+      <viewAttribute id="PROCESSOR_SKU_CNT"/>
+      <viewAttribute id="Product_Family"/>
+      <viewAttribute id="gb_reason_top_2_name"/>
+      <viewAttribute id="SPECIALIZED_SKU_CNT"/>
+      <viewAttribute id="COUNTSO"/>
+      <viewAttribute id="CONFIDENCE_LEVEL"/>
+      <viewAttribute id="ApplyDate"/>
+      <viewAttribute id="OPP_TYPE"/>
+      <viewAttribute id="MEMORY_MPQTY"/>
+      <viewAttribute id="Product_Desc"/>
+      <viewAttribute id="gb_reason_top_1_strength_indicator"/>
+      <viewAttribute id="COMPUTE_MPQTY"/>
+      <viewAttribute id="Product_Series"/>
+      <viewAttribute id="MPQTY"/>
+      <viewAttribute id="gb_reason_top_3_strength_indicator"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="TF_PREDICTIONS_COUNTSO_V2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Global_Business_Unit" source="Global Business Unit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Line_Desc" source="Product Line Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Business_Sub-Segment" source="Business Sub-Segment"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Line_Pin" source="Product Line Pin"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Business_Segment" source="Business Segment"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Category_Desc" source="Product Category Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Family_Description" source="Product Family Description"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Family" source="Product Family"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Desc" source="Product Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_Series" source="Product Series"/>
+    </input>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="SALES_STAGE_CODE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALES_STAGE_CODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SALES_STAGE_CODE"/>
+    </attribute>
+    <attribute id="Global_Business_Unit" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Global_Business_Unit"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Global_Business_Unit"/>
+    </attribute>
+    <attribute id="gb_reason_top_1_value" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_1_value"/>
+      <keyMapping columnObjectName="Projection_1" columnName="gb_reason_top_1_value"/>
+    </attribute>
+    <attribute id="Product_Line_Desc" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Line_Desc"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Line_Desc"/>
+    </attribute>
+    <attribute id="gb_reason_top_3_value" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_3_value"/>
+      <keyMapping columnObjectName="Projection_1" columnName="gb_reason_top_3_value"/>
+    </attribute>
+    <attribute id="COUNTRY_NAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY_NAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="COUNTRY_NAME"/>
+    </attribute>
+    <attribute id="PREDICTED" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PREDICTED"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PREDICTED"/>
+    </attribute>
+    <attribute id="Business_Sub-Segment" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Business_Sub-Segment"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Business_Sub-Segment"/>
+    </attribute>
+    <attribute id="gb_reason_top_1_name" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_1_name"/>
+      <keyMapping columnObjectName="Projection_1" columnName="gb_reason_top_1_name"/>
+    </attribute>
+    <attribute id="Product_Line_Pin" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Line_Pin"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Line_Pin"/>
+    </attribute>
+    <attribute id="gb_reason_top_3_name" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_3_name"/>
+      <keyMapping columnObjectName="Projection_1" columnName="gb_reason_top_3_name"/>
+    </attribute>
+    <attribute id="TRUE_LABEL" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TRUE_LABEL"/>
+      <keyMapping columnObjectName="Projection_1" columnName="TRUE_LABEL"/>
+    </attribute>
+    <attribute id="Business_Segment" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Business_Segment"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Business_Segment"/>
+    </attribute>
+    <attribute id="Product_Category_Desc" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Category_Desc"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Category_Desc"/>
+    </attribute>
+    <attribute id="ID" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ID"/>
+    </attribute>
+    <attribute id="gb_reason_top_2_strength_indicator" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_2_strength_indicator"/>
+      <keyMapping columnObjectName="Projection_1" columnName="gb_reason_top_2_strength_indicator"/>
+    </attribute>
+    <attribute id="OPPORTUNITY_ID" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPPORTUNITY_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="OPPORTUNITY_ID"/>
+    </attribute>
+    <attribute id="SKU" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SKU"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SKU"/>
+    </attribute>
+    <attribute id="SUB_PRODUCT_LINE_DESC" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUB_PRODUCT_LINE_DESC"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SUB_PRODUCT_LINE_DESC"/>
+    </attribute>
+    <attribute id="Product_Family_Description" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Family_Description"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Family_Description"/>
+    </attribute>
+    <attribute id="gb_reason_top_2_value" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_2_value"/>
+      <keyMapping columnObjectName="Projection_1" columnName="gb_reason_top_2_value"/>
+    </attribute>
+    <attribute id="BUSINESS_CHANNEL" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUSINESS_CHANNEL"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BUSINESS_CHANNEL"/>
+    </attribute>
+    <attribute id="Product_Family" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Family"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Family"/>
+    </attribute>
+    <attribute id="gb_reason_top_2_name" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_2_name"/>
+      <keyMapping columnObjectName="Projection_1" columnName="gb_reason_top_2_name"/>
+    </attribute>
+    <attribute id="OPP_TYPE" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPP_TYPE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="OPP_TYPE"/>
+    </attribute>
+    <attribute id="Product_Desc" order="48" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Desc"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Desc"/>
+    </attribute>
+    <attribute id="gb_reason_top_1_strength_indicator" order="49" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_1_strength_indicator"/>
+      <keyMapping columnObjectName="Projection_1" columnName="gb_reason_top_1_strength_indicator"/>
+    </attribute>
+    <attribute id="Product_Series" order="51" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Series"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Product_Series"/>
+    </attribute>
+    <attribute id="gb_reason_top_3_strength_indicator" order="53" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="gb_reason_top_3_strength_indicator"/>
+      <keyMapping columnObjectName="Projection_1" columnName="gb_reason_top_3_strength_indicator"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="MEMORY_SKU_CNT" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MEMORY_SKU_CNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="MEMORY_SKU_CNT"/>
+    </measure>
+    <measure id="COMPUTE_SKU_CNT" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="COMPUTE_SKU_CNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="COMPUTE_SKU_CNT"/>
+    </measure>
+    <measure id="SKU_CNT" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SKU_CNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="SKU_CNT"/>
+    </measure>
+    <measure id="HDD_MPQTY" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HDD_MPQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="HDD_MPQTY"/>
+    </measure>
+    <measure id="SSD_MPQTY" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SSD_MPQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="SSD_MPQTY"/>
+    </measure>
+    <measure id="DEALAGE" order="16" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DEALAGE"/>
+      <measureMapping columnObjectName="Projection_1" columnName="DEALAGE"/>
+    </measure>
+    <measure id="STORAGE_MPQTY" order="18" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="STORAGE_MPQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="STORAGE_MPQTY"/>
+    </measure>
+    <measure id="HDD_SKU_CNT" order="20" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HDD_SKU_CNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="HDD_SKU_CNT"/>
+    </measure>
+    <measure id="gb_proba_DEAL_OPEN_CLOSE" order="22" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="gb_proba_DEAL_OPEN_CLOSE"/>
+      <measureMapping columnObjectName="Projection_1" columnName="gb_proba_DEAL_OPEN_CLOSE"/>
+    </measure>
+    <measure id="SSD_SKU_CNT" order="23" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SSD_SKU_CNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="SSD_SKU_CNT"/>
+    </measure>
+    <measure id="STORAGE_SKU_CNT" order="27" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="STORAGE_SKU_CNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="STORAGE_SKU_CNT"/>
+    </measure>
+    <measure id="GRAPHICS_MPQTY" order="29" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="GRAPHICS_MPQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="GRAPHICS_MPQTY"/>
+    </measure>
+    <measure id="PROCESSOR_MPQTY" order="32" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROCESSOR_MPQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="PROCESSOR_MPQTY"/>
+    </measure>
+    <measure id="SPECIALIZED_MPQTY" order="35" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SPECIALIZED_MPQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="SPECIALIZED_MPQTY"/>
+    </measure>
+    <measure id="GRAPHICS_SKU_CNT" order="36" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="GRAPHICS_SKU_CNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="GRAPHICS_SKU_CNT"/>
+    </measure>
+    <measure id="BuildDate" order="37" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="BuildDate"/>
+      <measureMapping columnObjectName="Projection_1" columnName="BuildDate"/>
+    </measure>
+    <measure id="PROCESSOR_SKU_CNT" order="39" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROCESSOR_SKU_CNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="PROCESSOR_SKU_CNT"/>
+    </measure>
+    <measure id="SPECIALIZED_SKU_CNT" order="42" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SPECIALIZED_SKU_CNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="SPECIALIZED_SKU_CNT"/>
+    </measure>
+    <measure id="COUNTSO" order="43" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="COUNTSO"/>
+      <measureMapping columnObjectName="Projection_1" columnName="COUNTSO"/>
+    </measure>
+    <measure id="CONFIDENCE_LEVEL" order="44" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="CONFIDENCE_LEVEL"/>
+      <measureMapping columnObjectName="Projection_1" columnName="CONFIDENCE_LEVEL"/>
+    </measure>
+    <measure id="ApplyDate" order="45" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="ApplyDate"/>
+      <measureMapping columnObjectName="Projection_1" columnName="ApplyDate"/>
+    </measure>
+    <measure id="MEMORY_MPQTY" order="47" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MEMORY_MPQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="MEMORY_MPQTY"/>
+    </measure>
+    <measure id="COMPUTE_MPQTY" order="50" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="COMPUTE_MPQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="COMPUTE_MPQTY"/>
+    </measure>
+    <measure id="MPQTY" order="52" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MPQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="MPQTY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="190"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

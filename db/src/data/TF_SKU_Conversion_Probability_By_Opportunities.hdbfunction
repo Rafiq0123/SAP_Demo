@@ -1,0 +1,35 @@
+FUNCTION "TF_SKU_Conversion_Probability_By_Opportunities"( )
+    RETURNS TABLE (
+        OPPORTUNITY_ID NVARCHAR(30), SKU NVARCHAR(18), DH_OPP_COUNT INTEGER, SO_OPP_COUNT INTEGER, PERC DOUBLE, PRODUCT_ID NVARCHAR(18), "Business Segment" NVARCHAR(30), "Global Business Unit" NVARCHAR(30), "Product Desc" NVARCHAR(99), 
+        "Product Family" NVARCHAR(9), "Product Family Description" NVARCHAR(99), "Product Category Desc" NVARCHAR(99), "Product Line Desc" NVARCHAR(99), "Product Series" NVARCHAR(9), "Type Desc" NVARCHAR(99)
+    )
+    LANGUAGE SQLSCRIPT 
+    SQL SECURITY INVOKER AS 
+BEGIN 
+ RETURN
+    select Y.OPPORTUNITY_ID, Y.SKU, Y.DH_OPP_COUNT, Y.SO_OPP_COUNT, Y.PERC, PH.PRODUCT_ID, PH."Business Segment", PH."Global Business Unit", PH."Product Desc", PH."Product Family", PH."Product Family Description", PH."Product Category Desc", PH."Product Line Desc", PH."Product Series", PH."Type Desc" from 
+    (SELECT DISTINCT D.OPPORTUNITY_ID, D.SKU, X."DH_OPP_COUNT", X."SO_OPP_COUNT", X."PERC"
+    FROM "DEAL_HISTORY" D,
+    (
+        SELECT DISTINCT DH.SKU, "DH_OPP_COUNT", "SO_OPP_COUNT",
+        "SO_OPP_COUNT"/(CASE WHEN "DH_OPP_COUNT"=0 THEN 1 ELSE "DH_OPP_COUNT" END) AS "PERC"
+        FROM
+        (
+            select distinct SKU, Count(DISTINCT OPPORTUNITY_ID) AS "DH_OPP_COUNT" from
+            "DEAL_HISTORY" 
+            GROUP BY SKU
+        ) DH,
+        (
+            select A.MATERIAL, count(distinct A."OpportunityID") AS "SO_OPP_COUNT"
+            from "CV_SALES_ORDER_ANALYSIS_V2" A
+            WHERE A."OpportunityID" IN
+            (select DISTINCT OPPORTUNITY_ID from
+            "DEAL_HISTORY") 
+            GROUP BY A.MATERIAL
+        ) SO
+        WHERE DH.SKU = SO.MATERIAL
+        GROUP BY DH.SKU, "DH_OPP_COUNT", "SO_OPP_COUNT" ORDER BY "PERC" DESC
+    ) X
+    WHERE X.SKU = D.SKU ) Y, PLANNING_HIERARCHY PH
+    WHERE Y.SKU = PH.PRODUCT_ID;
+END;

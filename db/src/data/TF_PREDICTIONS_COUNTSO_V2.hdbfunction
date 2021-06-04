@@ -1,0 +1,52 @@
+FUNCTION "TF_PREDICTIONS_COUNTSO_V2"( )
+    RETURNS TABLE (
+        OPPORTUNITY_ID NVARCHAR(30),
+        "TRUE_LABEL" NVARCHAR(6), "PREDICTED" NVARCHAR(10), "ID" NVARCHAR(30), 
+        DEALAGE INTEGER, SKU_CNT INTEGER, MPQTY INTEGER, CONFIDENCE_LEVEL INTEGER, GRAPHICS_SKU_CNT INTEGER, GRAPHICS_MPQTY INTEGER, HDD_SKU_CNT INTEGER, HDD_MPQTY INTEGER, MEMORY_SKU_CNT INTEGER, MEMORY_MPQTY INTEGER, PROCESSOR_SKU_CNT INTEGER, PROCESSOR_MPQTY INTEGER, SSD_SKU_CNT INTEGER, SSD_MPQTY INTEGER, COMPUTE_SKU_CNT INTEGER, COMPUTE_MPQTY INTEGER,
+        SPECIALIZED_SKU_CNT INTEGER, SPECIALIZED_MPQTY INTEGER, STORAGE_SKU_CNT INTEGER, STORAGE_MPQTY INTEGER, COUNTRY_NAME NVARCHAR(30), SALES_STAGE_CODE NVARCHAR(30), OPP_TYPE NVARCHAR(20), BUSINESS_CHANNEL NVARCHAR(30), SUB_PRODUCT_LINE_DESC NVARCHAR(99), "gb_proba_DEAL_OPEN_CLOSE" DOUBLE, "gb_reason_top_1_name" NVARCHAR(5000), 
+        "gb_reason_top_1_value" NVARCHAR(5000), "gb_reason_top_1_strength_indicator" NVARCHAR(5000), "gb_reason_top_2_name" NVARCHAR(5000), "gb_reason_top_2_value" NVARCHAR(5000), "gb_reason_top_2_strength_indicator" NVARCHAR(5000), "gb_reason_top_3_name" NVARCHAR(5000), "gb_reason_top_3_value" NVARCHAR(5000), "gb_reason_top_3_strength_indicator" NVARCHAR(5000), 
+        "ApplyDate" TIMESTAMP, "BuildDate" TIMESTAMP,
+        SKU  NVARCHAR(18), 
+        "Business Segment" NVARCHAR(30), "Business Sub-Segment" NVARCHAR(30), "Global Business Unit" NVARCHAR(30), "Product Desc" NVARCHAR(99),"Product Family" NVARCHAR(9), "Product Family Description" NVARCHAR(99), "Product Category Desc" NVARCHAR(99), "Product Line Pin" NVARCHAR(9), "Product Line Desc" NVARCHAR(99), "Product Series" NVARCHAR(9),
+        COUNTSO INT
+
+    )    
+    LANGUAGE SQLSCRIPT 
+    SQL SECURITY INVOKER AS 
+BEGIN 
+    RETURN
+        SELECT         
+        Y."OPPORTUNITY_ID",
+        Y."TRUE_LABEL", Y."PREDICTED", Y."ID", Y.DEALAGE, Y.SKU_CNT, Y.MPQTY, Y.CONFIDENCE_LEVEL, Y.GRAPHICS_SKU_CNT, Y.GRAPHICS_MPQTY, Y.HDD_SKU_CNT, Y.HDD_MPQTY, Y.MEMORY_SKU_CNT, Y.MEMORY_MPQTY, Y.PROCESSOR_SKU_CNT, Y.PROCESSOR_MPQTY, Y.SSD_SKU_CNT, Y.SSD_MPQTY, Y.COMPUTE_SKU_CNT, Y.COMPUTE_MPQTY, Y.SPECIALIZED_SKU_CNT, Y.SPECIALIZED_MPQTY, Y.STORAGE_SKU_CNT,
+        Y.STORAGE_MPQTY, Y.COUNTRY_NAME, Y.SALES_STAGE_CODE, Y.OPP_TYPE, Y.BUSINESS_CHANNEL, Y.SUB_PRODUCT_LINE_DESC, Y."gb_proba_DEAL_OPEN_CLOSE", Y."gb_reason_top_1_name", Y."gb_reason_top_1_value", Y."gb_reason_top_1_strength_indicator", Y."gb_reason_top_2_name", Y."gb_reason_top_2_value", Y."gb_reason_top_2_strength_indicator", Y."gb_reason_top_3_name", 
+        Y."gb_reason_top_3_value", Y."gb_reason_top_3_strength_indicator", Y."ApplyDate", Y."BuildDate",
+        Z.SKU, 
+        Z."Business Segment", Z."Business Sub-Segment", Z."Global Business Unit", Z."Product Desc", Z."Product Family", Z."Product Family Description", Z."Product Category Desc", Z."Product Line Pin", Z."Product Line Desc", Z."Product Series",
+        Z."COUNTSO"
+        
+        FROM "DEALS_HISTORY_PREDICTION" Y,
+
+        (
+                        SELECT A.OPPORTUNITY_ID, A.SKU, 
+                        B."Business Segment", B."Business Sub-Segment", B."Global Business Unit", B."Product Desc", B."Product Family", B."Product Family Description", B."Product Category Desc", B."Product Line Pin", B."Product Line Desc", B."Product Series",                         
+                        B."COUNTSO"
+                        FROM
+                        (
+                        select DISTINCT OPPORTUNITY_ID, SKU from
+                        "CV_DEAL_HISTORY" 
+                        ) A,
+                        (
+                        select DISTINCT "Business Segment", "Business Sub-Segment", "Global Business Unit", "Product Desc", "Product Family", "Product Family Description", "Product Category Desc", "Product Line Pin", "Product Line Desc", "Product Series", "Type Desc"
+                        ,Material, count(SALES_DOCUMENT) AS "COUNTSO"
+                        from "CV_SHIPMENTS_COMBINED", "PLANNING_HIERARCHY"
+                        where  MATERIAL = PRODUCT_ID 
+                        group by Material, "Business Segment",
+                        "Business Segment", "Business Sub-Segment", "Global Business Unit", "Product Desc", "Product Family", "Product Family Description", "Product Category Desc", "Product Line Pin", "Product Line Desc", "Product Series", "Type Desc"
+                        order by "COUNTSO" DESC
+                        ) B
+                        WHERE A.SKU = B.MATERIAL
+                    ) Z
+
+        WHERE  (UPPER(Y."PREDICTED") = UPPER('CLOSED')) AND (UPPER(Y."TRUE_LABEL") = UPPER('OPEN'))
+        AND Z.OPPORTUNITY_ID = Y.OPPORTUNITY_ID;
+END;
